@@ -12,6 +12,24 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::prefix('admin')->namespace('Admin')->group(function(){
+	Route::group(['middleware'=>'AdminGuest'],function (){
+    Route::get('/auth/login',['as'=>'admin.auth.login','uses'=>'\App\Http\Controllers\Admin\LoginController@Login']);
+	Route::post('/auth/attempt',['as'=>'admin.auth.attempt','uses'=>'\App\Http\Controllers\Admin\LoginController@attempt']);
+	Route::get('/auth/forgetpassword',['as'=>'admin.auth.forgetpassword','uses'=>'\App\Http\Controllers\Admin\LoginController@forget']);
+	Route::post('/auth/forgetpassword-process',['as'=>'admin.auth.forgetpassword-process','uses'=>'\App\Http\Controllers\Admin\LoginController@forget_process']);
+	Route::get('/auth/resetpassword/{token}',['as'=>'admin.auth.resetpassword','uses'=>'\App\Http\Controllers\Admin\LoginController@resetpassword']);
+	Route::post('/auth/resetpassword-process',['as'=>'admin.auth.resetpassword-process','uses'=>'\App\Http\Controllers\Admin\LoginController@resetpassword_process']);
+    });
+    Route::group(['middleware'=>"AdminAuth"], function(){
+        Route::get('google-map',['as'=>'admin.google-map','uses'=>"\App\Http\Controllers\Admin\MapController@google_map"]);
+    Route::post('google-map-process',['as'=>'admin.google-map-process','uses'=>"\App\Http\Controllers\Admin\MapController@google_map_process"]);
+    Route::get('get-markers',['as'=>'get-markers','uses'=>"\App\Http\Controllers\Admin\MapController@get_marker"]);
+    Route::get('logout',['as'=>'admin.logout','uses'=>'\App\Http\Controllers\Admin\MapController@logout']);
+    Route::get('import-excel',['as'=>'admin.import-excel','uses'=>"\App\Http\Controllers\Admin\MapController@import_excel"]);
+    Route::post('import-excel-process',['as'=>'admin.import-excel-process','uses'=>"\App\Http\Controllers\Admin\MapController@import_excel_process"]);
+        });
+});
 
 Route::get('/', function () {
     return view('clientside.page.map');
@@ -23,9 +41,4 @@ Route::get('dashboard', function () {
     return view('admin.pages.dashboard');
 })->name('dashboard');
 
-Route::get('google-map',['as'=>'admin.google-map','uses'=>"\App\Http\Controllers\Admin\MapController@google_map"]);
-Route::post('google-map-process',['as'=>'admin.google-map-process','uses'=>"\App\Http\Controllers\Admin\MapController@google_map_process"]);
-Route::get('get-markers',['as'=>'get-markers','uses'=>"\App\Http\Controllers\Admin\MapController@get_marker"]);
 
-Route::get('import-excel',['as'=>'admin.import-excel','uses'=>"\App\Http\Controllers\Admin\MapController@import_excel"]);
-Route::post('import-excel-process',['as'=>'admin.import-excel-process','uses'=>"\App\Http\Controllers\Admin\MapController@import_excel_process"]);
