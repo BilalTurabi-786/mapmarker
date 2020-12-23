@@ -5,7 +5,7 @@
 			<nav class="navbar navbar-expand-lg navbar-light bg-light">
 				<div class="container-fluid">
 
-					<a class="navbar-brand" href="#">
+					<a class="navbar-brand" href="{{url('/')}}">
 						Logo Here
 						<!-- <img src="images/logo-black.png" alt=""> -->
 					</a>
@@ -100,7 +100,7 @@
 							</li>
 							<li><a href=""><i class="fa fa-user-o" aria-hidden="true"></i> </a></li>
 						</ul> -->
-						<!-- <a href="add-listing.html" class="add-list-btn btn-default"><i class="fa fa-plus" aria-hidden="true"></i> Add Listing</a> -->
+						<a href="{{url('/contact')}}" class="add-list-btn btn-default ml-auto"><i class="fa fa-plus" aria-hidden="true"></i> Add School Listing</a>
 					</div>
 				</div>
 			</nav>

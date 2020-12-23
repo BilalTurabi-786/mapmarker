@@ -2,6 +2,169 @@
 @section('title', 'Map')
 @section('headname','Map')
 @section('content')
+<style type="text/css">
+	.price-range-slider {
+	width:100%;
+  float:left;
+  padding:10px 20px;
+	.range-value {
+		margin:0;
+		input {
+			width:100%;
+			background:none;
+			color: #000;
+			font-size: 16px;
+			font-weight: initial;
+			box-shadow: none;
+			border: none;
+			margin: 20px 0 20px 0;
+		}
+	}
+	
+	.range-bar {
+		border: none;
+		background: #000;
+		height: 3px;	
+		width: 96%;
+		margin-left: 8px;
+		
+		.ui-slider-range {
+			background:#06b9c0;
+		}
+		
+		.ui-slider-handle {
+			border:none;
+			border-radius:25px;
+			background:#fff;
+			border:2px solid #06b9c0;
+			height:17px;
+			width:17px;
+			top: -0.52em;
+			cursor:pointer;
+		}
+		.ui-slider-handle + span {
+			background:#06b9c0;
+		}
+	}
+}
+
+/* Slider */
+
+.slick-slide {
+    margin: 0px 20px;
+}
+
+.slick-slide img {
+    width: 100%;
+}
+
+.slick-slider
+{
+    position: relative;
+    display: block;
+    box-sizing: border-box;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+            user-select: none;
+    -webkit-touch-callout: none;
+    -khtml-user-select: none;
+    -ms-touch-action: pan-y;
+        touch-action: pan-y;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.slick-list
+{
+    position: relative;
+    display: block;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+}
+.slick-list:focus
+{
+    outline: none;
+}
+.slick-list.dragging
+{
+    cursor: pointer;
+    cursor: hand;
+}
+
+.slick-slider .slick-track,
+.slick-slider .slick-list
+{
+    -webkit-transform: translate3d(0, 0, 0);
+       -moz-transform: translate3d(0, 0, 0);
+        -ms-transform: translate3d(0, 0, 0);
+         -o-transform: translate3d(0, 0, 0);
+            transform: translate3d(0, 0, 0);
+}
+
+.slick-track
+{
+    position: relative;
+    top: 0;
+    left: 0;
+    display: block;
+}
+.slick-track:before,
+.slick-track:after
+{
+    display: table;
+    content: '';
+}
+.slick-track:after
+{
+    clear: both;
+}
+.slick-loading .slick-track
+{
+    visibility: hidden;
+}
+
+.slick-slide
+{
+    display: none;
+    float: left;
+    height: 100%;
+    min-height: 1px;
+}
+[dir='rtl'] .slick-slide
+{
+    float: right;
+}
+.slick-slide img
+{
+    display: block;
+}
+.slick-slide.slick-loading img
+{
+    display: none;
+}
+.slick-slide.dragging img
+{
+    pointer-events: none;
+}
+.slick-initialized .slick-slide
+{
+    display: block;
+}
+.slick-loading .slick-slide
+{
+    visibility: hidden;
+}
+.slick-vertical .slick-slide
+{
+    display: block;
+    height: auto;
+    border: 1px solid transparent;
+}
+.slick-arrow.slick-hidden {
+    display: none;
+}
+</style>
 <!-- map block
 			================================================== -->
 		<div class="map-wrapper">
@@ -21,45 +184,37 @@
 									Filter Listings
 								</h2>
 							<div class="row">
-								<!-- <input class="explore__form-input col-md-3 mr-2" type="text" name="search-ar" id="search-ar" placeholder="Looking for?" /> -->
-								<select class="col-md-5 explore__form-input js-example-basic-multiple">
-									<option>Duration </option>
-									<option>New York</option>
-									<option>California</option>
-									<option>Washington</option>
-									<option>New Jersey</option>
-									<option>Miami</option>
-									<option>San Francisco</option>
-									<option>Boston</option>
-									<option>Pensilvania</option>
-									<option>Other</option>
-								</select>
-								<select class="col-md-5 explore__form-input js-example-basic-multiple">
-									<option>Course : </option>
-									<option>Art's</option>
-									<option>Health</option>
-									<option>Hotels</option>
-									<option>Real Estate</option>
-									<option>Rentals</option>
-									<option>Restaurant</option>
-									<option>Shopping</option>
-									<option>Travel</option>
-									<option>Vacation</option>
-								</select>
-							</div>
-							<div class="row">
-								<input class="explore__form-input col-md-5 mr-2" type="text" name="search-ar" id="search-ar" placeholder="Price" />
-								<input class="explore__form-input col-md-5 mr-2" type="text" name="search-ar" id="search-ar" placeholder="Price / Hour" />
+								<div class="price-range-slider">
+								  <p class="range-value">
+								  	<b>Duration :</b>
+								    <input type="text" id="amount3" readonly style="border: none;">
+								  </p>
+								  <div id="slider-range3" class="range-bar"></div>
+								</div>
 								
 							</div>
+							<div class="row">
+
+								<div class="price-range-slider">
+								  <p class="range-value">
+								  	<b>Price :</b>
+								    <input type="text" id="amount" readonly style="border: none;">
+								  </p>
+								  <div id="slider-range" class="range-bar"></div>
+								</div>
+								<div class="price-range-slider">
+								  <p class="range-value">
+								  	<b>Price Per Hour :</b>
+								    <input type="text" id="amount1" readonly style="border: none;">
+								  </p>
+								  <div id="slider-range2" class="range-bar"></div>
+								</div>
+							</div>
+							
 								<h2 class="explore__form-desc">
 									Advanced Search
-									<a href="#" class="advanced-toggle">
-										more 
-										<i class="fa fa-angle-down" aria-hidden="true"></i>
-									</a>
 								</h2>
-								<div class="explore__form-advanced">
+								<div class="">
 									<span class="text-dark">Sports:</span>
 									<ul class="explore__form-price-list">
 										<li><a href="#">Football</a></li>
@@ -117,16 +272,16 @@
 									</ul>
 								</div>
 								<div class="explore__advertise">
-									<span class="explore__advertise-title">
-										advertising box
-									</span>
-									<img src="upload/add2.jpg" alt="">
-								</div>
-								<div class="explore__advertise">
-									<span class="explore__advertise-title">
-										advertising box
-									</span>
-									<img src="upload/add.jpg" alt="">
+									<section class="customer-logos slider">
+									      <div class="slide"><img src="https://image.freepik.com/free-vector/luxury-letter-e-logo-design_1017-8903.jpg"></div>
+									      <div class="slide"><img src="https://image.freepik.com/free-vector/3d-box-logo_1103-876.jpg"></div>
+									      <div class="slide"><img src="https://image.freepik.com/free-vector/blue-tech-logo_1103-822.jpg"></div>
+									      <div class="slide"><img src="https://image.freepik.com/free-vector/colors-curl-logo-template_23-2147536125.jpg"></div>
+									      <div class="slide"><img src="https://image.freepik.com/free-vector/abstract-cross-logo_23-2147536124.jpg"></div>
+									      <div class="slide"><img src="https://image.freepik.com/free-vector/football-logo-background_1195-244.jpg"></div>
+									      <div class="slide"><img src="https://image.freepik.com/free-vector/background-of-spots-halftone_1035-3847.jpg"></div>
+									      <div class="slide"><img src="https://image.freepik.com/free-vector/retro-label-on-rustic-background_82147503374.jpg"></div>
+								    </section>
 								</div>
 							</form>
 						</div>

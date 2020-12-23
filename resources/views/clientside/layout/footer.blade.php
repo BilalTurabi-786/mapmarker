@@ -42,8 +42,8 @@
 									Contact Info 
 								</h2>
 								<p class="footer__widget-description">
-									1000 5th Ave to Central Park, New York <br>
-									+1 246-345-0695 <br>
+									Lorem ipsum lorem ipsum lorem ipsum <br>
+									+X XXX-XXX-XXXX <br>
 									info@example.com
 								</p>
 							</div>

@@ -34,6 +34,12 @@ Route::prefix('admin')->namespace('Admin')->group(function(){
 Route::get('/', function () {
     return view('clientside.page.map');
 });
+Route::get('/contact',function(){
+    return view('clientside.page.contact');
+});
+Route::get('/addlisting',function(){
+    return view('clientside.page.addlisting');
+});
 Route::get('/logout', function () {
     return view('clientside.page.map');
 })->name('admin.logout');
