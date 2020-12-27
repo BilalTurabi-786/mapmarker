@@ -108,6 +108,12 @@
               <span class="menu-title" data-i18n="Order">Import from Excel</span>
             </a>
           </li>
+          <li class="nav-item">
+           <a href="{{route('admin.get-contacts')}}">
+              <i class="fa file-import"></i>
+              <span class="menu-title" data-i18n="Order">Contacts</span>
+            </a>
+          </li>
            <li class="nav-item">
            <a href="{{route('admin.logout')}}">
               <i class="fa fa-sign-out"></i>

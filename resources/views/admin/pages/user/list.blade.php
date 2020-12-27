@@ -17,7 +17,10 @@
                 </div>
                 <div class="card-content">
                     <div class="card-body card-dashboard">
-                        
+                        <table class="table">
+                        <thead><tr><th>Name</th><th>Email</th><th>Subject</th><th>Action</th></tr></thead>
+                        <tbody>@if($contacts->count()>0) @foreach($contacts as $contact)<tr><td>{{$contact->name}}</td><td>{{$contact->email}}</td><td>{{$contact->subject}}</td><td>Send Quote</td> </tr>@endforeach @endif</tbody>
+                        </table>
                     </div>
                 </div>
             </div>

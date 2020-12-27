@@ -75,7 +75,7 @@ class LoginController extends Controller
                 if (!Auth::guard('admin')->attempt($credientials)) {
             return redirect()->route('admin.auth.login')->withErrors(['error'=>"Invalid Credientials"]);
                 }else{  
-            return redirect()->route('admin.subcategorylist');    
+            return redirect()->route('admin.google-map');    
                 }
             }   
     }

@@ -38,7 +38,7 @@
 			</div>
 
 			<!-- form listing -->
-			<form class="add-listing__form">
+			<form class="add-listing__form" action="{{route('list-process')}}" method="post">
 
 				<div class="container">
 					
@@ -48,14 +48,14 @@
 						<h2 class="add-listing__form-title">
 							General Information:
 						</h2>
-
+				
 						<div class="add-listing__form-content">
 							<div class="row">
 								<div class="col-md-6">
 									<label class="add-listing__label" for="list-title">
 										Listing Title:
 									</label>
-									<input class="add-listing__input" type="text" name="list-title" id="list-title" placeholder="Title" />
+									<input class="add-listing__input" type="text" name="title" id="list-title" placeholder="Title" />
 								</div>
 								<div class="col-md-6">
 									<label class="add-listing__label" for="category">

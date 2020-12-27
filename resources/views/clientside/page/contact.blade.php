@@ -21,22 +21,34 @@
 					<div class="col-lg-8 col-md-8">
 						
 						<!-- Contact form module -->
-						<form class="contact-form">
+						<form class="contact-form" method="post" action="{{route('contact-process')}}">
+						@csrf
 							<h2 class="contact-form__title">
 								Contact Form
-							</h2>
+								@if(Session::has('success'))
+								<span class="text-success">{{Session('success')}} </span>
+								@endif
+								</h2>
 							<div class="row">
 								<div class="col-md-6">
-									<input class="contact-form__input-text" type="text" name="name" id="name" placeholder="Name:" />
+								<span class="text-danger">{{$errors->first('name')}} </span>
+
+									<input class="contact-form__input-text" type="text" name="name" id="name" placeholder="Name:" / value="{{old('name')}}">
 								</div>
 								<div class="col-md-6">
-									<input class="contact-form__input-text" type="text" name="mail" id="mail" placeholder="Email:" />
+								<span class="text-danger">{{$errors->first('email')}} </span>
+
+									<input class="contact-form__input-text" type="email" name="email" id="mail" placeholder="Email:" / value="{{old('email')}}">
 								</div>
 							</div>
-							<input class="contact-form__input-text" type="text" name="subject" id="subject" placeholder="Subject" />
-							<textarea class="contact-form__textarea" name="comment" id="comment" placeholder="Message"></textarea>
+							<span class="text-danger">{{$errors->first('subject')}} </span>
+
+							<input class="contact-form__input-text" type="text" name="subject" id="subject" placeholder="Subject" / value="{{old('subject')}}">
+							<span class="text-danger">{{$errors->first('comment')}} </span>
+
+							<textarea class="contact-form__textarea" name="comment" id="comment" placeholder="Message">{{old('comment')}}</textarea>
 							<!-- <input class="contact-form__submit" type="submit" name="submit-contact" id="submit_contact" value="Submit Message" /> -->
-							<a id="submit_contact" href="{{url('/addlisting')}}" class="contact-form__submit">Submit Message</a>
+							<button   class="contact-form__submit" type="submit">Submit Message</button>
 						</form>
 						<!-- End Contact form module -->
 
