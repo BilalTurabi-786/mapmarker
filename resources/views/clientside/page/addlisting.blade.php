@@ -363,3 +363,13 @@
 
 
 @endsection
+@section('scripts')
+        <script>
+            $(document).ready(function(){
+                let searchParams = new URLSearchParams(window.location.search)
+                let token= searchParams.get("token");
+                 alert(token);
+                $("#token").val(token);
+            })
+        </script>
+        @endsection

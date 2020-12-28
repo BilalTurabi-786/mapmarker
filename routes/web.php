@@ -28,7 +28,9 @@ Route::prefix('admin')->namespace('Admin')->group(function(){
     Route::get('logout',['as'=>'admin.logout','uses'=>'\App\Http\Controllers\Admin\MapController@logout']);
     Route::get('import-excel',['as'=>'admin.import-excel','uses'=>"\App\Http\Controllers\Admin\MapController@import_excel"]);
     Route::post('import-excel-process',['as'=>'admin.import-excel-process','uses'=>"\App\Http\Controllers\Admin\MapController@import_excel_process"]);
-Route::get('get-contacts',['as'=>'admin.get-contacts','uses'=>"\App\Http\Controllers\Front\ContactUsController@get_contacts"]);
+    Route::get('get-contacts',['as'=>'admin.get-contacts','uses'=>"\App\Http\Controllers\Front\ContactUsController@get_contacts"]);
+    Route::post('send-qoute',['as'=>'admin.send-qoute','uses'=>"\App\Http\Controllers\Front\ContactUsController@send_qoute"]);
+
 
         });
 });
@@ -46,6 +48,8 @@ Route::get('/addlisting',function(){
 Route::get('list-process',function(){
     return view('clientside.page.addlisting');
 });
+Route::post('list-process',['as'=>'list-process','uses'=>"\App\Http\Controllers\Front\ContactUsController@list_process"]);
+
 Route::get('/logout', function () {
     return view('clientside.page.map');
 })->name('admin.logout');

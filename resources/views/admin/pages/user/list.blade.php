@@ -19,7 +19,7 @@
                     <div class="card-body card-dashboard">
                         <table class="table">
                         <thead><tr><th>Name</th><th>Email</th><th>Subject</th><th>Action</th></tr></thead>
-                        <tbody>@if($contacts->count()>0) @foreach($contacts as $contact)<tr><td>{{$contact->name}}</td><td>{{$contact->email}}</td><td>{{$contact->subject}}</td><td>Send Quote</td> </tr>@endforeach @endif</tbody>
+                        <tbody>@if($contacts->count()>0) @foreach($contacts as $contact)<tr><td>{{$contact->name}}</td><td>{{$contact->email}}</td><td>{{$contact->subject}}</td><td><button class="btn btn-primary send-qoute" data-email="{{$contact->email}}" data-token="{{$contact->token}}"> Send Quote</button></td> </tr>@endforeach @endif</tbody>
                         </table>
                     </div>
                 </div>
@@ -148,4 +148,22 @@
               </div>
             </div>
             <!-- Order Details Modal -->
+@endsection
+@section('scripts')
+<script>
+$(".send-qoute").click(function(){
+  email=$(this).data("email");
+  token=$(this).data("token");
+  alert(token);
+  $.ajax({
+    url:"{{route('admin.send-qoute')}}",
+    data:{token:token,email:email,"_token":"{{csrf_token()}}"},
+    type:"post",
+    success:function(res){
+      console.log(res);
+    }
+  })
+
+})
+</script>
 @endsection

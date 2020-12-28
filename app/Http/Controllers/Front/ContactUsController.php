@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Front\ContactUs;
 use App\Models\Admin\Admin;
+use Mail;
+
 
 use Validator;
 class ContactUsController extends Controller
@@ -53,5 +55,17 @@ class ContactUsController extends Controller
     public function get_contacts(){
         $contacts=ContactUs::all();
         return view('admin.pages.user.list',['contacts'=>$contacts]);
+    }
+    public function send_qoute(Request $request){
+        $token=$request->token;
+        Mail::send('clientside.page.verify',['token' => $token], function($message) use ($request,$token)   {
+            $message->from('harisahmedshaikh12@gmail.com');
+            $message->to($request->email);
+            $message->subject('Add Your Scholl Info');
+         });
+         return ['message'=>"Message Has Been Sendt...!"];
+    }
+    public function list_process(){
+
     }
 }
