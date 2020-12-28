@@ -97,20 +97,20 @@
           
           
          <li class="nav-item">
-           <a href="{{url('/google-map')}}">
-              <i class="fa fa-map-marker"></i>
+           <a href="{{url('/admin/google-map')}}">
+              <!-- <i class="fa fa-map-marker"></i> -->
               <span class="menu-title" data-i18n="Order">Add New Location</span>
             </a>
           </li>
          <li class="nav-item">
-           <a href="{{url('/import-excel')}}">
-              <i class="fa file-import"></i>
+           <a href="{{url('/admin/import-excel')}}">
+              <!-- <i class="fa file-import"></i> -->
               <span class="menu-title" data-i18n="Order">Import from Excel</span>
             </a>
           </li>
           <li class="nav-item">
            <a href="{{route('admin.get-contacts')}}">
-              <i class="fa file-import"></i>
+              <!-- <i class="fa file-import"></i> -->
               <span class="menu-title" data-i18n="Order">Contacts</span>
             </a>
           </li>
