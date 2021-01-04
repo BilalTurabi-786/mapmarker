@@ -100,8 +100,19 @@
 							</li>
 							<li><a href=""><i class="fa fa-user-o" aria-hidden="true"></i> </a></li>
 						</ul> -->
+						
+						  <a class="btn btn-default dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						    Language
+						  </a>
+						  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+						    <a class="dropdown-item" href="#">English</a>
+						    <a class="dropdown-item" href="#">French</a>
+						    <a class="dropdown-item" href="#">German</a>
+						  </div>
+						
 						<a href="{{url('/contact')}}" class="add-list-btn btn-default ml-auto"><i class="fa fa-plus" aria-hidden="true"></i> Add School Listing</a>
 					</div>
+
 				</div>
 			</nav>
 		</header>
