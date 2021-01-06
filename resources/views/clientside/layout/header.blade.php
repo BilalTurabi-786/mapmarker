@@ -9,7 +9,14 @@
 						Logo Here
 						<!-- <img src="images/logo-black.png" alt=""> -->
 					</a>
+					@if(Auth::guard('contact')->check())
+					<a href="{{route('logout')}}">Logout</a>
+					<a href="{{route('profile')}}">Profile</a>
 
+					@endif
+					@if(!Auth::guard('contact')->check())
+					<a href="{{route('login')}}">Login</a>
+					@endif
 					<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 						<span class="navbar-toggler-icon"></span>
 					</button>

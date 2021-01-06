@@ -25,7 +25,7 @@ Route::prefix('admin')->namespace('Admin')->group(function(){
         Route::get('google-map',['as'=>'admin.google-map','uses'=>"\App\Http\Controllers\Admin\MapController@google_map"]);
     Route::post('google-map-process',['as'=>'admin.google-map-process','uses'=>"\App\Http\Controllers\Admin\MapController@google_map_process"]);
     Route::get('get-markers',['as'=>'get-markers','uses'=>"\App\Http\Controllers\Admin\MapController@get_marker"]);
-    Route::get('logout',['as'=>'admin.logout','uses'=>'\App\Http\Controllers\Admin\MapController@logout']);
+    Route::get('logout',['as'=>'admin.logout','uses'=>'\App\Http\Controllers\Admin\LoginController@logout']);
     Route::get('import-excel',['as'=>'admin.import-excel','uses'=>"\App\Http\Controllers\Admin\MapController@import_excel"]);
     Route::post('import-excel-process',['as'=>'admin.import-excel-process','uses'=>"\App\Http\Controllers\Admin\MapController@import_excel_process"]);
     Route::get('get-contacts',['as'=>'admin.get-contacts','uses'=>"\App\Http\Controllers\Front\ContactUsController@get_contacts"]);
@@ -37,7 +37,7 @@ Route::prefix('admin')->namespace('Admin')->group(function(){
 
 Route::group(['middleware'=>'UserAuth'],function (){
     Route::get('profile',['as'=>'profile','uses'=>"\App\Http\Controllers\Front\LoginController@profile"]);
-Route::get('logout',['as'=>'logout','uses'=>"\App\Http\Controllers\Front\LoginController@logout"]);
+     Route::get('logout',['as'=>'logout','uses'=>"\App\Http\Controllers\Front\LoginController@logout"]);
 
 
 });
@@ -51,7 +51,7 @@ Route::post('login-process',['as'=>'login-process','uses'=>"\App\Http\Controller
 
 Route::get('/', function () {
     return view('clientside.page.map');
-});
+})->name('/');
 
 Route::get('/addlisting',function(){
     return view('clientside.page.addlisting');
@@ -61,9 +61,9 @@ Route::get('list-process',function(){
 });
 Route::post('list-process',['as'=>'list-process','uses'=>"\App\Http\Controllers\Front\ContactUsController@list_process"]);
 
-Route::get('/logout', function () {
-    return view('clientside.page.map');
-})->name('admin.logout');
+// Route::get('/logout', function () {
+//     return view('clientside.page.map');
+// })->name('admin.logout');
 Route::get('dashboard', function () {
     return view('admin.pages.dashboard');
 })->name('dashboard');
