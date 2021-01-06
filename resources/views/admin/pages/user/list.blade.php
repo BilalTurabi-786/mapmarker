@@ -17,8 +17,8 @@
                 <div class="card-content">
                     <div class="card-body card-dashboard">
                         <table class="table">
-                        <thead><tr><th>Name</th><th>Email</th><th>Subject</th><th>Action</th></tr></thead>
-                        <tbody>@if($contacts->count()>0) @foreach($contacts as $contact)<tr><td>{{$contact->name}}</td><td>{{$contact->email}}</td><td>{{$contact->subject}}</td><td><button title="send mail" class="btn-sm btn-primary send-qoute" data-email="{{$contact->email}}" data-token="{{$contact->token}}"> <i class="fa fa-send"></i></button></td> </tr>@endforeach @endif</tbody>
+                        <thead><tr><th>Name</th><th>Email</th><th>Available Date & Time</th><th>Altenate Date & Time</th><th>Action</th></tr></thead>
+                        <tbody>@if($contacts->count()>0) @foreach($contacts as $contact)<tr><td>{{$contact->name}}</td><td>{{$contact->email}}</td><td>{{date('H:i:A',strtotime($contact->ava_time_one))}} {{$contact->ava_date_one}}</td><td>{{date('H:i:A',strtotime($contact->ava_time_one))}} {{$contact->ava_date_two}}</td><td><button title="send mail" class="btn-sm btn-primary send-qoute" data-email="{{$contact->email}}" data-token="{{$contact->token}}"> <i class="fa fa-send"></i></button></td> </tr>@endforeach @endif</tbody>
                         </table>
                     </div>
                 </div>
@@ -26,6 +26,7 @@
         </div>
     </div>
 </section>
+
 @endsection
 @section('scripts')
 <script>

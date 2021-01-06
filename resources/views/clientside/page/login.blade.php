@@ -51,71 +51,32 @@
 							<!-- <button   class="contact-form__submit" type="submit">Submit Message</button> -->
 						<!-- </form> -->
 						<!-- End Contact form module -->
-						<form class="contact-form" method="post" action="{{route('contact-process')}}">
+						<form class="contact-form" method="post" action="{{route('login-process')}}">
 						@csrf
-							<h2 class="contact-form__title">
+							<h2 class="contact-form__title"> 
 								Contact Form
 								@if(Session::has('success'))
 								<span class="text-success">{{Session('success')}} </span>
 								@endif
 								</h2>
 							<div class="row">
-								<div class="col-md-6">
+								<div class="col-md-12">
 								<label>Your Name</label>
-								<span class="text-danger">{{$errors->first('name')}} </span>
-
-									<input class="contact-form__input-text" type="text" name="name" id="name" placeholder="Name:" / value="{{old('name')}}">
-								</div>
-								<div class="col-md-6">
-									<label>Email</label>
 								<span class="text-danger">{{$errors->first('email')}} </span>
 
-									<input class="contact-form__input-text" type="email" name="email" id="mail" placeholder="Email:" / value="{{old('email')}}">
+									<input class="contact-form__input-text" type="email" name="email" id="name" placeholder="Name:" / value="{{old('name')}}">
 								</div>
-							</div>
-							<div class="row">
-							<div class="col-md-12">
-									<label>Password</label>
+                                </div>
+                            <div class="row">
+								<div class="col-md-12">
+									<label>Email</label>
 								<span class="text-danger">{{$errors->first('password')}} </span>
 
-									<input class="contact-form__input-text" type="password" name="password" id="mail" placeholder="Email:" / value="{{old('password')}}">
+									<input class="contact-form__input-text" type="password" name="password" id="mail" placeholder="Email:" / value="{{old('email')}}">
 								</div>
 							</div>
-							<span class="text-danger">{{$errors->first('subject')}} </span>
-
-							<div class="row">
-								<div class="col-md-3">
-									<label>Contact</label>
-									<select class="contact-form__input-text" name="code">
-										<option value="+11">+11</option>
-									</select>
-								</div>
-								<div class="col-md-9">
-									<label class="text-white">asd</label>
-									<input class="contact-form__input-text" type="text" name="number" id="subject" placeholder="232 232 22" /  value="{{old('number')}}">
-									<span class="text-danger"></span>
-								</div>
-							</div>
-							<div class="row">
-								<div class="col-md-6">
-									<label>Available Date 1</label>
-									<input class="contact-form__input-text" type="date" name="ava_date_one" id="subject" />
-								</div>
-								<div class="col-md-6">
-									<label>Available Date 2</label>
-									<input class="contact-form__input-text" type="date" name="ava_date_two" id="subject" />
-								</div>
-							</div>
-							<div class="row">
-								<div class="col-md-6">
-									<label>Available Time 1</label>
-									<input class="contact-form__input-text" type="time" name="ava_time_one" id="subject" />
-								</div>
-								<div class="col-md-6">
-									<label>Available Time 2</label>
-									<input class="contact-form__input-text" type="time" name="ava_time_two" id="subject" />
-								</div>
-							</div>
+							
+						
 
 							
 							<!-- <input class="contact-form__submit" type="submit" name="submit-contact" id="submit_contact" value="Submit Message" /> -->

@@ -16,11 +16,14 @@ class CreateContactUsTable extends Migration
         Schema::create('contact_us', function (Blueprint $table) {
             $table->id();
             $table->string('token');
-            $table->string('subject');
+            $table->string('phone');
             $table->string('email');
-
             $table->string('name');
-            $table->string('message');
+            $table->date('ava_date_one');
+            $table->date('ava_date_two');
+            $table->time('ava_time_one');
+            $table->time('ava_time_two');
+            $table->string('password');
 
             $table->timestamps();
         });

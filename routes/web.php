@@ -34,8 +34,19 @@ Route::prefix('admin')->namespace('Admin')->group(function(){
 
         });
 });
+
+Route::group(['middleware'=>'UserAuth'],function (){
+    Route::get('profile',['as'=>'profile','uses'=>"\App\Http\Controllers\Front\LoginController@profile"]);
+Route::get('logout',['as'=>'logout','uses'=>"\App\Http\Controllers\Front\LoginController@logout"]);
+
+
+});
 Route::get('contact',['as'=>'contact','uses'=>"\App\Http\Controllers\Front\ContactUsController@index"]);
+
 Route::post('contact-process',['as'=>'contact-process','uses'=>"\App\Http\Controllers\Front\ContactUsController@store"]);
+Route::get('login',['as'=>'login','uses'=>"\App\Http\Controllers\Front\LoginController@login"]);
+Route::post('login-process',['as'=>'login-process','uses'=>"\App\Http\Controllers\Front\LoginController@login_process"]);
+
 
 
 Route::get('/', function () {

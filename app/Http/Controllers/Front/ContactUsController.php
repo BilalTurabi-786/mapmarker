@@ -29,24 +29,31 @@ class ContactUsController extends Controller
     public function store(Request $request){
         $controlls=$request->all();
         $rules=array(
-            "email"=>"required|email|unique:contact_us,email",
-            "subject"=>"required",
             "name"=>"required",
-            "comment"=>"required",
+            "email"=>"required|email|unique:contact_us,email",
+            "ava_date_one"=>"required|date",
+            "ava_date_two"=>"required|date",
+            "ava_time_one"=>"required",
+            "ava_time_two"=>"required",
         );
         $validator=Validator::make($controlls,$rules);
         if ($validator->fails()) {
+            dd($validator);
             return redirect()->back()->withErrors($validator)->withInput($controlls);
         
         }
         else{
             $contact=new ContactUs;
-            $contact->name=$request->name;
-            $contact->email=$request->email;
-            $contact->message=$request->comment;
-            $contact->subject=$request->subject;
-            $contact->token=$request->_token;
 
+            $contact->name=$request->name;
+            $contact->password=bcrypt($request->password);
+            $contact->email=$request->email;
+            $contact->phone=$request->code.$request->number;
+            $contact->ava_date_one=$request->ava_date_one;
+            $contact->ava_date_two=$request->ava_date_two;
+            $contact->ava_time_one=$request->ava_time_one;
+            $contact->ava_time_two=$request->ava_time_two;
+            $contact->token=$request->_token;
             $contact->save();
             return redirect()->back()->withSuccess("We Will Contact You Soon");
 
@@ -65,6 +72,9 @@ class ContactUsController extends Controller
          });
          return ['message'=>"Message Has Been Sendt...!"];
     }
+
+    
+
     public function list_process(){
 
     }

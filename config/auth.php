@@ -50,6 +50,10 @@ return [
             'driver' => 'session',
             'provider' => 'admins',
         ],
+        'contact' => [
+            'driver' => 'session',
+            'provider' => 'contact_us',
+        ],
        
     ],
 
@@ -78,6 +82,10 @@ return [
         'admins' => [
             'driver' => 'eloquent',
             'model' => App\Models\Admin\Admin::class,
+        ],
+        'contact_us' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Front\ContactUs::class,
         ],
 
         // 'users' => [

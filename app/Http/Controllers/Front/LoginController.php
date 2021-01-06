@@ -5,19 +5,9 @@ namespace App\Http\Controllers\Front;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
-use App\Models\User;
-use App\Models\category;
-use App\Models\Front\Order;
-use App\Models\Front\OrderDetail;
-use App\Models\Vendor\Book;
-
+use App\Models\Front\ContactUs;
 
 use View;
-
-use App\Models\Admin\StoreInformation;
-
-
-
 use Session;
 use Auth;
 use Validator;
@@ -33,109 +23,65 @@ use Carbon\Carbon;
 
 class LoginController extends Controller
 {
-    public function __construct(){
-        $showCategory = category::with('subCategory')->get();
-        if (!empty($showCategory)) {
-            $showCategory=$showCategory;
-        }else{
-            $showCategory='null';
-        }
-        $information=StoreInformation::first();
-
-        if (!empty($information)) {
-            $information=$information;
-        }else{
-            $information='null';
-        }
-        $data=['categories'=>$showCategory,'information'=>$information];
+    public function login(){
+        return view('clientside.page.login');
+    }
     
-        View::share('data',$data);
-    }
-    function index()
-    {
-        $orderdetails = Order::with('user')->whereHas('orderdetail')->where('customer_id',Auth::user()->id)->get();
-        //dd($orderdetails);
-        $purchasebook = Order::with('orderdetail.book')->where('customer_id',Auth::user()->id)->get();
-        //dd($purchasebook);
 
-        return view('client.page.myaccount',['orderdetails'=>$orderdetails,'purchasebook'=>$purchasebook]);
-    }
-
-    function home()
-    {
-        return view('client.page.home');
-    }
+    
     
     function login_process(Request $req)
     {
-        // $validatedData = $req->validate([
-            
-        //     'email' => 'required',
-        //     'password' => 'required'
-        // ]);
+       
 
         $controlls=$req->all();
+        
         $rules=array(
-            'email'=>"required|max:50|exists:users,email",
+            'email'=>"required|max:50|exists:contact_us,email",
             'password'=>"required");
   
         $validator=Validator::make($controlls,$rules);
         if ($validator->fails()) {
+            
             return redirect()->back()->withErrors($validator)->withInput($controlls);
             
         }
        else
        {
-            $user = User::where(['email'=>$req->email])->first();
-            if($user->email_verified_at!='')
-        {
+           
             $credientials=['email'=>$req->email,'password'=>$req->password]; 
-            if (!Auth::attempt($credientials)) 
+            if (!Auth::guard('contact')->attempt($credientials)) 
             {
-                
+               
               return redirect()->route('login')->withErrors(['error'=>"Invalid Credientials"]);
             }
             else
             {
-             return redirect('myaccount');    
+
+             return redirect()->route('/');    
             }
          
-        }else{
-            return redirect()->route('login')->with(['message'=>"Verify Your Email"]);    
-
         }
          
-        //    $req->session()->put('user',$user);
-        //    return redirect('/');
-       }
+       
+       
     }
        public function Logout()
        {
          
-           Auth::logout();
+           Auth::guard('contact')->logout();
            return redirect()->route('login');         
              
        }
 
-      
+      public function profile(){
+          return view('clientside.page.profile');
+      }
    
        function updateProfile(Request $req)
        {
-        // $controlls=$req->all();
-        // $rules=array(
-        //     'name'=>"required|unique:users,id,$req->id|max:50",
-        //     "email"=>"required|unique:users,id,$req->id|max:50",
-        //     "newpassword"=>"required|unique:users,id,$req->id|max:8|min:6");
-
         
-    
-  
-        // $validator=Validator::make($controlls,$rules);
-        // if ($validator->fails()) {
-        //     return redirect()->back()->withErrors($validator)->withInput($controlls);
-            
-        // }
-
+        
         $hashedPassword = Auth::user()->password;
  
         if (\Hash::check($req->oldpassword , $hashedPassword )) {
