@@ -68,4 +68,8 @@ Route::get('dashboard', function () {
     return view('admin.pages.dashboard');
 })->name('dashboard');
 
+Route::get('/client/dashboard',function(){
+    return view('clientdash.pages.dashboard');
+});
+
 

@@ -9,31 +9,24 @@
 						Logo Here
 						<!-- <img src="images/logo-black.png" alt=""> -->
 					</a>
-					@if(Auth::guard('contact')->check())
-					<a href="{{route('logout')}}">Logout</a>
-					<a href="{{route('profile')}}">Profile</a>
-
-					@endif
-					@if(!Auth::guard('contact')->check())
-					<a href="{{route('login')}}">Login</a>
-					@endif
 					<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 						<span class="navbar-toggler-icon"></span>
 					</button>
 
 					<div class="collapse navbar-collapse" id="navbarSupportedContent">
-						<!-- <ul class="navbar-nav mr-auto">
+						<ul class="navbar-nav mr-auto">
+							@if(Auth::guard('contact')->check())
 							<li>
-								<a class="active" href="index.html">Home <i class="fa fa-caret-down" aria-hidden="true"></i></a>
-								<ul class="dropdown">
-									<li><span>Demo Pages</span></li>
-									<li><a href="index.html">Homepage 1</a></li>
-									<li><a href="home2.html">Homepage 2</a></li>
-									<li><a href="home3.html">Homepage 3</a></li>
-									<li><a href="home4.html">Homepage 4</a></li>
-								</ul>
+								<a href="{{route('logout')}}">Logout</a>
 							</li>
-							<li><a href="portfolio.html">Pages <i class="fa fa-caret-down" aria-hidden="true"></i></a>
+							<li>
+								<a href="{{route('profile')}}">Profile</a>
+							</li>
+							@endif
+							@if(!Auth::guard('contact')->check())
+							<li><a href="{{route('login')}}">Login</a></li>
+							@endif
+							<!-- <li><a href="portfolio.html">Pages <i class="fa fa-caret-down" aria-hidden="true"></i></a>
 								<div class="megadropdown">
 									<div class="dropdown-box">
 										<span>Explore pages</span>
@@ -71,8 +64,8 @@
 									</div>
 								</div>
 							</li>
-							<li><a href="contact.html">Contact</a></li>
-						</ul> -->
+							<li><a href="contact.html">Contact</a></li> -->
+						</ul>
 						<!-- <form class="search-form">
 							<div class="search-form__input-holders">
 								<input class="search-form__input" type="text" name="search-event" placeholder="What are you looking for?" />
