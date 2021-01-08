@@ -164,6 +164,13 @@
 .slick-arrow.slick-hidden {
     display: none;
 }
+.explore__form-checkbox-list li {
+    float: left;
+    width: 100%;
+    position: relative;
+    list-style: none;
+    margin-bottom: 0.25rem;
+}
 </style>
 <!-- map block
 			================================================== -->
@@ -187,7 +194,7 @@
 								<div class="price-range-slider">
 								  <p class="range-value">
 								  	<b>Duration :</b>
-								    <input type="text" id="amount3" readonly style="border: none;">
+								    <input type="text" id="amount3" readonly style="border: none;width: 85%;">
 								  </p>
 								  <div id="slider-range3" class="range-bar"></div>
 								</div>
@@ -211,19 +218,41 @@
 								</div>
 							</div>
 							
-								<h2 class="explore__form-desc">
+								<h2 class="explore__form-desc mt-2">
 									Advanced Search
 								</h2>
 								<div class="">
-									<span class="text-dark">Sports:</span>
 									<ul class="explore__form-price-list">
-										<li><a href="#">Football</a></li>
-										<li><a href="#">Cricket</a></li>
-										<li><a href="#" class="active">Hockey</a></li>
-										<li><a href="#">Baseball</a></li>
-										<li><a href="#">Snooker</a></li>
+										<li class="mt-3"><a href="#">Football</a></li>
+										<li class="mt-3"><a href="#">Cricket</a></li>
+										<li class="mt-3"><a href="#" class="active">Hockey</a></li>
+										<li class="mt-3"><a href="#">Baseball</a></li>
+										<li class="mt-3"><a href="#">Snooker</a></li>
+										<li class="mt-3"><a href="#">Football</a></li>
+										<li class="mt-3"><a href="#">Cricket</a></li>
+										<li class="mt-3"><a href="#" class="active">Hockey</a></li>
+										<li class="mt-3"><a href="#">Baseball</a></li>
+										<li class="mt-3"><a href="#">Snooker</a></li>
+										<li class="mt-3"><a href="#">Football</a></li>
+										<li class="mt-3"><a href="#">Cricket</a></li>
+										<li class="mt-3"><a href="#" class="active">Hockey</a></li>
+										<li class="mt-3"><a href="#">Baseball</a></li>
+										<li class="mt-3"><a href="#">Snooker</a></li>
+										<li class="mt-3"><a href="#">Football</a></li>
+										<li class="mt-3"><a href="#">Cricket</a></li>
+										<li class="mt-3"><a href="#" class="active">Hockey</a></li>
+										<li class="mt-3"><a href="#">Baseball</a></li>
+										<li class="mt-3"><a href="#">Snooker</a></li>
+										<li class="mt-3"><a href="#">Football</a></li>
+										<li class="mt-3"><a href="#">Cricket</a></li>
+										<li class="mt-3"><a href="#" class="active">Hockey</a></li>
+										<li class="mt-3"><a href="#">Baseball</a></li>
+										<li class="mt-3"><a href="#">Snooker</a></li>
+										<li class="mt-3"><a href="#">Football</a></li>
+										<li class="mt-3"><a href="#">Cricket</a></li>
+										<li class="mt-3"><a href="#" class="active">Hockey</a></li>
 									</ul>
-									<ul class="explore__form-checkbox-list">
+									<!-- <ul class="explore__form-checkbox-list">
 										<li>
 											<input class="explore__input-checkbox" type="checkbox" name="open-check" id="open-check"/>
 											<span class="explore__checkbox-style"></span>
@@ -269,7 +298,676 @@
 											<span class="explore__checkbox-style"></span>
 											<span class="explore__checkbox-text">Accepts credit card</span>
 										</li>
-									</ul>
+									</ul> -->
+								<div class="container mt-3 mb-5">
+									<div class="row">
+										<div class="col-md-12 text-left mb-4">
+											<!-- <ul class="explore__form-price-list"> -->
+												<!-- <li class="mt-3 w-50"> -->
+													<a class="btn btn-primary w-30" href="#">Lesson</a>
+												<!-- </li> -->
+												<!-- <li class="mt-3 w-50"> -->
+													<a class="btn btn-primary w-30" href="#">Camp</a>
+												<!-- </li> -->
+												<!-- <li class="mt-3 w-50"> -->
+													<a class="btn btn-primary w-30" href="#" class="active">Rental</a>
+												<!-- </li> -->
+												<!-- <li class="mt-3 w-50"> -->
+													<a class="btn btn-primary w-30" href="#">Storage</a>
+												<!-- </li> -->
+											<!-- </ul> -->
+										</div>
+									</div>
+									<!-- Lesson and Camp -->
+									<div class="row">
+										<div class="col-md-3">
+											<div class="card">
+												<div class="card-header">
+													Association
+												</div>
+												<div class="card-body">
+													<ul class="explore__form-checkbox-list">
+														<li>
+															<input class="explore__input-checkbox" type="checkbox" name="open-check" id="open-check"/>
+															<span class="explore__checkbox-style"></span>
+															<span class="explore__checkbox-text">All (default)</span>
+														</li>
+														<li>
+															<input class="explore__input-checkbox" type="checkbox" name="open-check" id="open-check"/>
+															<span class="explore__checkbox-style"></span>
+															<span class="explore__checkbox-text">IKO</span>
+														</li>
+														<li>
+															<input class="explore__input-checkbox" type="checkbox" name="open-check" id="open-check"/>
+															<span class="explore__checkbox-style"></span>
+															<span class="explore__checkbox-text">VDWS</span>
+														</li>
+														<li>
+															<input class="explore__input-checkbox" type="checkbox" name="open-check" id="open-check"/>
+															<span class="explore__checkbox-style"></span>
+															<span class="explore__checkbox-text">No Association</span>
+														</li>
+													</ul>
+												</div>
+											</div>
+										</div>
+										<div class="col-md-3">
+											<div class="card">
+												<div class="card-header">
+													Handicap
+												</div>
+												<div class="card-body">
+													<ul class="explore__form-checkbox-list">
+														<li>
+															<input class="explore__input-checkbox" type="checkbox" name="open-check" id="open-check"/>
+															<span class="explore__checkbox-style"></span>
+															<span class="explore__checkbox-text">No handicap (default)</span>
+														</li>
+														<li>
+															<input class="explore__input-checkbox" type="checkbox" name="open-check" id="open-check"/>
+															<span class="explore__checkbox-style"></span>
+															<span class="explore__checkbox-text">Blind</span>
+														</li>
+														<li>
+															<input class="explore__input-checkbox" type="checkbox" name="open-check" id="open-check"/>
+															<span class="explore__checkbox-style"></span>
+															<span class="explore__checkbox-text">Deaf</span>
+														</li>
+														<li>
+															<input class="explore__input-checkbox" type="checkbox" name="open-check" id="open-check"/>
+															<span class="explore__checkbox-style"></span>
+															<span class="explore__checkbox-text">Deaf/Mute</span>
+														</li>
+														<li>
+															<input class="explore__input-checkbox" type="checkbox" name="open-check" id="open-check"/>
+															<span class="explore__checkbox-style"></span>
+															<span class="explore__checkbox-text">Waist up</span>
+														</li>
+														<li>
+															<input class="explore__input-checkbox" type="checkbox" name="open-check" id="open-check"/>
+															<span class="explore__checkbox-style"></span>
+															<span class="explore__checkbox-text">Waist down</span>
+														</li>
+													</ul>
+												</div>
+											</div>
+										</div>
+										<div class="col-md-3">
+											<div class="card">
+												<div class="card-header">
+													Childern
+												</div>
+												<div class="card-body">
+													<ul class="explore__form-checkbox-list">
+														<li>
+															<input class="explore__input-checkbox" type="checkbox" name="open-check" id="open-check"/>
+															<span class="explore__checkbox-style"></span>
+															<span class="explore__checkbox-text">No (default)</span>
+														</li>
+														<li>
+															<input class="explore__input-checkbox" type="checkbox" name="open-check" id="open-check"/>
+															<span class="explore__checkbox-style"></span>
+															<span class="explore__checkbox-text">Age 5</span>
+														</li>
+														<li>
+															<input class="explore__input-checkbox" type="checkbox" name="open-check" id="open-check"/>
+															<span class="explore__checkbox-style"></span>
+															<span class="explore__checkbox-text">Age 6</span>
+														</li>
+														<li>
+															<input class="explore__input-checkbox" type="checkbox" name="open-check" id="open-check"/>
+															<span class="explore__checkbox-style"></span>
+															<span class="explore__checkbox-text">Age 7</span>
+														</li>
+														<li>
+															<input class="explore__input-checkbox" type="checkbox" name="open-check" id="open-check"/>
+															<span class="explore__checkbox-style"></span>
+															<span class="explore__checkbox-text">Age 8</span>
+														</li>
+														<li>
+															<input class="explore__input-checkbox" type="checkbox" name="open-check" id="open-check"/>
+															<span class="explore__checkbox-style"></span>
+															<span class="explore__checkbox-text">Age 9</span>
+														</li>
+														<li>
+															<input class="explore__input-checkbox" type="checkbox" name="open-check" id="open-check"/>
+															<span class="explore__checkbox-style"></span>
+															<span class="explore__checkbox-text">Age 10</span>
+														</li>
+														<li>
+															<input class="explore__input-checkbox" type="checkbox" name="open-check" id="open-check"/>
+															<span class="explore__checkbox-style"></span>
+															<span class="explore__checkbox-text">Age 11</span>
+														</li>
+														<li>
+															<input class="explore__input-checkbox" type="checkbox" name="open-check" id="open-check"/>
+															<span class="explore__checkbox-style"></span>
+															<span class="explore__checkbox-text">Age 12</span>
+														</li>
+														<li>
+															<input class="explore__input-checkbox" type="checkbox" name="open-check" id="open-check"/>
+															<span class="explore__checkbox-style"></span>
+															<span class="explore__checkbox-text">Age 13</span>
+														</li>
+														<li>
+															<input class="explore__input-checkbox" type="checkbox" name="open-check" id="open-check"/>
+															<span class="explore__checkbox-style"></span>
+															<span class="explore__checkbox-text">Age 14</span>
+														</li>
+														<li>
+															<input class="explore__input-checkbox" type="checkbox" name="open-check" id="open-check"/>
+															<span class="explore__checkbox-style"></span>
+															<span class="explore__checkbox-text">Age 15</span>
+														</li>
+														<li>
+															<input class="explore__input-checkbox" type="checkbox" name="open-check" id="open-check"/>
+															<span class="explore__checkbox-style"></span>
+															<span class="explore__checkbox-text">Age 16</span>
+														</li>
+														<li>
+															<input class="explore__input-checkbox" type="checkbox" name="open-check" id="open-check"/>
+															<span class="explore__checkbox-style"></span>
+															<span class="explore__checkbox-text">Age 17</span>
+														</li>
+													</ul>
+												</div>
+											</div>
+										</div>
+										<div class="col-md-3">
+											<div class="card">
+												<div class="card-header">
+													Language Spoken
+												</div>
+												<div class="card-body">
+													<ul class="explore__form-checkbox-list">
+														<li>
+															<input class="explore__input-checkbox" type="checkbox" name="open-check" id="open-check"/>
+															<span class="explore__checkbox-style"></span>
+															<span class="explore__checkbox-text">All (default)</span>
+														</li>
+														<li>
+															<input class="explore__input-checkbox" type="checkbox" name="open-check" id="open-check"/>
+															<span class="explore__checkbox-style"></span>
+															<span class="explore__checkbox-text">English</span>
+														</li>
+														<li>
+															<input class="explore__input-checkbox" type="checkbox" name="open-check" id="open-check"/>
+															<span class="explore__checkbox-style"></span>
+															<span class="explore__checkbox-text">German</span>
+														</li>
+														<li>
+															<input class="explore__input-checkbox" type="checkbox" name="open-check" id="open-check"/>
+															<span class="explore__checkbox-style"></span>
+															<span class="explore__checkbox-text">French</span>
+														</li>
+														<li>
+															<input class="explore__input-checkbox" type="checkbox" name="open-check" id="open-check"/>
+															<span class="explore__checkbox-style"></span>
+															<span class="explore__checkbox-text">Italian</span>
+														</li>
+														<li>
+															<input class="explore__input-checkbox" type="checkbox" name="open-check" id="open-check"/>
+															<span class="explore__checkbox-style"></span>
+															<span class="explore__checkbox-text">Dutch</span>
+														</li>
+														<li>
+															<input class="explore__input-checkbox" type="checkbox" name="open-check" id="open-check"/>
+															<span class="explore__checkbox-style"></span>
+															<span class="explore__checkbox-text">Spanish</span>
+														</li>
+														<li>
+															<input class="explore__input-checkbox" type="checkbox" name="open-check" id="open-check"/>
+															<span class="explore__checkbox-style"></span>
+															<span class="explore__checkbox-text">Portugese</span>
+														</li>
+														<li>
+															<input class="explore__input-checkbox" type="checkbox" name="open-check" id="open-check"/>
+															<span class="explore__checkbox-style"></span>
+															<span class="explore__checkbox-text">Russian</span>
+														</li>
+														<li>
+															<input class="explore__input-checkbox" type="checkbox" name="open-check" id="open-check"/>
+															<span class="explore__checkbox-style"></span>
+															<span class="explore__checkbox-text">Arabic</span>
+														</li>
+													</ul>
+												</div>
+											</div>
+										</div>
+										<div class="col-md-3 mt-2">
+											<div class="card">
+												<div class="card-header">
+													Course Level
+												</div>
+												<div class="card-body">
+													<ul class="explore__form-checkbox-list">
+														<li>
+															<input class="explore__input-checkbox" type="checkbox" name="open-check" id="open-check"/>
+															<span class="explore__checkbox-style"></span>
+															<span class="explore__checkbox-text">All (default)</span>
+														</li>
+														<li>
+															<input class="explore__input-checkbox" type="checkbox" name="open-check" id="open-check"/>
+															<span class="explore__checkbox-style"></span>
+															<span class="explore__checkbox-text">Beginner</span>
+														</li>
+														<li>
+															<input class="explore__input-checkbox" type="checkbox" name="open-check" id="open-check"/>
+															<span class="explore__checkbox-style"></span>
+															<span class="explore__checkbox-text">Intermediate</span>
+														</li>
+													</ul>
+												</div>
+											</div>
+										</div>
+										<div class="col-md-3 mt-2">
+											<div class="card">
+												<div class="card-header">
+													Student / Teacher ratio
+												</div>
+												<div class="card-body">
+													<div class="price-range-slider">
+														  <p class="range-value">
+														  	<b>Ratio :</b>
+														    <input type="text" id="amount4" readonly style="border: none;">
+														  </p>
+													  <div id="slider-range4" class="range-bar"></div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="col-md-3 mt-2">
+											<div class="card">
+												<div class="card-header">
+													Duration
+												</div>
+												<div class="card-body">
+													<div class="price-range-slider">
+														  <p class="range-value">
+														  	<b>Duration :</b>
+														    <input type="text" id="amount5" readonly style="border: none;">
+														  </p>
+													  <div id="slider-range5" class="range-bar"></div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="col-md-3 mt-2">
+											<div class="card">
+												<div class="card-header">
+													Course Hours
+												</div>
+												<div class="card-body">
+													<div class="price-range-slider">
+														  <p class="range-value">
+														  	<b>Hours :</b>
+														    <input type="text" id="amount6" readonly style="border: none;">
+														  </p>
+													  <div id="slider-range6" class="range-bar"></div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="col-md-3 mt-2">
+											<div class="card">
+												<div class="card-header">
+													Price per Teaching hours
+												</div>
+												<div class="card-body">
+													<div class="price-range-slider">
+														  <p class="range-value">
+														  	<b>Hours :</b>
+														    <input type="text" id="amount7" readonly style="border: none;">
+														  </p>
+													  <div id="slider-range7" class="range-bar"></div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<!-- Lesson and Camp -->
+									<!-- Rental -->
+									<div class="row">
+										<div class="col-md-3">
+											<div class="card">
+												<div class="card-header">
+													Association
+												</div>
+												<div class="card-body">
+													<ul class="explore__form-checkbox-list">
+														<li>
+															<input class="explore__input-checkbox" type="checkbox" name="open-check" id="open-check"/>
+															<span class="explore__checkbox-style"></span>
+															<span class="explore__checkbox-text">All (default)</span>
+														</li>
+														<li>
+															<input class="explore__input-checkbox" type="checkbox" name="open-check" id="open-check"/>
+															<span class="explore__checkbox-style"></span>
+															<span class="explore__checkbox-text">IKO</span>
+														</li>
+														<li>
+															<input class="explore__input-checkbox" type="checkbox" name="open-check" id="open-check"/>
+															<span class="explore__checkbox-style"></span>
+															<span class="explore__checkbox-text">VDWS</span>
+														</li>
+														<li>
+															<input class="explore__input-checkbox" type="checkbox" name="open-check" id="open-check"/>
+															<span class="explore__checkbox-style"></span>
+															<span class="explore__checkbox-text">No Association</span>
+														</li>
+													</ul>
+												</div>
+											</div>
+										</div>
+										<div class="col-md-3">
+											<div class="card">
+												<div class="card-header">
+													Handicap
+												</div>
+												<div class="card-body">
+													<ul class="explore__form-checkbox-list">
+														<li>
+															<input class="explore__input-checkbox" type="checkbox" name="open-check" id="open-check"/>
+															<span class="explore__checkbox-style"></span>
+															<span class="explore__checkbox-text">No handicap (default)</span>
+														</li>
+														<li>
+															<input class="explore__input-checkbox" type="checkbox" name="open-check" id="open-check"/>
+															<span class="explore__checkbox-style"></span>
+															<span class="explore__checkbox-text">Blind</span>
+														</li>
+														<li>
+															<input class="explore__input-checkbox" type="checkbox" name="open-check" id="open-check"/>
+															<span class="explore__checkbox-style"></span>
+															<span class="explore__checkbox-text">Deaf</span>
+														</li>
+														<li>
+															<input class="explore__input-checkbox" type="checkbox" name="open-check" id="open-check"/>
+															<span class="explore__checkbox-style"></span>
+															<span class="explore__checkbox-text">Deaf/Mute</span>
+														</li>
+														<li>
+															<input class="explore__input-checkbox" type="checkbox" name="open-check" id="open-check"/>
+															<span class="explore__checkbox-style"></span>
+															<span class="explore__checkbox-text">Waist up</span>
+														</li>
+														<li>
+															<input class="explore__input-checkbox" type="checkbox" name="open-check" id="open-check"/>
+															<span class="explore__checkbox-style"></span>
+															<span class="explore__checkbox-text">Waist down</span>
+														</li>
+													</ul>
+												</div>
+											</div>
+										</div>
+										<div class="col-md-3">
+											<div class="card">
+												<div class="card-header">
+													Childern
+												</div>
+												<div class="card-body">
+													<ul class="explore__form-checkbox-list">
+														<li>
+															<input class="explore__input-checkbox" type="checkbox" name="open-check" id="open-check"/>
+															<span class="explore__checkbox-style"></span>
+															<span class="explore__checkbox-text">No (default)</span>
+														</li>
+														<li>
+															<input class="explore__input-checkbox" type="checkbox" name="open-check" id="open-check"/>
+															<span class="explore__checkbox-style"></span>
+															<span class="explore__checkbox-text">Age 5</span>
+														</li>
+														<li>
+															<input class="explore__input-checkbox" type="checkbox" name="open-check" id="open-check"/>
+															<span class="explore__checkbox-style"></span>
+															<span class="explore__checkbox-text">Age 6</span>
+														</li>
+														<li>
+															<input class="explore__input-checkbox" type="checkbox" name="open-check" id="open-check"/>
+															<span class="explore__checkbox-style"></span>
+															<span class="explore__checkbox-text">Age 7</span>
+														</li>
+														<li>
+															<input class="explore__input-checkbox" type="checkbox" name="open-check" id="open-check"/>
+															<span class="explore__checkbox-style"></span>
+															<span class="explore__checkbox-text">Age 8</span>
+														</li>
+														<li>
+															<input class="explore__input-checkbox" type="checkbox" name="open-check" id="open-check"/>
+															<span class="explore__checkbox-style"></span>
+															<span class="explore__checkbox-text">Age 9</span>
+														</li>
+														<li>
+															<input class="explore__input-checkbox" type="checkbox" name="open-check" id="open-check"/>
+															<span class="explore__checkbox-style"></span>
+															<span class="explore__checkbox-text">Age 10</span>
+														</li>
+														<li>
+															<input class="explore__input-checkbox" type="checkbox" name="open-check" id="open-check"/>
+															<span class="explore__checkbox-style"></span>
+															<span class="explore__checkbox-text">Age 11</span>
+														</li>
+														<li>
+															<input class="explore__input-checkbox" type="checkbox" name="open-check" id="open-check"/>
+															<span class="explore__checkbox-style"></span>
+															<span class="explore__checkbox-text">Age 12</span>
+														</li>
+														<li>
+															<input class="explore__input-checkbox" type="checkbox" name="open-check" id="open-check"/>
+															<span class="explore__checkbox-style"></span>
+															<span class="explore__checkbox-text">Age 13</span>
+														</li>
+														<li>
+															<input class="explore__input-checkbox" type="checkbox" name="open-check" id="open-check"/>
+															<span class="explore__checkbox-style"></span>
+															<span class="explore__checkbox-text">Age 14</span>
+														</li>
+														<li>
+															<input class="explore__input-checkbox" type="checkbox" name="open-check" id="open-check"/>
+															<span class="explore__checkbox-style"></span>
+															<span class="explore__checkbox-text">Age 15</span>
+														</li>
+														<li>
+															<input class="explore__input-checkbox" type="checkbox" name="open-check" id="open-check"/>
+															<span class="explore__checkbox-style"></span>
+															<span class="explore__checkbox-text">Age 16</span>
+														</li>
+														<li>
+															<input class="explore__input-checkbox" type="checkbox" name="open-check" id="open-check"/>
+															<span class="explore__checkbox-style"></span>
+															<span class="explore__checkbox-text">Age 17</span>
+														</li>
+													</ul>
+												</div>
+											</div>
+										</div>
+										<div class="col-md-3">
+											<div class="card">
+												<div class="card-header">
+													Language Spoken
+												</div>
+												<div class="card-body">
+													<ul class="explore__form-checkbox-list">
+														<li>
+															<input class="explore__input-checkbox" type="checkbox" name="open-check" id="open-check"/>
+															<span class="explore__checkbox-style"></span>
+															<span class="explore__checkbox-text">All (default)</span>
+														</li>
+														<li>
+															<input class="explore__input-checkbox" type="checkbox" name="open-check" id="open-check"/>
+															<span class="explore__checkbox-style"></span>
+															<span class="explore__checkbox-text">English</span>
+														</li>
+														<li>
+															<input class="explore__input-checkbox" type="checkbox" name="open-check" id="open-check"/>
+															<span class="explore__checkbox-style"></span>
+															<span class="explore__checkbox-text">German</span>
+														</li>
+														<li>
+															<input class="explore__input-checkbox" type="checkbox" name="open-check" id="open-check"/>
+															<span class="explore__checkbox-style"></span>
+															<span class="explore__checkbox-text">French</span>
+														</li>
+														<li>
+															<input class="explore__input-checkbox" type="checkbox" name="open-check" id="open-check"/>
+															<span class="explore__checkbox-style"></span>
+															<span class="explore__checkbox-text">Italian</span>
+														</li>
+														<li>
+															<input class="explore__input-checkbox" type="checkbox" name="open-check" id="open-check"/>
+															<span class="explore__checkbox-style"></span>
+															<span class="explore__checkbox-text">Dutch</span>
+														</li>
+														<li>
+															<input class="explore__input-checkbox" type="checkbox" name="open-check" id="open-check"/>
+															<span class="explore__checkbox-style"></span>
+															<span class="explore__checkbox-text">Spanish</span>
+														</li>
+														<li>
+															<input class="explore__input-checkbox" type="checkbox" name="open-check" id="open-check"/>
+															<span class="explore__checkbox-style"></span>
+															<span class="explore__checkbox-text">Portugese</span>
+														</li>
+														<li>
+															<input class="explore__input-checkbox" type="checkbox" name="open-check" id="open-check"/>
+															<span class="explore__checkbox-style"></span>
+															<span class="explore__checkbox-text">Russian</span>
+														</li>
+														<li>
+															<input class="explore__input-checkbox" type="checkbox" name="open-check" id="open-check"/>
+															<span class="explore__checkbox-style"></span>
+															<span class="explore__checkbox-text">Arabic</span>
+														</li>
+													</ul>
+												</div>
+											</div>
+										</div>
+										<div class="col-md-3 mt-2">
+											<div class="card">
+												<div class="card-header">
+													Rentals per person
+												</div>
+												<div class="card-body">
+													<ul class="explore__form-checkbox-list">
+														<li>
+															<input class="explore__input-checkbox" type="checkbox" name="open-check" id="open-check"/>
+															<span class="explore__checkbox-style"></span>
+															<span class="explore__checkbox-text">1 Sets</span>
+														</li>
+														<li>
+															<input class="explore__input-checkbox" type="checkbox" name="open-check" id="open-check"/>
+															<span class="explore__checkbox-style"></span>
+															<span class="explore__checkbox-text">2 Sets</span>
+														</li>
+														<li>
+															<input class="explore__input-checkbox" type="checkbox" name="open-check" id="open-check"/>
+															<span class="explore__checkbox-style"></span>
+															<span class="explore__checkbox-text">3 Sets</span>
+														</li>
+													</ul>
+												</div>
+											</div>
+										</div>
+										<div class="col-md-3 mt-2">
+											<div class="card">
+												<div class="card-header">
+													Duration
+												</div>
+												<div class="card-body">
+													<ul class="explore__form-checkbox-list">
+														<li>
+															<input class="explore__input-checkbox" type="checkbox" name="open-check" id="open-check"/>
+															<span class="explore__checkbox-style"></span>
+															<span class="explore__checkbox-text">All (Default)</span>
+														</li>
+														<li>
+															<input class="explore__input-checkbox" type="checkbox" name="open-check" id="open-check"/>
+															<span class="explore__checkbox-style"></span>
+															<span class="explore__checkbox-text">1 hour</span>
+														</li>
+														<li>
+															<input class="explore__input-checkbox" type="checkbox" name="open-check" id="open-check"/>
+															<span class="explore__checkbox-style"></span>
+															<span class="explore__checkbox-text">2 hours</span>
+														</li>
+														<li>
+															<input class="explore__input-checkbox" type="checkbox" name="open-check" id="open-check"/>
+															<span class="explore__checkbox-style"></span>
+															<span class="explore__checkbox-text">3 hours</span>
+														</li>
+														<li>
+															<input class="explore__input-checkbox" type="checkbox" name="open-check" id="open-check"/>
+															<span class="explore__checkbox-style"></span>
+															<span class="explore__checkbox-text">Half day</span>
+														</li>
+														<li>
+															<input class="explore__input-checkbox" type="checkbox" name="open-check" id="open-check"/>
+															<span class="explore__checkbox-style"></span>
+															<span class="explore__checkbox-text">Day</span>
+														</li>
+														<li>
+															<input class="explore__input-checkbox" type="checkbox" name="open-check" id="open-check"/>
+															<span class="explore__checkbox-style"></span>
+															<span class="explore__checkbox-text">2 days</span>
+														</li>
+														<li>
+															<input class="explore__input-checkbox" type="checkbox" name="open-check" id="open-check"/>
+															<span class="explore__checkbox-style"></span>
+															<span class="explore__checkbox-text">3 days</span>
+														</li>
+														<li>
+															<input class="explore__input-checkbox" type="checkbox" name="open-check" id="open-check"/>
+															<span class="explore__checkbox-style"></span>
+															<span class="explore__checkbox-text">4 days</span>
+														</li>
+														<li>
+															<input class="explore__input-checkbox" type="checkbox" name="open-check" id="open-check"/>
+															<span class="explore__checkbox-style"></span>
+															<span class="explore__checkbox-text">5 days</span>
+														</li>
+														<li>
+															<input class="explore__input-checkbox" type="checkbox" name="open-check" id="open-check"/>
+															<span class="explore__checkbox-style"></span>
+															<span class="explore__checkbox-text">Week</span>
+														</li>
+														<li>
+															<input class="explore__input-checkbox" type="checkbox" name="open-check" id="open-check"/>
+															<span class="explore__checkbox-style"></span>
+															<span class="explore__checkbox-text">10 days</span>
+														</li>
+														<li>
+															<input class="explore__input-checkbox" type="checkbox" name="open-check" id="open-check"/>
+															<span class="explore__checkbox-style"></span>
+															<span class="explore__checkbox-text">2 weeks</span>
+														</li>
+														<li>
+															<input class="explore__input-checkbox" type="checkbox" name="open-check" id="open-check"/>
+															<span class="explore__checkbox-style"></span>
+															<span class="explore__checkbox-text">3 weeks</span>
+														</li>
+													</ul>
+												</div>
+											</div>
+										</div>
+										<div class="col-md-3 mt-2">
+											<div class="card">
+												<div class="card-header">
+													Price per Hour
+												</div>
+												<div class="card-body">
+													<div class="price-range-slider">
+														  <p class="range-value">
+														  	<b>Duration :</b>
+														    <input type="text" id="amount8" readonly style="border: none;">
+														  </p>
+													  <div id="slider-range8" class="range-bar"></div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<!-- Rental -->
+								</div>
 								</div>
 								<div class="explore__advertise">
 									<section class="customer-logos slider">

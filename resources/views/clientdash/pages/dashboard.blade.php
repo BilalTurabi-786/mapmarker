@@ -8,7 +8,8 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
-                    <h4 class="card-title">Contact Details</h4>
+                    <h4 class="card-title">Filter</h4>
+                    <button class="btn btn-primary">Add Filter</button>
                 </div>
                 <div class="card-content">
                     <div class="card-body card-dashboard">
@@ -36,5 +37,6 @@
         </div>
     </div>
 </section>
+
 
 @endsection

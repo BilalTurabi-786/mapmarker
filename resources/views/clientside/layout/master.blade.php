@@ -64,17 +64,96 @@
 	  " - $" + $( "#slider-range2" ).slider( "values", 1 ) );
 
 //duration
+function formatDate(date) {
+  var monthNames = [
+    "January", "February", "March",
+    "April", "May", "June", "July",
+    "August", "September", "October",
+    "November", "December"
+  ];
+
+  var monthIndex = date.getMonth();
+  var year = date.getFullYear();
+
+  return monthNames[monthIndex] + ' ' + year;
+}
 	$( "#slider-range3" ).slider({
+	   range: true,
+      min: new Date('2010-01-01T00:00:00').getTime(),
+      max: new Date('2021-01-01T00:00:00').getTime(),
+      step: 86400000,
+      values: [ new Date('2010-03-01T00:00:00').getTime(), new Date('2021-01-01T00:00:00').getTime() ],
+      slide: function( event, ui ) {
+        $( "#amount3" ).val( formatDate(new Date(ui.values[0])) + '-' + formatDate(new Date(ui.values[1])) );
+      }
+    });
+    $( "#amount3" ).val( formatDate((new Date($( "#slider-range3" ).slider( "values", 0 )))) +
+      " - " + formatDate((new Date($( "#slider-range3" ).slider( "values", 1 )))));
+	
+// Ratio Student Teacher
+$( "#slider-range4" ).slider({
 	  range: true,
 	  min: 1,
-	  max: 12,
-	  values: [ 130, 250 ],
+	  max: 10,
+	  values: [ 1, 10 ],
 	  slide: function( event, ui ) {
-		$( "#amount3" ).val( ui.values[ 0 ] + "Month " + " - " + ui.values[ 1 ] + " Month");
+		$( "#amount4" ).val( ui.values[ 0 ] +  ui.values[ 1 ] );
 	  }
 	});
-	$( "#amount3" ).val( $( "#slider-range3" ).slider( "values", 0 ) + "Month to" +
-	   $( "#slider-range3" ).slider( "values", 1 ) + "Month" );
+	$( "#amount4" ).val(  $( "#slider-range4" ).slider( "values", 0 ) +
+	  " - " + $( "#slider-range4" ).slider( "values", 1 ) );
+
+//Days Duration
+$( "#slider-range5" ).slider({
+	  range: true,
+	  min: 1,
+	  max: 10,
+	  values: [ 1, 10 ],
+	  slide: function( event, ui ) {
+		$( "#amount5" ).val( "Days" + ui.values[ 0 ] + " - " + ui.values[ 1 ] );
+	  }
+	});
+	$( "#amount5" ).val( "Days" + $( "#slider-range5" ).slider( "values", 0 ) +
+	  " - Days" + $( "#slider-range5" ).slider( "values", 1 ) );
+
+// Hour Selection
+$( "#slider-range6" ).slider({
+	  range: true,
+	  min: 0,
+	  max: 40,
+	  values: [ 0, 40 ],
+	  slide: function( event, ui ) {
+		$( "#amount6" ).val(  ui.values[ 0 ] + " - " + ui.values[ 1 ] );
+	  }
+	});
+	$( "#amount6" ).val(  $( "#slider-range6" ).slider( "values", 0 ) +
+	  " - Hour" + $( "#slider-range6" ).slider( "values", 1 ) );
+
+// price per teaching hour
+$( "#slider-range7" ).slider({
+	  range: true,
+	  min: 0,
+	  max: 200,
+	  values: [ 0, 200 ],
+	  slide: function( event, ui ) {
+		$( "#amount7" ).val(  ui.values[ 0 ] + " - " + ui.values[ 1 ] );
+	  }
+	});
+	$( "#amount7" ).val(  $( "#slider-range7" ).slider( "values", 0 ) +
+	  " -" + $( "#slider-range7" ).slider( "values", 1 ) );
+
+//price per hour rental
+$( "#slider-range7" ).slider({
+	  range: true,
+	  min: 0,
+	  max: 200,
+	  values: [ 0, 200 ],
+	  slide: function( event, ui ) {
+		$( "#amount8" ).val(  ui.values[ 0 ] + " - " + ui.values[ 1 ] );
+	  }
+	});
+	$( "#amount8" ).val(  $( "#slider-range8" ).slider( "values", 0 ) +
+	  " -" + $( "#slider-range8" ).slider( "values", 1 ) );
 
 //Brand Slider
 
