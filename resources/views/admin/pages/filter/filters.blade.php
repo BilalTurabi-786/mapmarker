@@ -9,6 +9,7 @@
             <div class="card">
                 <div class="card-header">
                     <h4 class="card-title">Filter</h4>
+                    <button class="btn btn-primary" class="btn btn-primary add-filter" id="add-filter">Add Filter</button>
                 </div>
                 <div class="card-content">
                     <div class="card-body card-dashboard">
@@ -80,8 +81,8 @@ $(document).ready(function(){
     $(".modal").modal("show"); 
 
    })
-   $(".add-filter").click(function(){
-     alert();
+   $("#add-filter").click(function(){
+     
     $(".id").val("");
      $(".filter").val("");
     $(".modal").modal("show"); 
