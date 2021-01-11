@@ -30,6 +30,9 @@ Route::prefix('admin')->namespace('Admin')->group(function(){
     Route::post('import-excel-process',['as'=>'admin.import-excel-process','uses'=>"\App\Http\Controllers\Admin\MapController@import_excel_process"]);
     Route::get('get-contacts',['as'=>'admin.get-contacts','uses'=>"\App\Http\Controllers\Front\ContactUsController@get_contacts"]);
     Route::post('send-qoute',['as'=>'admin.send-qoute','uses'=>"\App\Http\Controllers\Front\ContactUsController@send_qoute"]);
+    Route::get('filters',['as'=>'admin.filters','uses'=>"\App\Http\Controllers\FilterController@index"]);
+    Route::post('add-filter',['as'=>'add-filter','uses'=>"\App\Http\Controllers\FilterController@add_filter"]);
+    
 
 
         });
@@ -49,9 +52,7 @@ Route::post('login-process',['as'=>'login-process','uses'=>"\App\Http\Controller
 
 
 
-Route::get('/', function () {
-    return view('clientside.page.map');
-})->name('/');
+Route::get('/',['as'=>'/','uses'=>"\App\Http\Controllers\Front\HomeController@index"]) ;
 
 Route::get('/addlisting',function(){
     return view('clientside.page.addlisting');
@@ -70,6 +71,5 @@ Route::get('dashboard', function () {
 
 Route::get('/client/dashboard',function(){
     return view('clientdash.pages.dashboard');
-});
-
+})->name('/client/dashboard');
 

@@ -58,7 +58,7 @@ class LoginController extends Controller
             else
             {
 
-             return redirect()->route('/');    
+             return redirect()->route('/client/dashboard');    
             }
          
         }

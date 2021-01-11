@@ -223,7 +223,7 @@
 								</h2>
 								<div class="">
 									<ul class="explore__form-price-list">
-										<li class="mt-3"><a href="#">Football</a></li>
+										<!-- <li class="mt-3"><a href="#">Football</a></li>
 										<li class="mt-3"><a href="#">Cricket</a></li>
 										<li class="mt-3"><a href="#" class="active">Hockey</a></li>
 										<li class="mt-3"><a href="#">Baseball</a></li>
@@ -249,8 +249,12 @@
 										<li class="mt-3"><a href="#">Baseball</a></li>
 										<li class="mt-3"><a href="#">Snooker</a></li>
 										<li class="mt-3"><a href="#">Football</a></li>
-										<li class="mt-3"><a href="#">Cricket</a></li>
-										<li class="mt-3"><a href="#" class="active">Hockey</a></li>
+										<li class="mt-3"><a href="#">Cricket</a></li> -->
+										@if($filters->count()>0)
+                                        @foreach($filters as $filter)
+										<li class="mt-3"><a href="#" >{{$filter->name}}</a></li>
+										@endforeach
+                                       @endif
 									</ul>
 									<!-- <ul class="explore__form-checkbox-list">
 										<li>

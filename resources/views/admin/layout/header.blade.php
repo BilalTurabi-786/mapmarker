@@ -109,6 +109,12 @@
             </a>
           </li>
           <li class="nav-item">
+           <a href="{{route('admin.filters')}}">
+              <!-- <i class="fa file-import"></i> -->
+              <span class="menu-title" data-i18n="Order">Filters</span>
+            </a>
+          </li>
+          <li class="nav-item">
            <a href="{{route('admin.get-contacts')}}">
               <!-- <i class="fa file-import"></i> -->
               <span class="menu-title" data-i18n="Order">Contacts</span>
