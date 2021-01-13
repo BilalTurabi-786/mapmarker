@@ -143,7 +143,7 @@ $( "#slider-range7" ).slider({
 	  " -" + $( "#slider-range7" ).slider( "values", 1 ) );
 
 //price per hour rental
-$( "#slider-range7" ).slider({
+$( "#slider-range8" ).slider({
 	  range: true,
 	  min: 0,
 	  max: 200,
@@ -154,6 +154,21 @@ $( "#slider-range7" ).slider({
 	});
 	$( "#amount8" ).val(  $( "#slider-range8" ).slider( "values", 0 ) +
 	  " -" + $( "#slider-range8" ).slider( "values", 1 ) );
+
+
+// price per day last filter
+
+$( "#slider-range9" ).slider({
+	  range: true,
+	  min: 0,
+	  max: 200,
+	  values: [ 0, 200 ],
+	  slide: function( event, ui ) {
+		$( "#amount9" ).val(  ui.values[ 0 ] + " - " + ui.values[ 1 ] );
+	  }
+	});
+	$( "#amount9" ).val(  $( "#slider-range9" ).slider( "values", 0 ) +
+	  " -" + $( "#slider-range9" ).slider( "values", 1 ) );
 
 //Brand Slider
 
