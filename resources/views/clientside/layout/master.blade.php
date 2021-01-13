@@ -10,6 +10,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 	
+	<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
 	<link rel="stylesheet" href="css/triptip-assets.min.css">
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 
@@ -28,6 +29,7 @@
 	
 	<script src="js/jquery.min.js"></script>
 	<script src="js/jquery.migrate.js"></script>
+	<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.8/js/select2.min.js"></script> -->
 	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA4gPr8l64tU0pr14seWWK5BZiWb0-FC3k"></script>
 	<script src="js/triptip-plugins.min.js"></script>
 	<script src="js/popper.js"></script>
@@ -35,6 +37,7 @@
 	<script src="js/jquery.countTo.js"></script>
 	<script src="js/script.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
 	<script type="text/javascript">
 		$(function() {
 			//price
@@ -198,6 +201,9 @@ $( "#slider-range9" ).slider({
 
 });
 
+$(document).ready(function() {
+    $('.js-example-basic-multiple').select2();
+});
 		
 	</script>
 	@yield('scripts')

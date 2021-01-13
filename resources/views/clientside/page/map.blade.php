@@ -171,6 +171,18 @@
     list-style: none;
     margin-bottom: 0.25rem;
 }
+.select2-container--default .select2-selection--multiple {
+    background-color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: text;
+    width: 100% !important;
+    max-width: 1000px !important;
+    min-width: 1326%;
+    min-height: auto;
+    border-bottom: 1px solid red;
+}
+
 </style>
 <!-- map block
 			================================================== -->
@@ -223,38 +235,17 @@
 								</h2>
 								<div class="">
 									<ul class="explore__form-price-list">
-										<!-- <li class="mt-3"><a href="#">Football</a></li>
-										<li class="mt-3"><a href="#">Cricket</a></li>
-										<li class="mt-3"><a href="#" class="active">Hockey</a></li>
-										<li class="mt-3"><a href="#">Baseball</a></li>
-										<li class="mt-3"><a href="#">Snooker</a></li>
-										<li class="mt-3"><a href="#">Football</a></li>
-										<li class="mt-3"><a href="#">Cricket</a></li>
-										<li class="mt-3"><a href="#" class="active">Hockey</a></li>
-										<li class="mt-3"><a href="#">Baseball</a></li>
-										<li class="mt-3"><a href="#">Snooker</a></li>
-										<li class="mt-3"><a href="#">Football</a></li>
-										<li class="mt-3"><a href="#">Cricket</a></li>
-										<li class="mt-3"><a href="#" class="active">Hockey</a></li>
-										<li class="mt-3"><a href="#">Baseball</a></li>
-										<li class="mt-3"><a href="#">Snooker</a></li>
-										<li class="mt-3"><a href="#">Football</a></li>
-										<li class="mt-3"><a href="#">Cricket</a></li>
-										<li class="mt-3"><a href="#" class="active">Hockey</a></li>
-										<li class="mt-3"><a href="#">Baseball</a></li>
-										<li class="mt-3"><a href="#">Snooker</a></li>
-										<li class="mt-3"><a href="#">Football</a></li>
-										<li class="mt-3"><a href="#">Cricket</a></li>
-										<li class="mt-3"><a href="#" class="active">Hockey</a></li>
-										<li class="mt-3"><a href="#">Baseball</a></li>
-										<li class="mt-3"><a href="#">Snooker</a></li>
-										<li class="mt-3"><a href="#">Football</a></li>
-										<li class="mt-3"><a href="#">Cricket</a></li> -->
-										@if($filters->count()>0)
-                                        @foreach($filters as $filter)
-										<li class="mt-3"><a href="#" >{{$filter->name}}</a></li>
-										@endforeach
-                                       @endif
+										<li class="mt-3">
+											<select class="form-control w-100 js-example-basic-multiple" name="states[]" multiple="multiple">
+										        @if($filters->count()>0)
+			                                        @foreach($filters as $filter)
+													<option value="{{$filter->name}}">{{$filter->name}}</li>
+													@endforeach
+			                                    @endif
+										    </select>
+										     
+										</li>
+										
 									</ul>
 									<!-- <ul class="explore__form-checkbox-list">
 										<li>
