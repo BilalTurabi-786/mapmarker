@@ -10,6 +10,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 	
+	<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
 	<link rel="stylesheet" href="css/triptip-assets.min.css">
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 	<link rel="stylesheet" type="text/css" href="css/chosen.min.css">
@@ -40,6 +41,7 @@
 
 	
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
 	<script type="text/javascript">
 		$(function() {
 			//price
@@ -148,7 +150,7 @@ $( "#slider-range7" ).slider({
 	  " -" + $( "#slider-range7" ).slider( "values", 1 ) );
 
 //price per hour rental
-$( "#slider-range7" ).slider({
+$( "#slider-range8" ).slider({
 	  range: true,
 	  min: 0,
 	  max: 200,
@@ -159,6 +161,21 @@ $( "#slider-range7" ).slider({
 	});
 	$( "#amount8" ).val(  $( "#slider-range8" ).slider( "values", 0 ) +
 	  " -" + $( "#slider-range8" ).slider( "values", 1 ) );
+
+
+// price per day last filter
+
+$( "#slider-range9" ).slider({
+	  range: true,
+	  min: 0,
+	  max: 200,
+	  values: [ 0, 200 ],
+	  slide: function( event, ui ) {
+		$( "#amount9" ).val(  ui.values[ 0 ] + " - " + ui.values[ 1 ] );
+	  }
+	});
+	$( "#amount9" ).val(  $( "#slider-range9" ).slider( "values", 0 ) +
+	  " -" + $( "#slider-range9" ).slider( "values", 1 ) );
 
 //Brand Slider
 
@@ -188,6 +205,9 @@ $( "#slider-range7" ).slider({
 
 });
 
+$(document).ready(function() {
+    $('.js-example-basic-multiple').select2();
+});
 		
 	</script>
 	@yield('scripts')
