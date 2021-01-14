@@ -38,7 +38,7 @@ class ContactUsController extends Controller
         );
         $validator=Validator::make($controlls,$rules);
         if ($validator->fails()) {
-            dd($validator);
+            // dd($validator);s
             return redirect()->back()->withErrors($validator)->withInput($controlls);
         
         }

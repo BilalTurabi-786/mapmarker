@@ -8,6 +8,9 @@
     background: #fff;
     width: 100%;
 	}
+	.multipleChosen, .multipleSelect2{
+  width: 300px;
+}
 </style>
 <!-- add-listing
 			================================================== -->
@@ -375,7 +378,7 @@
 						<li>
 							<a href="#gallery-box">Gallery</a>
 						</li>
-						<li>
+						<li> 
 							<a href="#social-box">Social Networks</a>
 						</li>
 					</ul>
@@ -569,6 +572,27 @@
 						</div>
 
 					</div>
+					<div class="add-listing__form-content">
+							<div class="row">
+								<div class="col-md-3 col-sm-6">
+									<label class="add-listing__label" for="facebook">
+										Sports Facility <span>(optional)</span>:
+									</label>
+									<select name="sports[]" id="" class="form-control multipleChosen" multiple="true" >
+									@if($filters->count()>0)
+                                   @foreach($filters as $filter)
+									<option value="{{$filter->id}}">{{$filter->name}}</option>
+									@endforeach
+									@endif
+									</select>
+								</div>
+								
+								
+							
+							</div>
+						</div>
+
+					</div>
 
 					<div class="center-button">
 						<button class="add-listing__submit" type="submit">
@@ -605,8 +629,13 @@
             $(document).ready(function(){
                 let searchParams = new URLSearchParams(window.location.search)
                 let token= searchParams.get("token");
-                 alert(token);
+                
                 $("#token").val(token);
             })
+			$(document).ready(function(){
+  //Chosen
+  $(".multipleChosen").chosen({
+      placeholder_text_multiple: "What's your rating" //placeholder
+	});
         </script>
         @endsection

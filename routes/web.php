@@ -37,6 +37,7 @@ Route::prefix('admin')->namespace('Admin')->group(function(){
 
         });
 });
+Route::get('get-markers',['as'=>'get-markers','uses'=>"\App\Http\Controllers\Admin\MapController@get_marker"]);
 
 Route::group(['middleware'=>'UserAuth'],function (){
     Route::get('profile',['as'=>'profile','uses'=>"\App\Http\Controllers\Front\LoginController@profile"]);
@@ -54,9 +55,7 @@ Route::post('login-process',['as'=>'login-process','uses'=>"\App\Http\Controller
 
 Route::get('/',['as'=>'/','uses'=>"\App\Http\Controllers\Front\HomeController@index"]) ;
 
-Route::get('/addlisting',function(){
-    return view('clientside.page.addlisting');
-});
+Route::get('addlisting',['as'=>'addlisting','uses'=>"\App\Http\Controllers\Front\ListingController@addlisting"]);
 Route::get('list-process',function(){
     return view('clientside.page.addlisting');
 });

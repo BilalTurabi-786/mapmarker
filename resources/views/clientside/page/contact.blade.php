@@ -81,7 +81,7 @@
 									<input class="contact-form__input-text" type="password" name="password" id="mail" placeholder="Email:" / value="{{old('password')}}">
 								</div>
 							</div>
-							<span class="text-danger">{{$errors->first('subject')}} </span>
+							<span class="text-danger">{{$errors->first('password')}} </span>
 
 							<div class="row">
 								<div class="col-md-3">
@@ -89,31 +89,43 @@
 									<select class="contact-form__input-text" name="code">
 										<option value="+11">+11</option>
 									</select>
+							<span class="text-danger">{{$errors->first('code')}} </span>
+
 								</div>
 								<div class="col-md-9">
 									<label class="text-white">asd</label>
 									<input class="contact-form__input-text" type="text" name="number" id="subject" placeholder="232 232 22" /  value="{{old('number')}}">
 									<span class="text-danger"></span>
 								</div>
+							<span class="text-danger">{{$errors->first('number')}} </span>
+
 							</div>
 							<div class="row">
 								<div class="col-md-6">
 									<label>Available Date 1</label>
 									<input class="contact-form__input-text" type="date" name="ava_date_one" id="subject" />
+							<span class="text-danger">{{$errors->first('ava_date_one')}} </span>
+
 								</div>
 								<div class="col-md-6">
 									<label>Available Date 2</label>
 									<input class="contact-form__input-text" type="date" name="ava_date_two" id="subject" />
+							<span class="text-danger">{{$errors->first('ava_date_two')}} </span>
+
 								</div>
 							</div>
 							<div class="row">
 								<div class="col-md-6">
 									<label>Available Time 1</label>
 									<input class="contact-form__input-text" type="time" name="ava_time_one" id="subject" />
+							<span class="text-danger">{{$errors->first('ava_time_one')}} </span>
+
 								</div>
 								<div class="col-md-6">
 									<label>Available Time 2</label>
 									<input class="contact-form__input-text" type="time" name="ava_time_two" id="subject" />
+							<span class="text-danger">{{$errors->first('ava_time_two')}} </span>
+
 								</div>
 							</div>
 

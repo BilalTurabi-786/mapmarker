@@ -12,6 +12,8 @@
 	
 	<link rel="stylesheet" href="css/triptip-assets.min.css">
 	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<link rel="stylesheet" type="text/css" href="css/chosen.min.css">
+
 
 </head>
 <body>
@@ -28,18 +30,21 @@
 	
 	<script src="js/jquery.min.js"></script>
 	<script src="js/jquery.migrate.js"></script>
-	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA4gPr8l64tU0pr14seWWK5BZiWb0-FC3k"></script>
+	<!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA4gPr8l64tU0pr14seWWK5BZiWb0-FC3k"></script> -->
 	<script src="js/triptip-plugins.min.js"></script>
 	<script src="js/popper.js"></script>
 	<script src="js/bootstrap.min.js"></script>
 	<script src="js/jquery.countTo.js"></script>
 	<script src="js/script.js"></script>
+	<script src="js/chosen.jquery.min.js"></script>
+
+	
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.js"></script>
 	<script type="text/javascript">
 		$(function() {
 			//price
 	$( "#slider-range" ).slider({
-	  range: true,
+	  range: true, 
 	  min: 130,
 	  max: 500,
 	  values: [ 130, 250 ],

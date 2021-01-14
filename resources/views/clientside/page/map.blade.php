@@ -1054,32 +1054,32 @@ function initMap() {
     }
 
           });
-        google.maps.event.addListener(map,'click',function(e) {
-          location_window++;
+        // google.maps.event.addListener(map,'click',function(e) {
+        //   location_window++;
           
-          addmarker({
-            coordinates: e.latLng,
-            content:"<div id='location_window_"+location_window+"' class='text-center' style='width:400px!important;'> <label>Enter Name</label><input class='form-control' type='text' id='name"+location_window+"' class='form-control'  ><label>Social Links</label><table><tbody id="+location_window+"> <tr class='colname'> <td>   <label>Link</label><input type='text' class='form-control links"+location_window+"' value=''> </td><td><button><i class='fa fa-plus' class='btn btn-primary' data-id="+location_window+"></i></button></td></tr></tbody></table> <h6>Enter Location Description</h6><textarea class='form-control' id='location_description_"+location_window+"' class='form-group' rows='5' col='15'></textarea><br /><input type='button' value='Save' class='btn btn-primary save' data-id="+location_window+"  data-lat="+e.latLng.lat()+" data-lng="+e.latLng.lng()+" /></div>",
-          })
+        //   addmarker({
+        //     coordinates: e.latLng,
+        //     content:"<div id='location_window_"+location_window+"' class='text-center' style='width:400px!important;'> <label>Enter Name</label><input class='form-control' type='text' id='name"+location_window+"' class='form-control'  ><label>Social Links</label><table><tbody id="+location_window+"> <tr class='colname'> <td>   <label>Link</label><input type='text' class='form-control links"+location_window+"' value=''> </td><td><button><i class='fa fa-plus' class='btn btn-primary' data-id="+location_window+"></i></button></td></tr></tbody></table> <h6>Enter Location Description</h6><textarea class='form-control' id='location_description_"+location_window+"' class='form-group' rows='5' col='15'></textarea><br /><input type='button' value='Save' class='btn btn-primary save' data-id="+location_window+"  data-lat="+e.latLng.lat()+" data-lng="+e.latLng.lng()+" /></div>",
+        //   })
           
           
-             });
-             function addmarker(attributes){
-              var marker = new google.maps.Marker({
-					position: attributes.coordinates,
-					map: map,
-          icon:"{{asset('app-assets/mark1.png')}}"
+        //      });
+        //      function addmarker(attributes){
+        //       var marker = new google.maps.Marker({
+		// 			position: attributes.coordinates,
+		// 			map: map,
+        //   icon:"{{asset('app-assets/mark1.png')}}"
 
-				});
+		// 		});
 				
-				var infoWindow = new google.maps.InfoWindow({
-					content: attributes.content
-				});
+		// 		var infoWindow = new google.maps.InfoWindow({
+		// 			content: attributes.content
+		// 		});
 				
-				marker.addListener("click", function(){
-					infoWindow.open(map, marker);
-				});
-             }
+		// 		marker.addListener("click", function(){
+		// 			infoWindow.open(map, marker);
+		// 		});
+        //      }
              $.ajax({
     url:"{{route('get-markers')}}",
     type:"get",
