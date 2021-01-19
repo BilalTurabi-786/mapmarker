@@ -203,6 +203,49 @@ $('.customer-logos').slick({
 
 
 });
+function formatDate10(date) {
+	var monthNames = [
+	"January", "February", "March",
+	"April", "May", "June", "July",
+	"August", "September", "October",
+	"November", "December"
+	];
+
+	var monthIndex = date.getMonth();
+	var year = date.getFullYear();
+
+	return monthNames[monthIndex] + ' ' + year;
+}
+$( "#slider-range10" ).slider({
+	range: true,
+	min: new Date('2010-01-01T00:00:00').getTime(),
+	max: new Date('2021-01-01T00:00:00').getTime(),
+	step: 86400000,
+	values: [ new Date('2010-03-01T00:00:00').getTime(), new Date('2021-01-01T00:00:00').getTime() ],
+	slide: function( event, ui ) {
+		$( "#amount10" ).val( formatDate10(new Date(ui.values[0])) + '-' + formatDate10(new Date(ui.values[1])) );
+	}
+});
+$( "#amount10" ).val( formatDate10((new Date($( "#slider-range10" ).slider( "values", 0 )))) +
+	" - " + formatDate10((new Date($( "#slider-range10" ).slider( "values", 1 )))));
+
+		
+$( "#slider-range11" ).slider({
+				range: true, 
+				min: 130,
+				max: 500,
+				values: [ 130, 250 ],
+				slide: function( event, ui ) {
+					$( "#amount11" ).val( "$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] );
+				}
+			});
+			$( "#amount11" ).val( "$" + $( "#slider-range11" ).slider( "values", 0 ) +
+				" - $" + $( "#slider-range11" ).slider( "values", 1 ) );
+
+
+
+
+
 
 		$(document).ready(function() {
 			$('.js-example-basic-multiple').select2();

@@ -315,6 +315,26 @@
 										</li>
 									</ul> -->
 								<div class="container mt-3 mb-5">
+										<div class="row">
+								<div class="price-range-slider">
+								  <p class="range-value">
+								  	<b>Duration :</b>
+								    <input type="text" id="amount10" readonly style="border: none;width: 85%;">
+								  </p>
+								  <div id="slider-range10" class="range-bar"></div>
+								</div>
+								
+							</div>
+							<div class="row">
+
+								<div class="price-range-slider">
+								  <p class="range-value">
+								  	<b>Price :</b>
+								    <input type="text" id="amount11" readonly style="border: none;">
+								  </p>
+								  <div id="slider-range11" class="range-bar"></div>
+								</div>
+							</div>
 									<div class="row">
 										<div class="col-md-12 text-center mb-4">
 											<!-- <ul class="explore__form-price-list"> -->
