@@ -9,7 +9,7 @@
 
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-	
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
 	<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
 	<link rel="stylesheet" href="css/triptip-assets.min.css">
 	<link rel="stylesheet" type="text/css" href="css/style.css">
@@ -17,7 +17,7 @@
 
 
 </head>
-<body>
+<body class="element" id="element">
 
 	<!-- Container -->
 	<div id="container">
@@ -35,6 +35,7 @@
 	<script src="js/triptip-plugins.min.js"></script>
 	<script src="js/popper.js"></script>
 	<script src="js/bootstrap.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
 	<script src="js/jquery.countTo.js"></script>
 	<script src="js/script.js"></script>
 	<script src="js/chosen.jquery.min.js"></script>
@@ -242,6 +243,17 @@ $( "#slider-range11" ).slider({
 			$( "#amount11" ).val( "$" + $( "#slider-range11" ).slider( "values", 0 ) +
 				" - $" + $( "#slider-range11" ).slider( "values", 1 ) );
 
+$( "#slider-range12" ).slider({
+				range: true, 
+				min: 130,
+				max: 500,
+				values: [ 130, 250 ],
+				slide: function( event, ui ) {
+					$( "#amount12" ).val(  ui.values[ 0 ] + " - " + ui.values[ 1 ] );
+				}
+			});
+			$( "#amount12" ).val(  $( "#slider-range12" ).slider( "values", 0 ) +
+				" - " + $( "#slider-range12" ).slider( "values", 1 ) );
 
 
 
@@ -250,7 +262,30 @@ $( "#slider-range11" ).slider({
 		$(document).ready(function() {
 			$('.js-example-basic-multiple').select2();
 		});
-		
+		function openFullscreen() {
+  if (elem.requestFullscreen) {
+    elem.requestFullscreen();
+  } else if (elem.mozRequestFullScreen) { /* Firefox */
+    elem.mozRequestFullScreen();
+  } else if (elem.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
+    elem.webkitRequestFullscreen();
+  } else if (elem.msRequestFullscreen) { /* IE/Edge */
+    elem.msRequestFullscreen();
+  }
+}
+
+
+function closeFullscreen() {
+  if (document.exitFullscreen) {
+    document.exitFullscreen();
+  } else if (document.mozCancelFullScreen) { /* Firefox */
+    document.mozCancelFullScreen();
+  } else if (document.webkitExitFullscreen) { /* Chrome, Safari and Opera */
+    document.webkitExitFullscreen();
+  } else if (document.msExitFullscreen) { /* IE/Edge */
+    document.msExitFullscreen();
+  }
+}
 	</script>
 	@yield('scripts')
 	
