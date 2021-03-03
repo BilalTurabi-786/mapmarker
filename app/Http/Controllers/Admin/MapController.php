@@ -72,8 +72,29 @@ class MapController extends Controller
         return view('admin.pages.import');
     
     }
+    
     public function get_marker(){
         $markers=GoogleMap::with('links')->get();
+        return response()->json(['markers'=>$markers]);
+    }
+
+    public function filter_marker(Request $request){
+        $filters = isset($request->filters)?"'".implode("','", $request->filters)."'":"";
+        $filters = strtolower($filters);
+        $markers = GoogleMap::with(['links', 'user.filters' => function($q) use($filters) {
+            $q->whereRaw("LOWER(name) IN ({$filters})");
+        }])->when(!empty($filters), function($q) use($filters) {
+            $q->whereHas('user.filters', function($q) use($filters) {
+                $q->whereRaw("LOWER(name) IN ({$filters})");
+            })->get();
+        })->get();
+        $filters = $request->filters;
+        return $markers->filter(function($marker) use($filters){
+            $markers = $marker->user->filters->filter(function($filter) use($filters){
+                return in_array(strtolower($filter->name), $filters);
+            });
+            return count($markers) == count($filters);
+        });
         return response()->json(['markers'=>$markers]);
     }
 }
