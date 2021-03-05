@@ -3,6 +3,21 @@
 @section('headname','Map')
 @section('content')
 	<style type="text/css">
+
+		/* Filter Working */
+		
+		a.filter-btn.active {
+			background-color: #0016b1 !important;
+		}
+		.cursor-pointer {
+			cursor: pointer;
+		}
+		.filter-badge {
+			font-size: 15px;
+		}
+
+		/* Filter Working */
+
 		.price-range-slider {
 			width:100%;
 			float:left;
@@ -288,7 +303,7 @@
 												<a class="btn btn-primary w-100 filter-btn" data-val="Diving" href="">Diving</a>
 											</div>
 											<div class="col-sm-4 mt-2 mb-2">
-												<a class="btn btn-primary w-100 filter-btn" data-val="" href="">Reset Filter</a>
+												<a class="btn btn-primary w-100 filter-btn reset-filter" data-val="" href="">Reset Filter</a>
 											</div>
 										</div>
 										
@@ -372,6 +387,9 @@
 	</div>
 	<!-- Banner -->
 	<div class="mt-3 row">
+		<div class="d-flex px-5 my-3 filter-slider">
+			<span class="badge badge-success mx-1 filter-badge demo-filter d-none"></span>
+		</div>
 		<div class="col-md-12">
 			<div class="explore__advertise">
 				<section class="customer-logos slider">
@@ -583,6 +601,59 @@
 					console.log(res);
 				}
 			})
+		})
+		$(document).ready(()=>{
+
+			console.clear();
+			// Filter Working
+			let filters = [];
+			let wrapper = $(".filter-slider");
+			$(".filter-btn").click(function(e) {
+				e.preventDefault();
+				let val = $(this).data("val");
+				if($(this).hasClass("reset-filter")){
+					filterReset();
+				}
+				else if(!val) {}
+				else if($(this).hasClass("active")){
+					let i = filters.findIndex(filter => filter == val);
+					filtersChanged(i);
+					return; 
+				}
+				else{
+					filters.push(val);
+					filtersChanged(-1);
+				}
+				
+			});
+
+			$(".filter-slider").on("click", ".remove-filter.cursor-pointer", function(){
+				console.log($(this));
+				filtersChanged($(".remove-filter.cursor-pointer").index(this));
+			});
+
+			function filtersChanged(i){
+				let ele = wrapper.find(".filter-badge.d-none").clone();
+				if(i < 0){
+					let value = filters[filters.length-1];
+					$("[data-val="+value+"]").addClass("active");
+					ele.removeClass("d-none");
+					ele.html(value);
+					$("<i/>").addClass("fa fa-times ml-1 remove-filter cursor-pointer").appendTo(ele);
+					ele.appendTo(wrapper);
+				}
+				else{
+					let value = filters[i];
+					filters.splice(i, 1);
+					$("[data-val="+value+"]").removeClass("active");
+					wrapper.find(".filter-badge").not(".d-none").eq(i).remove();
+				}
+			}
+			function filterReset(){
+				wrapper.find(".filter-badge").not(".d-none").remove();
+				filters = [];
+				$(".filter-btn.active").removeClass("active");
+			}
 		})
 
 	</script>
