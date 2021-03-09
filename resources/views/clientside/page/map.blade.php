@@ -239,6 +239,149 @@
 				font-size: 3px;
 			}
 		}
+		.table_center{
+  display:table-cell;
+  vertical-align: middle;
+}
+.drop-down{
+    display: inline-block;
+    position: relative;
+}
+
+.drop-down__button{
+  background: linear-gradient(to right,#3d6def, #8FADFE);
+  display: inline-block;
+  line-height: 40px;
+  padding: 0 18px;
+  text-align: left;
+  border-radius: 4px;
+  box-shadow: 0px 4px 6px 0px rgba(0,0,0,0.2);
+  cursor: pointer;
+}
+
+.drop-down__name {
+    font-size: 9px;
+    text-transform: uppercase;
+    color: #fff;
+    font-weight: 800;
+    letter-spacing: 2px;
+}
+
+.drop-down__icon {
+    width: 18px;
+    vertical-align: middle;
+    margin-left: 14px;
+    height: 18px;
+    border-radius: 50%;
+    transition: all 0.4s;
+  -webkit-transition: all 0.4s;
+  -moz-transition: all 0.4s;
+  -ms-transition: all 0.4s;
+  -o-transition: all 0.4s;
+  
+}
+
+
+
+.drop-down__menu-box {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    background-color: #fff;
+    border-radius: 4px;
+  box-shadow: 0px 3px 6px 0px rgba(0,0,0,0.2);
+     transition: all 0.3s;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  -ms-transition: all 0.3s;
+  -o-transition: all 0.3s;
+ visibility: hidden;
+opacity: 0;
+  margin-top: 5px;
+}
+
+.drop-down__menu {
+    margin: 0;
+    padding: 0 13px;
+    list-style: none;
+  
+}
+.drop-down__menu-box:before{
+  content:'';
+  background-color: transparent;
+  border-right: 8px solid transparent;
+  position: absolute;
+  border-left: 8px solid transparent;
+  border-bottom: 8px solid #fff;
+  border-top: 8px solid transparent;
+  top: -15px;
+  right: 18px;
+
+}
+
+.drop-down__menu-box:after{
+  content:'';
+  background-color: transparent;
+}
+
+.drop-down__item {
+    font-size: 13px;
+    padding: 13px 0;
+    text-align: left;
+    font-weight: 500;
+    color: #909dc2;
+    cursor: pointer;
+    position: relative;
+    border-bottom: 1px solid #e0e2e9;
+}
+
+.drop-down__item-icon {
+    width: 15px;
+    height: 15px;
+    position: absolute;
+    right: 0px;
+    fill: #8995b6;
+  
+}
+
+.drop-down__item:hover .drop-down__item-icon{
+  fill: #3d6def;
+}
+
+.drop-down__item:hover{
+  color: #3d6def;
+}
+
+
+
+.drop-down__item:last-of-type{
+  border-bottom: 0;
+}
+
+
+.drop-down--active .drop-down__menu-box{
+	visibility: visible;
+    opacity: 1;
+    margin-top: 15px;
+    z-index: 999;
+    width: 100%;
+}
+
+.drop-down__item:before{
+  content:'';
+  position: absolute;
+width: 3px;
+height: 28px;
+background-color: #3d6def;
+left: -13px;
+top: 50%;
+transform: translateY(-50%);
+  display:none;
+}
+
+.drop-down__item:hover:before{
+  display:block;
+}
 	</style>
 	<div class="row">
 		<!-- map block
@@ -260,6 +403,57 @@
 									</h2>
 									<div class="">
 										<div class="row">
+											<div class="col-md-4">
+											<div class="table_center">
+												<div class="drop-down">
+													<div id="dropDown" class="dropDown drop-down__button">
+													<span class="drop-down__name">Person 1</span>
+													</div>
+													
+													<div class="drop-down__menu-box">
+													<ul class="drop-down__menu">
+														<li data-name="profile" class="drop-down__item">Your Profile</li>
+														<li data-name="dashboard" class="drop-down__item">Your Dashboard</li>
+														<li data-name="activity" class="drop-down__item">Recent activity </li>
+													</ul>
+													</div>
+												</div>
+											</div>
+											</div>
+											<div class="col-md-4">
+											<div class="table_center">
+												<div class="drop-down">
+													<div id="dropDown" class="dropDown drop-down__button">
+													<span class="drop-down__name">Person 2</span>
+													</div>
+													
+													<div class="drop-down__menu-box">
+													<ul class="drop-down__menu">
+														<li data-name="profile" class="drop-down__item">Your Profile</li>
+														<li data-name="dashboard" class="drop-down__item">Your Dashboard</li>
+														<li data-name="activity" class="drop-down__item">Recent activity </li>
+													</ul>
+													</div>
+												</div>
+											</div>
+											</div>
+											<div class="col-md-4">
+											<div class="table_center">
+												<div class="drop-down">
+													<div id="dropDown" class="dropDown drop-down__button">
+													<span class="drop-down__name">Person 3</span>
+													</div>
+													
+													<div class="drop-down__menu-box">
+													<ul class="drop-down__menu">
+														<li data-name="profile" class="drop-down__item">Your Profile</li>
+														<li data-name="dashboard" class="drop-down__item">Your Dashboard</li>
+														<li data-name="activity" class="drop-down__item">Recent activity </li>
+													</ul>
+													</div>
+												</div>
+											</div>
+											</div>
 											<div class="col-sm-4 mt-2 mb-2">
 												<a class="btn btn-primary w-100 filter-btn" data-val="WingSup" href="">WingSup</a>
 											</div>
@@ -333,6 +527,8 @@
 													<a class="btn btn-primary w-30 camp" href="javascript:void(0);" data-toggle="modal" data-target="#lessonandcamp">Camp</a>
 													<a class="btn btn-primary w-30 rental" href="javascript:void(0);" data-toggle="modal" data-target="#rental">Rental</a>
 													<a class="btn btn-primary w-30 storage" href="javascript:void(0);" data-toggle="modal" data-target="#storage">Storage</a>
+													<a class="btn btn-primary w-30 courselevel mt-2" href="javascript:void(0);" data-toggle="modal" data-target="#courselevel">Course level</a>
+													<a class="btn btn-primary w-30 language mt-2" href="javascript:void(0);" data-toggle="modal" data-target="#language">Language</a>
 												</div>
 											</div>
 											<div class="row">
@@ -699,38 +895,7 @@
 				</div>
 				<div class="modal-body">
 					<div class="accordion" id="accordionExample">
-						<div class="accordion-item">
-						<h2 class="accordion-header" id="headingOne">
-						<button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOcOnne" aria-expanded="true" aria-controls="collapseOcOnne">
-						Course Level
-						</button>
-						</h2>
-						<div id="collapseOcOnne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-						<div class="accordion-body">
-							<div class="card">
-								<div class="card-body">
-									<ul class="explore__form-checkbox-list">
-										<li>
-											<input class="explore__input-checkbox" type="checkbox" name="open-check" id="open-check"/>
-											<span class="explore__checkbox-style"></span>
-											<span class="explore__checkbox-text">All (default)</span>
-										</li>
-										<li>
-											<input class="explore__input-checkbox" type="checkbox" name="open-check" id="open-check"/>
-											<span class="explore__checkbox-style"></span>
-											<span class="explore__checkbox-text">Beginner</span>
-										</li>
-										<li>
-											<input class="explore__input-checkbox" type="checkbox" name="open-check" id="open-check"/>
-											<span class="explore__checkbox-style"></span>
-											<span class="explore__checkbox-text">Intermediate</span>
-										</li>
-									</ul>
-								</div>
-							</div>
-						</div>
-						</div>
-					</div>
+						
 					<div class="accordion-item">
 						<h2 class="accordion-header" id="headingOne">
 						<button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOOnne" aria-expanded="true" aria-controls="collapseOOnne">
@@ -1328,4 +1493,60 @@
 			</div>
 		</div>
 	</div>
+
+	<!-- Course Level -->
+	<div class="modal fade" id="courselevel" tabindex="-1" aria-labelledby="courselevel" aria-hidden="true">
+		<div class="modal-dialog modal-lg">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="courselevel">Modal title</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<div class="accordion" id="accordionExample">
+						<div class="accordion-item">
+						<h2 class="accordion-header" id="headingOne">
+						<button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOcOnne" aria-expanded="true" aria-controls="collapseOcOnne">
+						Course Level
+						</button>
+						</h2>
+						<div id="collapseOcOnne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+						<div class="accordion-body">
+							<div class="card">
+								<div class="card-body">
+									<ul class="explore__form-checkbox-list">
+										<li>
+											<input class="explore__input-checkbox" type="checkbox" name="open-check" id="open-check"/>
+											<span class="explore__checkbox-style"></span>
+											<span class="explore__checkbox-text">All (default)</span>
+										</li>
+										<li>
+											<input class="explore__input-checkbox" type="checkbox" name="open-check" id="open-check"/>
+											<span class="explore__checkbox-style"></span>
+											<span class="explore__checkbox-text">Beginner</span>
+										</li>
+										<li>
+											<input class="explore__input-checkbox" type="checkbox" name="open-check" id="open-check"/>
+											<span class="explore__checkbox-style"></span>
+											<span class="explore__checkbox-text">Intermediate</span>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+						</div>
+					</div>
+				</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+					<button type="button" class="btn btn-primary">Save changes</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Course Level -->
 @endsection

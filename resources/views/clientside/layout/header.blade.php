@@ -110,7 +110,7 @@
 						    <a class="dropdown-item" href="#">French</a>
 						    <a class="dropdown-item" href="#">German</a>
 						</div>
-						@if (Route::currentRouteName() == "/")
+						<!-- @if (Route::currentRouteName() == "/")
 						<div>
 							<a class="btn btn-default dropdown-toggle" type="button" id="dropdownMenuButton1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 								Add Multi Person Searching
@@ -120,7 +120,7 @@
 								<a class="dropdown-item" href="#"><i class="fa fa-plus" aria-hidden="true"></i> Add Person </a>
 							</div>
 						</div>
-						@endif
+						@endif -->
 						@if (Route::currentRouteName()!="contact")
 							<a href="{{url('/contact')}}" class="add-list-btn btn-default ml-auto"><i class="fa fa-plus" aria-hidden="true"></i> Add School Listing</a>
 						@endif
