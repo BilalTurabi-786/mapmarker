@@ -430,11 +430,9 @@
 																</div>
 																
 																<div class="drop-down__menu-box">
-																<ul class="drop-down__menu">
-																	<li data-name="profile" class="drop-down__item">Your Profile</li>
-																	<li data-name="dashboard" class="drop-down__item">Your Dashboard</li>
-																	<li data-name="activity" class="drop-down__item">Recent activity </li>
-																</ul>
+																	<ul class="drop-down__menu filter-wrapper">
+																		<li data-type="" class="filter-item d-none drop-down__item"><span class="filter-name"></span><i class="fa fa-times ml-1 remove-filter cursor-pointer"></i></li>
+																	</ul>
 																</div>
 															</div>
 														</div>
@@ -443,15 +441,13 @@
 														<div class="table_center">
 															<div class="drop-down">
 																<div id="dropDown" class="dropDown drop-down__button">
-																<span class="drop-down__name">Person 3</span>
+																	<span class="drop-down__name">Person 3</span>
 																</div>
 																
 																<div class="drop-down__menu-box">
-																<ul class="drop-down__menu">
-																	<li data-name="profile" class="drop-down__item">Your Profile</li>
-																	<li data-name="dashboard" class="drop-down__item">Your Dashboard</li>
-																	<li data-name="activity" class="drop-down__item">Recent activity </li>
-																</ul>
+																	<ul class="drop-down__menu filter-wrapper">
+																		<li data-type="" class="filter-item d-none drop-down__item"><span class="filter-name"></span><i class="fa fa-times ml-1 remove-filter cursor-pointer"></i></li>
+																	</ul>
 																</div>
 															</div>
 														</div>
@@ -515,7 +511,7 @@
 											</div>
 
 										</div>
-										<div class="row">
+										{{-- <div class="row">
 
 											<div class="price-range-slider">
 												<p class="range-value">
@@ -524,18 +520,8 @@
 												</p>
 												<div id="slider-range11" class="range-bar"></div>
 											</div>
-										</div>
-										<div class="row my-row">
-											<div class="col-md-12 text-center mb-4">
-												<a class="btn btn-primary w-30 lesson" href="javascript:void(0);" data-toggle="modal" data-target="#lessonandcamp">Lesson</a>
-												<a class="btn btn-primary w-30 camp" href="javascript:void(0);" data-toggle="modal" data-target="#lessonandcamp">Camp</a>
-												<a class="btn btn-primary w-30 rental" href="javascript:void(0);" data-toggle="modal" data-target="#rental">Rental</a>
-												<a class="btn btn-primary w-30 storage" href="javascript:void(0);" data-toggle="modal" data-target="#storage">Storage</a>
-												<a class="btn btn-primary w-30 courselevel mt-2" href="javascript:void(0);" data-toggle="modal" data-target="#courselevel">Course level</a>
-												<a class="btn btn-primary w-30 language mt-2" href="javascript:void(0);" data-toggle="modal" data-target="#language">Language</a>
-											</div>
-										</div>
-										<div class="row">
+										</div> --}}
+										{{-- <div class="row">
 											<div class="price-range-slider">
 												<p class="range-value">
 													<b>Duration :</b>
@@ -543,10 +529,10 @@
 												</p>
 												<div id="slider-range3" class="range-bar"></div>
 											</div>
-														
-										</div>
+											
+										</div> --}}
 										<div class="row">
-
+											
 											<div class="price-range-slider">
 												<p class="range-value">
 													<b>Price :</b>
@@ -571,18 +557,28 @@
 										</div>
 										<div class="row my-row">
 											<div class="col-md-12 text-center mb-4">
+												<a class="btn btn-primary w-30 lesson" href="javascript:void(0);" data-toggle="modal" data-target="#lessonandcamp">Lesson</a>
+												<a class="btn btn-primary w-30 camp" href="javascript:void(0);" data-toggle="modal" data-target="#lessonandcamp">Camp</a>
+												<a class="btn btn-primary w-30 rental" href="javascript:void(0);" data-toggle="modal" data-target="#rental">Rental</a>
+												<a class="btn btn-primary w-30 storage" href="javascript:void(0);" data-toggle="modal" data-target="#storage">Storage</a>
+												<a class="btn btn-primary w-30 courselevel mt-2" href="javascript:void(0);" data-toggle="modal" data-target="#courselevel">Course level</a>
+												<a class="btn btn-primary w-30 language mt-2" href="javascript:void(0);" data-toggle="modal" data-target="#language">Language</a>
+											</div>
+										</div>
+										<div class="row my-row">
+											<div class="col-md-12 text-center mb-4">
 												<a class="btn btn-primary w-30 lesson" href="javascript:void(0);" data-toggle="modal" data-target="#Association">Association</a>
 												<a class="btn btn-primary w-30 camp" href="javascript:void(0);" data-toggle="modal" data-target="#Handicap">Handicap</a>
 												<a class="btn btn-primary w-30 rental" href="javascript:void(0);" data-toggle="modal" data-target="#Childern">Childern</a>
 											</div>
 										</div>
-									
+										
 									</div>
+								</div>
 							</div>
 						</div>
 					</div>
-				</div>
-			</section>
+				</section>
 		<!-- End explore-module -->
 	</div>
 	<!-- Banner -->
@@ -803,81 +799,128 @@
 
 			console.clear();
 			// Filter Working
-			// let first_filters = [];
-			// let second_filters = [];
-			// let third_filters = [];
+			let sampleFilter = {
+				"lesson": "",
+				"duration": "March 2010 - January 2021",
+				"price": "$130 - $250",
+				"pricePerHour": "$130 - $250",
+				"studentTeacherRatio": "130 - 250",
+				"association": ["all"],
+				"handicap": ["no"],
+				"children": ["no"],
+				"storage": {
+					"duration": ["all"],
+					"pricePerDay": "$0 - $200"
+				},
+				"rental": {
+					"rentalPerPerson": [],
+					"duration": ["all"],
+					"pricePerHour": "$0 - $200"
+				},
+				"lessons": {
+					"studentTeacherRatio": "1 - 10",
+					"duration": "Days1 - Days10",
+					"courseHours": "0 - 40",
+					"pricePerTeachingHours": "$0 - $200",
+				},
+				"camp": {
+					"studentTeacherRatio": "1 - 10",
+					"duration": "Days1 - Days10",
+					"courseHours": "0 - 40",
+					"pricePerTeachingHours": "$0 - $200",
+				},
+				"courseLevel": "all"
+			};
 			let filters = [
-				{}, {}, {}
+				sampleFilter, {}, {}
 			]
-			let activePerson = 0;
 			let wrapper = $(".drop-down.active .filter-wrapper");
-			$(".filter-btn").click(function(e) {
+			let activePerson = 0;
+			$("#slider-range10").on("slidestop", (e, ui) => {
+				let ele = $(e.target).siblings('.range-value').find('input');
+				filters[activePerson].duration = ele.val();
+				
+				wrapper.find('.filter-item[data-type=duration]').remove();
+				filterEle = wrapper.find(".filter-item.d-none").clone();
+				filterEle.attr('data-type', 'duration')
+				filterEle.removeClass("d-none");
+				filterEle.find("span.filter-name").html("duration: "+ele.val());
+				filterEle.appendTo(wrapper);
+			});
+			$("#slider-range").on("slidestop", (e, ui) => {
+				let ele = $(e.target).siblings('.range-value').find('input');
+				(filters[activePerson]).price = ele.val();
+				
+				wrapper.find('.filter-item[data-type=price]').remove();
+				filterEle = wrapper.find(".filter-item.d-none").clone();
+				filterEle.attr('data-type', 'price')
+				filterEle.removeClass("d-none");
+				filterEle.find("span.filter-name").html("price: "+ele.val());
+				filterEle.appendTo(wrapper);
+			});
+			$(".drop-down").on("click", ".remove-filter.cursor-pointer", (e) => {
+				let ele = $(e.target)
+				let liParent = ele.parents("li");
+				let parent = liParent.parents(".drop-down");
+				let index = $(".drop-down").index(parent);
+				if(liParent.data('type') == "lesson"){
+					console.log(activePerson, index);	
+					if(activePerson == index){
+						$(".filter-btn[data-val="+filters[index].lesson+"]").removeClass('active');
+					}
+					filters[index].lesson = "";
+					liParent.remove();
+				}
+			});
+			$(".filter-btn").click((e) => {
 				e.preventDefault();
-				let val = $(this).data("val");
-				if($(this).hasClass("reset-filter")){
-					filterReset();
+				let ele = $(e.target);
+				let val = ele.data('val');
+				if(ele.hasClass('reset-filter')){
+					// console.log("reset");
+					wrapper.find(".filter-item").not(".d-none").remove();
+					if(activePerson > 0){
+						filters[activePerson] = sampleFilter;
+					}
+					$(".filter-btn.active").removeClass("active");
 				}
 				else if(!val) {}
-				else if($(this).hasClass("active")){
-					let i = filters[activePerson].findIndex(filter => filter == val);
-					filtersChanged(i);
-					return; 
+				else if(ele.hasClass('active')){
+					console.log("removeFilter");
+					ele.removeClass("active");
+					wrapper.find('.filter-item[data-type=lesson]').remove();
+					filters[activePerson].lesson = "";
 				}
 				else{
-					filters[activePerson].push(val);
-					filtersChanged(-1);
+					$(".filter-btn").removeClass("active");
+					ele.addClass('active');
+					filters[activePerson].lesson = val;
+					wrapper.find('.filter-item[data-type=lesson]').remove();
+					filterEle = wrapper.find(".filter-item.d-none").clone();
+					filterEle.attr('data-type', 'lesson')
+					filterEle.removeClass("d-none");
+					filterEle.find("span.filter-name").html("Type: "+val);
+					filterEle.appendTo(wrapper);
 				}
-				
 			});
-
-			wrapper.on("click", ".remove-filter.cursor-pointer", function(){
-				let i = $(this).parents('.drop-down').find(".remove-filter.cursor-pointer").index(this);
-				let value = filters[active][i];
-					filters['active'].splice(i, 1);
-					$("[data-val="+value+"]").removeClass("active");
-					wrapper.find(".filter-item").eq(i).remove();
+			$(".dropDown.drop-down__button").click(function(e){
+				$('.drop-down').removeClass('active');
+				$(this).parents('.drop-down').addClass('active');
+				activePerson = $(".dropDown.drop-down__button").index(this);
+				wrapper = $(".drop-down.active .filter-wrapper");
+				if(Object.keys(filters[activePerson]).length == 0){
+					filters[activePerson] = sampleFilter;
+				}
+				console.log(filters);
+				console.log(filters[activePerson]);
+				$(".filter-btn").removeClass('active');
+				$(".filter-btn[data-val='"+filters[activePerson].lesson+"']").addClass("active")
+				$("#amount").val(filters[activePerson].price);
+				let prices = filters[activePerson].price.split(" - ");
+				$("#slider-range").slider("values", 0, prices[0].replace("$", ""));
+				$("#slider-range").slider("values", 1, prices[1].replace("$", ""));
 			});
-
-			function filtersChanged(i){
-				let ele = wrapper.find(".filter-item.d-none").clone();
-				if(i < 0){
-					let value = filters[active][filters.length-1];
-
-					$("[data-val="+value+"]").addClass("active");
-					ele.removeClass("d-none");
-					ele.find("span.filter-name").html(value);
-					// $("<i/>").addClass("fa fa-times ml-1 remove-filter cursor-pointer").appendTo(ele);
-					ele.appendTo(wrapper);
-				}
-				else{
-					let value = filters[i];
-					filters.splice(i, 1);
-					$("[data-val="+value+"]").removeClass("active");
-					wrapper.find(".filter-item").eq(i).remove();
-				}
-			}
-			function filterReset(){
-				$(".filter-wrapper .filter-item").not(".d-none").remove();
-				filters = [
-					{}, {}, {}
-				];
-				$(".filter-btn.active").removeClass("active");
-			}
-		})
-
-		// Persons working
-		$(".dropDown.drop-down__button").hover((e) => {
-			// drop-down active drop-down--active
-			$(e.target).parents('.drop-down').addClass('drop-down--active');
-		}, (e) => {
-			$(e.target).parents('.drop-down').removeClass('drop-down--active');
 		});
-		$(".dropDown.drop-down__button").click(function(e){
-			$('.drop-down').removeClass('active');
-			$(this).parents('.drop-down').addClass('active');
-			activePerson = $(".dropDown.drop-down__button").index(this);
-			let wrapper = $(".drop-down.active .filter-wrapper");
-		});	
 
 	</script>
 	<script>
