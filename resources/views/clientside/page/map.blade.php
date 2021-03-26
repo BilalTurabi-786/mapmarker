@@ -799,40 +799,43 @@
 
 			console.clear();
 			// Filter Working
-			let sampleFilter = {
-				"lesson": "",
-				"duration": "March 2010 - January 2021",
-				"price": "$130 - $250",
-				"pricePerHour": "$130 - $250",
-				"studentTeacherRatio": "130 - 250",
-				"association": ["all"],
-				"handicap": ["no"],
-				"children": ["no"],
-				"storage": {
-					"duration": ["all"],
-					"pricePerDay": "$0 - $200"
-				},
-				"rental": {
-					"rentalPerPerson": [],
-					"duration": ["all"],
-					"pricePerHour": "$0 - $200"
-				},
-				"lessons": {
-					"studentTeacherRatio": "1 - 10",
-					"duration": "Days1 - Days10",
-					"courseHours": "0 - 40",
-					"pricePerTeachingHours": "$0 - $200",
-				},
-				"camp": {
-					"studentTeacherRatio": "1 - 10",
-					"duration": "Days1 - Days10",
-					"courseHours": "0 - 40",
-					"pricePerTeachingHours": "$0 - $200",
-				},
-				"courseLevel": "all"
+			let sampleFilter = () => {
+				let obj = {
+					"lesson": "",
+					"duration": "March 2010 - January 2021",
+					"price": "$130 - $250",
+					"pricePerHour": "$130 - $250",
+					"studentTeacherRatio": "130 - 250",
+					"association": ["all"],
+					"handicap": ["no"],
+					"children": ["no"],
+					"storage": {
+						"duration": ["all"],
+						"pricePerDay": "$0 - $200"
+					},
+					"rental": {
+						"rentalPerPerson": [],
+						"duration": ["all"],
+						"pricePerHour": "$0 - $200"
+					},
+					"lessons": {
+						"studentTeacherRatio": "1 - 10",
+						"duration": "Days1 - Days10",
+						"courseHours": "0 - 40",
+						"pricePerTeachingHours": "$0 - $200",
+					},
+					"camp": {
+						"studentTeacherRatio": "1 - 10",
+						"duration": "Days1 - Days10",
+						"courseHours": "0 - 40",
+						"pricePerTeachingHours": "$0 - $200",
+					},
+					"courseLevel": "all"
+				}
+				return obj;
 			};
 			let filters = [
-				sampleFilter, {}, {}
+				sampleFilter(), {}, {}
 			]
 			let wrapper = $(".drop-down.active .filter-wrapper");
 			let activePerson = 0;
@@ -880,7 +883,7 @@
 					// console.log("reset");
 					wrapper.find(".filter-item").not(".d-none").remove();
 					if(activePerson > 0){
-						filters[activePerson] = sampleFilter;
+						filters[activePerson] = sampleFilter();
 					}
 					$(".filter-btn.active").removeClass("active");
 				}
@@ -909,7 +912,7 @@
 				activePerson = $(".dropDown.drop-down__button").index(this);
 				wrapper = $(".drop-down.active .filter-wrapper");
 				if(Object.keys(filters[activePerson]).length == 0){
-					filters[activePerson] = sampleFilter;
+					filters[activePerson] = sampleFilter();
 				}
 				console.log(filters);
 				console.log(filters[activePerson]);
