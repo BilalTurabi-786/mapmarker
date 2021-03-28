@@ -914,17 +914,33 @@
 				if(Object.keys(filters[activePerson]).length == 0){
 					filters[activePerson] = sampleFilter();
 				}
-				console.log(filters);
-				console.log(filters[activePerson]);
+				// console.log(filters);
+				// console.log(filters[activePerson]);
+				// Filter Btn
 				$(".filter-btn").removeClass('active');
-				$(".filter-btn[data-val='"+filters[activePerson].lesson+"']").addClass("active")
+				if(filters[activePerson].lesson != ""){
+					$(".filter-btn[data-val='"+filters[activePerson].lesson+"']").addClass("active");
+				}
+				// Duration Slider
+				$("#amount10").val(filters[activePerson].duration);
+				let durations = filters[activePerson].duration.split("-");
+				console.log(durations[0]);
+				durations[0] = durations[0].split(" ");
+				$("#slider-range10").slider("values", 0, Math.round(new Date(durations[0][1], getMonthFromString(durations[0][0])).getTime()/1000));
+				durations[1] = durations[1].split(" ");
+				console.log(Math.round(new Date(durations[1][1], getMonthFromString(durations[1][0])).getTime()/1000));
+				$("#slider-range10").slider("values", 1, Math.round(new Date(durations[1][1], getMonthFromString(durations[1][0])).getTime()/1000));
+				// Price Slider
 				$("#amount").val(filters[activePerson].price);
 				let prices = filters[activePerson].price.split(" - ");
 				$("#slider-range").slider("values", 0, prices[0].replace("$", ""));
 				$("#slider-range").slider("values", 1, prices[1].replace("$", ""));
 			});
+			// $(".dropDown.drop-down__button").eq(0).trigger("click")
+			function getMonthFromString(mon){
+				return new Date(Date.parse(mon +" 1, 2012")).getMonth()+1
+			}
 		});
-
 	</script>
 	<script>
 		$(document).ready(function(){
