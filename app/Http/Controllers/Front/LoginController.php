@@ -27,18 +27,15 @@ class LoginController extends Controller
         return view('clientside.page.login');
     }
     
-
-    
-    
     function login_process(Request $req)
     {
-       
 
         $controlls=$req->all();
         
         $rules=array(
             'email'=>"required|max:50|exists:contact_us,email",
-            'password'=>"required");
+            'password'=>"required"
+        );
   
         $validator=Validator::make($controlls,$rules);
         if ($validator->fails()) {
@@ -46,40 +43,37 @@ class LoginController extends Controller
             return redirect()->back()->withErrors($validator)->withInput($controlls);
             
         }
-       else
-       {
+        else
+        {
            
             $credientials=['email'=>$req->email,'password'=>$req->password]; 
+            // dd($credientials);
             if (!Auth::guard('contact')->attempt($credientials)) 
             {
-               
-              return redirect()->route('login')->withErrors(['error'=>"Invalid Credientials"]);
+                return redirect()->route('login')->withErrors(['error'=>"Invalid Credientials"]);
             }
             else
             {
-
-             return redirect()->route('/client/dashboard');    
+                return redirect()->route('/client/dashboard');    
             }
          
         }
-         
-       
        
     }
-       public function Logout()
-       {
-         
-           Auth::guard('contact')->logout();
-           return redirect()->route('login');         
-             
-       }
+    public function Logout()
+    {
+        
+        Auth::guard('contact')->logout();
+        return redirect()->route('login');         
+            
+    }
 
-      public function profile(){
-          return view('clientside.page.profile');
-      }
+    public function profile(){
+        return view('clientside.page.profile');
+    }
    
-       function updateProfile(Request $req)
-       {
+    function updateProfile(Request $req)
+    {
         
         
         $hashedPassword = Auth::user()->password;

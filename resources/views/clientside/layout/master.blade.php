@@ -286,6 +286,12 @@ function closeFullscreen() {
     document.msExitFullscreen();
   }
 }
+
+$(document).ready(function(){
+  $(document).on('click','.dropDown',function(){
+    $(this).closest('.drop-down').toggleClass('drop-down--active');
+  });
+});
 	</script>
 	@yield('scripts')
 	
