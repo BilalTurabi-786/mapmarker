@@ -388,14 +388,14 @@
 	<div class="row">
 		<!-- map block
         ================================================== -->
-        <div class="col-md-7 map-wrapper">
+        <div class="col-md-2 map-wrapper">
             <div id="map" data-map-zoom="9"></div>
         </div>
         <!-- End map block -->
 
         <!-- explore-module
         ================================================== -->
-        <section class="col-md-5 explore">
+        <section class="col-md-8 explore">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12">
