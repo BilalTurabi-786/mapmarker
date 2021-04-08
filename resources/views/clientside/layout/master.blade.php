@@ -15,7 +15,8 @@
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 	<link rel="stylesheet" type="text/css" href="css/chosen.min.css">
 
-
+    @livewireStyles
+    @livewireScripts
 </head>
 <body class="element" id="element">
 
@@ -23,12 +24,12 @@
 	<div id="container">
 		@include('clientside.layout.header')
 
-		@yield('content')	
+		@yield('content')
 		@include('clientside.layout.footer')
 
 	</div>
 	<!-- End Container -->
-	
+
 	<script src="js/jquery.min.js"></script>
 	<script src="js/jquery.migrate.js"></script>
 	<!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA4gPr8l64tU0pr14seWWK5BZiWb0-FC3k"></script> -->
@@ -46,7 +47,7 @@
 		$(function() {
 			//price
 			$( "#slider-range" ).slider({
-				range: true, 
+				range: true,
 				min: 130,
 				max: 500,
 				values: [ 130, 250 ],
@@ -70,169 +71,169 @@
 	$( "#amount1" ).val( "$" + $( "#slider-range2" ).slider( "values", 0 ) +
 		" - $" + $( "#slider-range2" ).slider( "values", 1 ) );
 
-//duration
-function formatDate(date) {
-	var monthNames = [
-	"January", "February", "March",
-	"April", "May", "June", "July",
-	"August", "September", "October",
-	"November", "December"
-	];
+    //duration
+    function formatDate(date) {
+        var monthNames = [
+        "January", "February", "March",
+        "April", "May", "June", "July",
+        "August", "September", "October",
+        "November", "December"
+        ];
 
-	var monthIndex = date.getMonth();
-	var year = date.getFullYear();
+        var monthIndex = date.getMonth();
+        var year = date.getFullYear();
 
-	return monthNames[monthIndex] + ' ' + year;
-}
-$( "#slider-range3" ).slider({
-	range: true,
-	min: new Date('2010-01-01T00:00:00').getTime(),
-	max: new Date('2021-01-01T00:00:00').getTime(),
-	step: 86400000,
-	values: [ new Date('2010-03-01T00:00:00').getTime(), new Date('2021-01-01T00:00:00').getTime() ],
-	slide: function( event, ui ) {
-		$( "#amount3" ).val( formatDate(new Date(ui.values[0])) + '-' + formatDate(new Date(ui.values[1])) );
-	}
-});
-$( "#amount3" ).val( formatDate((new Date($( "#slider-range3" ).slider( "values", 0 )))) +
-	" - " + formatDate((new Date($( "#slider-range3" ).slider( "values", 1 )))));
+        return monthNames[monthIndex] + ' ' + year;
+    }
+    $( "#slider-range3" ).slider({
+        range: true,
+        min: new Date('2010-01-01T00:00:00').getTime(),
+        max: new Date('2021-01-01T00:00:00').getTime(),
+        step: 86400000,
+        values: [ new Date('2010-03-01T00:00:00').getTime(), new Date('2021-01-01T00:00:00').getTime() ],
+        slide: function( event, ui ) {
+            $( "#amount3" ).val( formatDate(new Date(ui.values[0])) + '-' + formatDate(new Date(ui.values[1])) );
+        }
+    });
+    $( "#amount3" ).val( formatDate((new Date($( "#slider-range3" ).slider( "values", 0 )))) +
+        " - " + formatDate((new Date($( "#slider-range3" ).slider( "values", 1 )))));
 
-// Ratio Student Teacher
-$( "#slider-range4" ).slider({
-	range: true,
-	min: 1,
-	max: 10,
-	values: [ 1, 10 ],
-	slide: function( event, ui ) {
-		$( "#amount4" ).val( ui.values[ 0 ] +  ui.values[ 1 ] );
-	}
-});
-$( "#amount4" ).val(  $( "#slider-range4" ).slider( "values", 0 ) +
-	" - " + $( "#slider-range4" ).slider( "values", 1 ) );
+    // Ratio Student Teacher
+    $( "#slider-range4" ).slider({
+        range: true,
+        min: 1,
+        max: 10,
+        values: [ 1, 10 ],
+        slide: function( event, ui ) {
+            $( "#amount4" ).val( ui.values[ 0 ] +  ui.values[ 1 ] );
+        }
+    });
+    $( "#amount4" ).val(  $( "#slider-range4" ).slider( "values", 0 ) +
+        " - " + $( "#slider-range4" ).slider( "values", 1 ) );
 
-//Days Duration
-$( "#slider-range5" ).slider({
-	range: true,
-	min: 1,
-	max: 10,
-	values: [ 1, 10 ],
-	slide: function( event, ui ) {
-		$( "#amount5" ).val( "Days" + ui.values[ 0 ] + " - " + ui.values[ 1 ] );
-	}
-});
-$( "#amount5" ).val( "Days" + $( "#slider-range5" ).slider( "values", 0 ) +
-	" - Days" + $( "#slider-range5" ).slider( "values", 1 ) );
+    //Days Duration
+    $( "#slider-range5" ).slider({
+        range: true,
+        min: 1,
+        max: 10,
+        values: [ 1, 10 ],
+        slide: function( event, ui ) {
+            $( "#amount5" ).val( "Days" + ui.values[ 0 ] + " - " + ui.values[ 1 ] );
+        }
+    });
+    $( "#amount5" ).val( "Days" + $( "#slider-range5" ).slider( "values", 0 ) +
+        " - Days" + $( "#slider-range5" ).slider( "values", 1 ) );
 
-// Hour Selection
-$( "#slider-range6" ).slider({
-	range: true,
-	min: 0,
-	max: 40,
-	values: [ 0, 40 ],
-	slide: function( event, ui ) {
-		$( "#amount6" ).val(  ui.values[ 0 ] + " - " + ui.values[ 1 ] );
-	}
-});
-$( "#amount6" ).val(  $( "#slider-range6" ).slider( "values", 0 ) +
-	" - Hour" + $( "#slider-range6" ).slider( "values", 1 ) );
+    // Hour Selection
+    $( "#slider-range6" ).slider({
+        range: true,
+        min: 0,
+        max: 40,
+        values: [ 0, 40 ],
+        slide: function( event, ui ) {
+            $( "#amount6" ).val(  ui.values[ 0 ] + " - " + ui.values[ 1 ] );
+        }
+    });
+    $( "#amount6" ).val(  $( "#slider-range6" ).slider( "values", 0 ) +
+        " - Hour" + $( "#slider-range6" ).slider( "values", 1 ) );
 
-// price per teaching hour
-$( "#slider-range7" ).slider({
-	range: true,
-	min: 0,
-	max: 200,
-	values: [ 0, 200 ],
-	slide: function( event, ui ) {
-		$( "#amount7" ).val(  ui.values[ 0 ] + " - " + ui.values[ 1 ] );
-	}
-});
-$( "#amount7" ).val(  $( "#slider-range7" ).slider( "values", 0 ) +
-	" -" + $( "#slider-range7" ).slider( "values", 1 ) );
+    // price per teaching hour
+    $( "#slider-range7" ).slider({
+        range: true,
+        min: 0,
+        max: 200,
+        values: [ 0, 200 ],
+        slide: function( event, ui ) {
+            $( "#amount7" ).val(  ui.values[ 0 ] + " - " + ui.values[ 1 ] );
+        }
+    });
+    $( "#amount7" ).val(  $( "#slider-range7" ).slider( "values", 0 ) +
+        " -" + $( "#slider-range7" ).slider( "values", 1 ) );
 
-//price per hour rental
-$( "#slider-range8" ).slider({
-	range: true,
-	min: 0,
-	max: 200,
-	values: [ 0, 200 ],
-	slide: function( event, ui ) {
-		$( "#amount8" ).val(  ui.values[ 0 ] + " - " + ui.values[ 1 ] );
-	}
-});
-$( "#amount8" ).val(  $( "#slider-range8" ).slider( "values", 0 ) +
-	" -" + $( "#slider-range8" ).slider( "values", 1 ) );
-
-
-// price per day last filter
-
-$( "#slider-range9" ).slider({
-	range: true,
-	min: 0,
-	max: 200,
-	values: [ 0, 200 ],
-	slide: function( event, ui ) {
-		$( "#amount9" ).val(  ui.values[ 0 ] + " - " + ui.values[ 1 ] );
-	}
-});
-$( "#amount9" ).val(  $( "#slider-range9" ).slider( "values", 0 ) +
-	" -" + $( "#slider-range9" ).slider( "values", 1 ) );
-
-//Brand Slider
+    //price per hour rental
+    $( "#slider-range8" ).slider({
+        range: true,
+        min: 0,
+        max: 200,
+        values: [ 0, 200 ],
+        slide: function( event, ui ) {
+            $( "#amount8" ).val(  ui.values[ 0 ] + " - " + ui.values[ 1 ] );
+        }
+    });
+    $( "#amount8" ).val(  $( "#slider-range8" ).slider( "values", 0 ) +
+        " -" + $( "#slider-range8" ).slider( "values", 1 ) );
 
 
-$('.customer-logos').slick({
-	slidesToShow: 6,
-	slidesToScroll: 1,
-	autoplay: true,
-	autoplaySpeed: 1500,
-	arrows: false,
-	dots: false,
-	pauseOnHover: false,
-	responsive: [{
-		breakpoint: 768,
-		settings: {
-			slidesToShow: 4
-		}
-	}, {
-		breakpoint: 520,
-		settings: {
-			slidesToShow: 3
-		}
-	}]
-});
+    // price per day last filter
+
+    $( "#slider-range9" ).slider({
+        range: true,
+        min: 0,
+        max: 200,
+        values: [ 0, 200 ],
+        slide: function( event, ui ) {
+            $( "#amount9" ).val(  ui.values[ 0 ] + " - " + ui.values[ 1 ] );
+        }
+    });
+    $( "#amount9" ).val(  $( "#slider-range9" ).slider( "values", 0 ) +
+        " -" + $( "#slider-range9" ).slider( "values", 1 ) );
+
+    //Brand Slider
+
+
+    $('.customer-logos').slick({
+        slidesToShow: 6,
+        slidesToScroll: 1,
+        autoplay: true,
+        autoplaySpeed: 1500,
+        arrows: false,
+        dots: false,
+        pauseOnHover: false,
+        responsive: [{
+            breakpoint: 768,
+            settings: {
+                slidesToShow: 4
+            }
+        }, {
+            breakpoint: 520,
+            settings: {
+                slidesToShow: 3
+            }
+        }]
+    });
 
 
 
-});
-function formatDate10(date) {
-	var monthNames = [
-	"January", "February", "March",
-	"April", "May", "June", "July",
-	"August", "September", "October",
-	"November", "December"
-	];
+    });
+    function formatDate10(date) {
+        var monthNames = [
+        "January", "February", "March",
+        "April", "May", "June", "July",
+        "August", "September", "October",
+        "November", "December"
+        ];
 
-	var monthIndex = date.getMonth();
-	var year = date.getFullYear();
+        var monthIndex = date.getMonth();
+        var year = date.getFullYear();
 
-	return monthNames[monthIndex] + ' ' + year;
-}
-$( "#slider-range10" ).slider({
-	range: true,
-	min: new Date('2010-01-01T00:00:00').getTime(),
-	max: new Date('2021-01-01T00:00:00').getTime(),
-	step: 86400000,
-	values: [ new Date('2010-03-01T00:00:00').getTime(), new Date('2021-01-01T00:00:00').getTime() ],
-	slide: function( event, ui ) {
-		$( "#amount10" ).val( formatDate10(new Date(ui.values[0])) + '-' + formatDate10(new Date(ui.values[1])) );
-	}
-});
-$( "#amount10" ).val( formatDate10((new Date($( "#slider-range10" ).slider( "values", 0 )))) +
-	" - " + formatDate10((new Date($( "#slider-range10" ).slider( "values", 1 )))));
+        return monthNames[monthIndex] + ' ' + year;
+    }
+    $( "#slider-range10" ).slider({
+        range: true,
+        min: new Date('2010-01-01T00:00:00').getTime(),
+        max: new Date('2021-01-01T00:00:00').getTime(),
+        step: 86400000,
+        values: [ new Date('2010-03-01T00:00:00').getTime(), new Date('2021-01-01T00:00:00').getTime() ],
+        slide: function( event, ui ) {
+            $( "#amount10" ).val( formatDate10(new Date(ui.values[0])) + '-' + formatDate10(new Date(ui.values[1])) );
+        }
+    });
+    $( "#amount10" ).val( formatDate10((new Date($( "#slider-range10" ).slider( "values", 0 )))) +
+        " - " + formatDate10((new Date($( "#slider-range10" ).slider( "values", 1 )))));
 
-		
-$( "#slider-range11" ).slider({
-				range: true, 
+
+            $( "#slider-range11" ).slider({
+				range: true,
 				min: 130,
 				max: 500,
 				values: [ 130, 250 ],
@@ -243,8 +244,8 @@ $( "#slider-range11" ).slider({
 			$( "#amount11" ).val( "$" + $( "#slider-range11" ).slider( "values", 0 ) +
 				" - $" + $( "#slider-range11" ).slider( "values", 1 ) );
 
-$( "#slider-range12" ).slider({
-				range: true, 
+            $( "#slider-range12" ).slider({
+				range: true,
 				min: 130,
 				max: 500,
 				values: [ 130, 250 ],
@@ -263,37 +264,38 @@ $( "#slider-range12" ).slider({
 			$('.js-example-basic-multiple').select2();
 		});
 		function openFullscreen() {
-  if (elem.requestFullscreen) {
-    elem.requestFullscreen();
-  } else if (elem.mozRequestFullScreen) { /* Firefox */
-    elem.mozRequestFullScreen();
-  } else if (elem.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
-    elem.webkitRequestFullscreen();
-  } else if (elem.msRequestFullscreen) { /* IE/Edge */
-    elem.msRequestFullscreen();
-  }
-}
+            if (elem.requestFullscreen) {
+                elem.requestFullscreen();
+            } else if (elem.mozRequestFullScreen) { /* Firefox */
+                elem.mozRequestFullScreen();
+            } else if (elem.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
+                elem.webkitRequestFullscreen();
+            } else if (elem.msRequestFullscreen) { /* IE/Edge */
+                elem.msRequestFullscreen();
+            }
+        }
 
 
-function closeFullscreen() {
-  if (document.exitFullscreen) {
-    document.exitFullscreen();
-  } else if (document.mozCancelFullScreen) { /* Firefox */
-    document.mozCancelFullScreen();
-  } else if (document.webkitExitFullscreen) { /* Chrome, Safari and Opera */
-    document.webkitExitFullscreen();
-  } else if (document.msExitFullscreen) { /* IE/Edge */
-    document.msExitFullscreen();
-  }
-}
+        function closeFullscreen() {
+            if (document.exitFullscreen) {
+                document.exitFullscreen();
+            } else if (document.mozCancelFullScreen) { /* Firefox */
+                document.mozCancelFullScreen();
+            } else if (document.webkitExitFullscreen) { /* Chrome, Safari and Opera */
+                document.webkitExitFullscreen();
+            } else if (document.msExitFullscreen) { /* IE/Edge */
+                document.msExitFullscreen();
+            }
+        }
 
-$(document).ready(function(){
-  $(document).on('click','.dropDown',function(){
-    $(this).closest('.drop-down').toggleClass('drop-down--active');
-  });
-});
+        $(document).ready(function(){
+            // $(document).on('click','.dropDown',function(){
+            //     $(this).closest('.drop-down').toggleClass('drop-down--active');
+            // });
+        });
 	</script>
 	@yield('scripts')
-	
+	@stack('scripts')
+
 </body>
 </html>

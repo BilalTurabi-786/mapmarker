@@ -11,7 +11,8 @@ class HomeController extends Controller
     //
     public function index(){
         $filters=Filter::all();
-        return view('clientside.page.map',['filters'=>$filters]);
+        // return view('clientside.page.map',['filters'=>$filters]);
+        return view('clientside.page.map-new',['filters'=>$filters]);
 
     }
 }
