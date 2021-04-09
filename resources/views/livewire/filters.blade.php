@@ -440,5 +440,9 @@
             let ele = $(e.target).siblings('.range-value').find('input');
             @this.set("persons."+@this.activePerson+".price", ele.val());
         });
+        $("#slider-range10").on("slidestop", (e, ui) => {
+            let ele = $(e.target).siblings('.range-value').find('input');
+            @this.set("persons."+@this.activePerson+".duration", ele.val());
+        });
     </script>
 @endpush
