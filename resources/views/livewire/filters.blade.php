@@ -20,7 +20,24 @@
 
                             @foreach ($persons[0] as $item => $value)
 
-                                @if (is_array($value)) @continue @endif
+                                @if (is_array($value))
+                                    @if(in_array($item, ["storage", "rental"])) @continue @endif
+
+                                    @foreach ($value as $index => $val)
+                                        @if (empty($val)) @continue @endif
+
+                                        @if ($val == $sample[$item][0]) @continue @endif
+
+                                        <li class="filter-item drop-down__item">
+
+                                            <span class="filter-name">{{ $item." ".$loop->iteration.": ".$val }}</span>
+                                            <i class="fa fa-times ml-1 remove-filter cursor-pointer float-right" wire:click="resetFilter('{{$item}}', '{{$index}}')"></i>
+
+                                        </li>
+                                    @endforeach
+
+                                    @continue
+                                @endif
 
                                 @if (empty($value)) @continue @endif
 
@@ -28,7 +45,7 @@
 
                                 <li class="filter-item drop-down__item">
 
-                                    <span class="filter-name">{{ $item.": ".$value }}</span><i class="fa fa-times ml-1 remove-filter cursor-pointer" wire:click="resetFilter('{{$item}}')"></i>
+                                    <span class="filter-name">{{ $item.": ".$value }}</span><i class="fa fa-times ml-1 remove-filter cursor-pointer float-right" wire:click="resetFilter('{{$item}}')"></i>
 
                                 </li>
 
@@ -64,7 +81,20 @@
 
                             @foreach ($persons[1] as $item => $value)
 
-                                @if (is_array($value)) @continue @endif
+                                @if (is_array($value))
+                                    @if(in_array($item, ["storage", "rental"])) @continue @endif
+
+                                    @foreach ($value as $index => $val)
+                                        <li class="filter-item drop-down__item">
+
+                                            <span class="filter-name">{{ $item." ".$loop->iteration.": ".$val }}</span>
+                                            <i class="fa fa-times ml-1 remove-filter cursor-pointer float-right" wire:click="resetFilter('{{$item}}')"></i>
+
+                                        </li>
+                                    @endforeach
+
+                                    @continue
+                                @endif
 
                                 @if (empty($value)) @continue @endif
 
@@ -72,7 +102,7 @@
 
                                 <li class="filter-item drop-down__item">
 
-                                    <span class="filter-name">{{ $item.": ".$value }}</span><i class="fa fa-times ml-1 remove-filter cursor-pointer" wire:click="resetFilter('{{$item}}')"></i>
+                                    <span class="filter-name">{{ $item.": ".$value }}</span><i class="fa fa-times ml-1 remove-filter cursor-pointer float-right" wire:click="resetFilter('{{$item}}')"></i>
 
                                 </li>
 
@@ -102,13 +132,27 @@
 
 
 
-                    <div class="drop-down__menu-box">
+                    <div class="drop-down__menu-box third-person">
 
                         <ul class="drop-down__menu filter-wrapper">
 
                             @foreach ($persons[2] as $item => $value)
 
-                                @if (is_array($value)) @continue @endif
+                                @if (is_array($value))
+                                    @if(in_array($item, ["storage", "rental"])) @continue @endif
+
+                                    @foreach ($value as $index => $val)
+
+                                        <li class="filter-item drop-down__item">
+
+                                            <span class="filter-name">{{ $item." ".$loop->iteration.": ".$val }}</span>
+                                            <i class="fa fa-times ml-1 remove-filter cursor-pointer float-right" wire:click="resetFilter('{{$item}}')"></i>
+
+                                        </li>
+                                    @endforeach
+
+                                    @continue
+                                @endif
 
                                 @if (empty($value)) @continue @endif
 
@@ -116,7 +160,7 @@
 
                                 <li class="filter-item drop-down__item">
 
-                                    <span class="filter-name">{{ $item.": ".$value }}</span><i class="fa fa-times ml-1 remove-filter cursor-pointer" wire:click="resetFilter('{{$item}}')"></i>
+                                    <span class="filter-name">{{ $item.": ".$value }}</span><i class="fa fa-times ml-1 remove-filter cursor-pointer float-right" wire:click="resetFilter('{{$item}}')"></i>
 
                                 </li>
 
@@ -403,6 +447,9 @@
                     this.setStudentTeacherRatio();
                     this.setPricePerHour();
                     this.setCourseLevel();
+                    this.setChildren();
+                    this.setHandicap();
+                    this.setAssociation();
 
                     return this.ddToggle[key]
 
@@ -467,7 +514,31 @@
                 setCourseLevel(){
                     let courseLevel = this.persons[this.activePerson]["courseLevel"];
                     $("[name^=course_level]").prop("checked", false);
-                    $("[name^=course_level][value="+courseLevel+"]").prop("checked", true);
+                    $("[name^=course_level][value='"+courseLevel+"']").prop("checked", true);
+                },
+
+                setChildren(){
+                    let children = this.persons[this.activePerson]["children"];
+                    $("[name^=child]").prop("checked", false);
+                    children.forEach(child => {
+                        $("[name^=child][value='"+child+"']").prop("checked",true);
+                    });
+                },
+
+                setHandicap(){
+                    let handicaps = this.persons[this.activePerson]["handicap"];
+                    $("[name^=handicap]").prop("checked", false);
+                    handicaps.forEach(handicap => {
+                        $("[name^=handicap][value='"+handicap+"']").prop("checked", true);
+                    });
+                },
+
+                setAssociation(){
+                    let associations = this.persons[this.activePerson]["association"];
+                    $("[name^=association]").prop("checked", false);
+                    associations.forEach(association => {
+                        $("[name^=association][value='"+association+"']").prop("checked", true);
+                    });
                 },
 
                 showPersons() {
@@ -512,14 +583,29 @@
             let ele = $(e.target).siblings('.range-value').find('input');
 
             @this.set("persons."+@this.activePerson+".pricePerHour", ele.val());
-            
+
         });
-        
+
         $("[name^=course_level]").change((e) => {
             let ele = $(e.target);
             if(ele.is(":checked")){
                 @this.set("persons."+@this.activePerson+".courseLevel", ele.val());
             }
+        });
+
+        $("[name^=child]").change((e) => {
+            let ele = $(e.target);
+            @this.setChildren(ele.val(), ele.is(":checked"));
+        });
+
+        $("[name^=association]").change((e) => {
+            let ele = $(e.target);
+            @this.setAssociation(ele.val(), ele.is(":checked"));
+        });
+
+        $("[name^=handicap]").change((e) => {
+            let ele = $(e.target);
+            @this.setHandicap(ele.val(), ele.is(":checked"));
         });
 
     </script>

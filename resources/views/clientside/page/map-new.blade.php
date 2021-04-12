@@ -620,28 +620,25 @@
 
 		.drop-down__menu-box:before{
 
-		content:'';
+            content:'';
 
-		background-color: transparent;
+            background-color: transparent;
 
-		border-right: 8px solid transparent;
+            border-right: 8px solid transparent;
 
-		position: absolute;
+            position: absolute;
 
-		border-left: 8px solid transparent;
+            border-left: 8px solid transparent;
 
-		border-bottom: 8px solid #fff;
+            border-bottom: 8px solid #fff;
 
-		border-top: 8px solid transparent;
+            border-top: 8px solid transparent;
 
-		top: -15px;
+            top: -15px;
 
-		right: 18px;
-
-
+            left: 22px;
 
 		}
-
 
 
 		.drop-down__menu-box:after{
@@ -734,7 +731,7 @@
 
 			z-index: 999;
 
-			width: 100%;
+			width: 300px;
 
 		}
 
@@ -771,6 +768,17 @@
 		}
 
 	</style>
+
+    <style>
+
+        .drop-down__menu-box.third-person{
+            right: -14px;
+            left: -156px;
+        }
+        .drop-down__menu-box.third-person:before{
+            left: 190px
+        }
+    </style>
 
 	<div class="row">
 
@@ -1019,7 +1027,7 @@
 			// 		});
 
 			//      }
-			
+
 			$.ajax({
 
 				url:"{{route('get-markers')}}",
@@ -1081,7 +1089,7 @@
 				}
 
 			})
-			
+
 		}
 
 
@@ -2868,7 +2876,7 @@
 
 	<!-- rental -->
 
-	<!-- rental -->
+	<!-- Association -->
 
 	<div class="modal fade" id="Association" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 
@@ -2904,7 +2912,7 @@
 
 									<li>
 
-										<input class="explore__input-checkbox" type="checkbox" name="open-check" id="open-check"/>
+										<input class="explore__input-checkbox" type="checkbox" name="association[]" id="association" value="All" />
 
 										<span class="explore__checkbox-style"></span>
 
@@ -2914,7 +2922,7 @@
 
 									<li>
 
-										<input class="explore__input-checkbox" type="checkbox" name="open-check" id="open-check"/>
+										<input class="explore__input-checkbox" type="checkbox" name="association[]" id="association" value="IKO" />
 
 										<span class="explore__checkbox-style"></span>
 
@@ -2924,7 +2932,7 @@
 
 									<li>
 
-										<input class="explore__input-checkbox" type="checkbox" name="open-check" id="open-check"/>
+										<input class="explore__input-checkbox" type="checkbox" name="association[]" id="association" value="VDWS" />
 
 										<span class="explore__checkbox-style"></span>
 
@@ -2934,7 +2942,7 @@
 
 									<li>
 
-										<input class="explore__input-checkbox" type="checkbox" name="open-check" id="open-check"/>
+										<input class="explore__input-checkbox" type="checkbox" name="association[]" id="association" value="No Association" />
 
 										<span class="explore__checkbox-style"></span>
 
@@ -2963,6 +2971,8 @@
 		</div>
 
 	</div>
+
+	<!-- Handicap -->
 
 	<div class="modal fade" id="Handicap" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 
@@ -2998,7 +3008,7 @@
 
 									<li>
 
-										<input class="explore__input-checkbox" type="checkbox" name="open-check" id="open-check"/>
+										<input class="explore__input-checkbox" type="checkbox" name="handicap[]" id="handicap" value="No" />
 
 										<span class="explore__checkbox-style"></span>
 
@@ -3008,7 +3018,7 @@
 
 									<li>
 
-										<input class="explore__input-checkbox" type="checkbox" name="open-check" id="open-check"/>
+										<input class="explore__input-checkbox" type="checkbox" name="handicap[]" id="handicap" value="Blind" />
 
 										<span class="explore__checkbox-style"></span>
 
@@ -3018,7 +3028,7 @@
 
 									<li>
 
-										<input class="explore__input-checkbox" type="checkbox" name="open-check" id="open-check"/>
+										<input class="explore__input-checkbox" type="checkbox" name="handicap[]" id="handicap" value="Deaf" />
 
 										<span class="explore__checkbox-style"></span>
 
@@ -3028,7 +3038,7 @@
 
 									<li>
 
-										<input class="explore__input-checkbox" type="checkbox" name="open-check" id="open-check"/>
+										<input class="explore__input-checkbox" type="checkbox" name="handicap[]" id="handicap" value="Deaf/Mute" />
 
 										<span class="explore__checkbox-style"></span>
 
@@ -3038,7 +3048,7 @@
 
 									<li>
 
-										<input class="explore__input-checkbox" type="checkbox" name="open-check" id="open-check"/>
+										<input class="explore__input-checkbox" type="checkbox" name="handicap[]" id="handicap" value="Waist up" />
 
 										<span class="explore__checkbox-style"></span>
 
@@ -3048,7 +3058,7 @@
 
 									<li>
 
-										<input class="explore__input-checkbox" type="checkbox" name="open-check" id="open-check"/>
+										<input class="explore__input-checkbox" type="checkbox" name="handicap[]" id="handicap" value="Waist down" />
 
 										<span class="explore__checkbox-style"></span>
 
@@ -3077,6 +3087,8 @@
 		</div>
 
 	</div>
+
+	<!-- Children -->
 
 	<div class="modal fade" id="Childern" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 
@@ -3112,17 +3124,17 @@
 
 									<li>
 
-										<input class="explore__input-checkbox" type="checkbox" name="open-check" id="open-check"/>
+										<input class="explore__input-checkbox" type="checkbox" name="child[]" id="child" value="No" />
 
 										<span class="explore__checkbox-style"></span>
 
-										<span class="explore__checkbox-text">No (default)</span>
+										<span class="explore__checkbox-text">No (Default)</span>
 
 									</li>
 
 									<li>
 
-										<input class="explore__input-checkbox" type="checkbox" name="open-check" id="open-check"/>
+										<input class="explore__input-checkbox" type="checkbox" name="child[]" id="child" value="Age 5" />
 
 										<span class="explore__checkbox-style"></span>
 
@@ -3132,7 +3144,7 @@
 
 									<li>
 
-										<input class="explore__input-checkbox" type="checkbox" name="open-check" id="open-check"/>
+										<input class="explore__input-checkbox" type="checkbox" name="child[]" id="child" value="Age 6" />
 
 										<span class="explore__checkbox-style"></span>
 
@@ -3142,7 +3154,7 @@
 
 									<li>
 
-										<input class="explore__input-checkbox" type="checkbox" name="open-check" id="open-check"/>
+										<input class="explore__input-checkbox" type="checkbox" name="child[]" id="child" value="Age 7" />
 
 										<span class="explore__checkbox-style"></span>
 
@@ -3152,7 +3164,7 @@
 
 									<li>
 
-										<input class="explore__input-checkbox" type="checkbox" name="open-check" id="open-check"/>
+										<input class="explore__input-checkbox" type="checkbox" name="child[]" id="child" value="Age 8" />
 
 										<span class="explore__checkbox-style"></span>
 
@@ -3162,7 +3174,7 @@
 
 									<li>
 
-										<input class="explore__input-checkbox" type="checkbox" name="open-check" id="open-check"/>
+										<input class="explore__input-checkbox" type="checkbox" name="child[]" id="child" value="Age 9" />
 
 										<span class="explore__checkbox-style"></span>
 
@@ -3172,7 +3184,7 @@
 
 									<li>
 
-										<input class="explore__input-checkbox" type="checkbox" name="open-check" id="open-check"/>
+										<input class="explore__input-checkbox" type="checkbox" name="child[]" id="child" value="Age 10" />
 
 										<span class="explore__checkbox-style"></span>
 
@@ -3182,7 +3194,7 @@
 
 									<li>
 
-										<input class="explore__input-checkbox" type="checkbox" name="open-check" id="open-check"/>
+										<input class="explore__input-checkbox" type="checkbox" name="child[]" id="child" value="Age 11" />
 
 										<span class="explore__checkbox-style"></span>
 
@@ -3192,7 +3204,7 @@
 
 									<li>
 
-										<input class="explore__input-checkbox" type="checkbox" name="open-check" id="open-check"/>
+										<input class="explore__input-checkbox" type="checkbox" name="child[]" id="child" value="Age 12" />
 
 										<span class="explore__checkbox-style"></span>
 
@@ -3202,7 +3214,7 @@
 
 									<li>
 
-										<input class="explore__input-checkbox" type="checkbox" name="open-check" id="open-check"/>
+										<input class="explore__input-checkbox" type="checkbox" name="child[]" id="child" value="Age 13" />
 
 										<span class="explore__checkbox-style"></span>
 
@@ -3212,7 +3224,7 @@
 
 									<li>
 
-										<input class="explore__input-checkbox" type="checkbox" name="open-check" id="open-check"/>
+										<input class="explore__input-checkbox" type="checkbox" name="child[]" id="child" value="Age 14" />
 
 										<span class="explore__checkbox-style"></span>
 
@@ -3222,7 +3234,7 @@
 
 									<li>
 
-										<input class="explore__input-checkbox" type="checkbox" name="open-check" id="open-check"/>
+										<input class="explore__input-checkbox" type="checkbox" name="child[]" id="child" value="Age 15" />
 
 										<span class="explore__checkbox-style"></span>
 
@@ -3232,7 +3244,7 @@
 
 									<li>
 
-										<input class="explore__input-checkbox" type="checkbox" name="open-check" id="open-check"/>
+										<input class="explore__input-checkbox" type="checkbox" name="child[]" id="child" value="Age 16" />
 
 										<span class="explore__checkbox-style"></span>
 
@@ -3242,7 +3254,7 @@
 
 									<li>
 
-										<input class="explore__input-checkbox" type="checkbox" name="open-check" id="open-check"/>
+										<input class="explore__input-checkbox" type="checkbox" name="child[]" id="child" value="Age 17" />
 
 										<span class="explore__checkbox-style"></span>
 
@@ -3379,8 +3391,6 @@
 		</div>
 
 	</div>
-
-
 
 	<!-- Course Level -->
 

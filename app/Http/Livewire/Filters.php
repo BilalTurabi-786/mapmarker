@@ -17,21 +17,11 @@ class Filters extends Component
     public $sample, $persons, $activePerson, $toggle;
 
 
-
     public function render(){
 
         return view('livewire.filters');
 
     }
-
-
-
-    public function getTime($date){
-
-        return \Carbon\Carbon::parse('01 '.$date)->timestamp;
-
-    }
-
 
 
     public function addFilter($value){
@@ -52,14 +42,23 @@ class Filters extends Component
 
 
 
-    public function resetFilter($type, $childType = null){
+    public function resetFilter($type, $childType = null, $index = null){
 
-        if($childType != null){
-
-            $this->persons[$this->activePerson][$type][$childType] = $this->sample[$type][$childType];
-
-
-
+        if($childType != null && $index != null){
+            if(count($this->persons[$this->activePerson][$type][$childType]) == 1){
+                $this->persons[$this->activePerson][$type][$childType] = $this->sample[$type][$childType];
+                return;
+            }
+            unset($this->persons[$this->activePerson][$type][$childType][$index]);
+            $this->persons[$this->activePerson][$type][$childType] = array_values($this->persons[$this->activePerson][$type][$childType]);
+        }
+        else if($childType != null){
+            if(count($this->persons[$this->activePerson][$type]) == 1){
+                $this->persons[$this->activePerson][$type] = $this->sample[$type];
+                return;
+            }
+            unset($this->persons[$this->activePerson][$type][$childType]);
+            $this->persons[$this->activePerson][$type] = array_values($this->persons[$this->activePerson][$type]);
         }
 
         else{
@@ -91,12 +90,12 @@ class Filters extends Component
             "studentTeacherRatio" => "130 - 250",
 
             "courseLevel" => "All",
-            
+
             "association" => ["All"],
 
-            "handicap" => ["no"],
+            "handicap" => ["No"],
 
-            "children" => ["no"],
+            "children" => ["No"],
 
             "storage" => [
 
@@ -114,29 +113,9 @@ class Filters extends Component
 
             ],
 
-            "lessons" => [
+            "lessons" => "",
 
-                "studentTeacherRatio" => "1 - 10",
-
-                "duration" => "Days1 - Days10",
-
-                "courseHours" => "0 - 40",
-
-                "pricePerTeachingHours" => "$0 - $200",
-
-            ],
-
-            "camp" => [
-
-                "studentTeacherRatio" => "1 - 10",
-
-                "duration" => "Days1 - Days10",
-
-                "courseHours" => "0 - 40",
-
-                "pricePerTeachingHours" => "$0 - $200",
-
-            ]
+            "camp" => ""
 
         ];
 
@@ -154,13 +133,96 @@ class Filters extends Component
 
     }
 
-    public function setCourseLevel($courseLevel, $isChecked){
+    public function setChildren($children, $isChecked){
+        $flag = 0;
+        $pos = array_search("No", $this->persons[$this->activePerson]["children"]);
+
+        if($children != "No" && $pos !== false){
+            unset($this->persons[$this->activePerson]["children"][$pos]);
+            $flag = 1;
+        }
+        else if($children == "No" && $isChecked && $pos === false){
+            $this->persons[$this->activePerson]["children"] = ["No"];
+            return;
+        }
+
         if($isChecked){
-            $this->persons[$this->activePerson]["courseLevel"][] = $courseLevel;
+            $this->persons[$this->activePerson]["children"][] = $children;
         }
         else{
-            $pos = array_search($courseLevel, $this->persons[$this->activePerson]["courseLevel"]);
-            if(isset($this->persons[$this->activePerson]["courseLevel"][$pos])) unset($this->persons[$this->activePerson]["courseLevel"][$pos]);
+            $pos = array_search($children, $this->persons[$this->activePerson]["children"]);
+            if(isset($this->persons[$this->activePerson]["children"][$pos])){
+                unset($this->persons[$this->activePerson]["children"][$pos]);
+                $flag = 1;
+            }
+            if(count($this->persons[$this->activePerson]["children"]) == 0){
+                $this->persons[$this->activePerson]["children"] = $this->sample["children"];
+            }
+        }
+
+        if($flag){
+            $this->persons[$this->activePerson]["children"] = array_values($this->persons[$this->activePerson]["children"]);
+        }
+
+    }
+
+    public function setAssociation($association, $isChecked){
+        $flag = 0;
+        $pos = array_search("All", $this->persons[$this->activePerson]["association"]);
+        if($association != "All" && $pos !== false){
+            unset($this->persons[$this->activePerson]["association"][$pos]);
+            $flag = 1;
+        }
+        else if($association == "All" && $isChecked && $pos === false){
+            $this->persons[$this->activePerson]["association"] = ["All"];
+            return;
+        }
+
+        if($isChecked){
+            $this->persons[$this->activePerson]["association"][] = $association;
+        }
+        else{
+            $pos = array_search($association, $this->persons[$this->activePerson]["association"]);
+            if(isset($this->persons[$this->activePerson]["association"][$pos])){
+                unset($this->persons[$this->activePerson]["association"][$pos]);
+                $flag = 1;
+            }
+            if(count($this->persons[$this->activePerson]["association"]) == 0){
+                $this->persons[$this->activePerson]["association"] = $this->sample["association"];
+            }
+        }
+        if($flag){
+            $this->persons[$this->activePerson]["association"] = array_values($this->persons[$this->activePerson]["association"]);
+        }
+    }
+
+    public function setHandicap($handicap, $isChecked){
+        $flag = 0;
+        $pos = array_search("No", $this->persons[$this->activePerson]["handicap"]);
+        if($handicap != "No" && $pos !== false){
+            unset($this->persons[$this->activePerson]["handicap"][$pos]);
+            $flag = 1;
+        }
+        else if($handicap == "No" && $isChecked && $pos === false){
+            $this->persons[$this->activePerson]["handicap"] = ["No"];
+            return;
+        }
+        if($isChecked){
+            $this->persons[$this->activePerson]["handicap"][] = $handicap;
+        }
+        else{
+            $pos = array_search($handicap, $this->persons[$this->activePerson]["handicap"]);
+            if(isset($this->persons[$this->activePerson]["handicap"][$pos])){
+                unset($this->persons[$this->activePerson]["handicap"][$pos]);
+                $flag = 1;
+            }
+            if(count($this->persons[$this->activePerson]["handicap"]) == 0){
+                $this->persons[$this->activePerson]["handicap"] = $this->sample["handicap"];
+            }
+        }
+
+        if($flag){
+            $this->persons[$this->activePerson]["handicap"] = array_values($this->persons[$this->activePerson]["handicap"]);
         }
 
     }
