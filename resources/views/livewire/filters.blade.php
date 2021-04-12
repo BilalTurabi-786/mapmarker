@@ -25,7 +25,6 @@
 
                                     @foreach ($value as $index => $val)
                                         @if (empty($val)) @continue @endif
-
                                         @if ($val == $sample[$item][0]) @continue @endif
 
                                         <li class="filter-item drop-down__item">
@@ -85,10 +84,13 @@
                                     @if(in_array($item, ["storage", "rental"])) @continue @endif
 
                                     @foreach ($value as $index => $val)
+                                        @if (empty($val)) @continue @endif
+                                        @if ($val == $sample[$item][0]) @continue @endif
+
                                         <li class="filter-item drop-down__item">
 
                                             <span class="filter-name">{{ $item." ".$loop->iteration.": ".$val }}</span>
-                                            <i class="fa fa-times ml-1 remove-filter cursor-pointer float-right" wire:click="resetFilter('{{$item}}')"></i>
+                                            <i class="fa fa-times ml-1 remove-filter cursor-pointer float-right" wire:click="resetFilter('{{$item}}', '{{$index}}')"></i>
 
                                         </li>
                                     @endforeach
@@ -142,11 +144,13 @@
                                     @if(in_array($item, ["storage", "rental"])) @continue @endif
 
                                     @foreach ($value as $index => $val)
+                                        @if (empty($val)) @continue @endif
+                                        @if ($val == $sample[$item][0]) @continue @endif
 
                                         <li class="filter-item drop-down__item">
 
                                             <span class="filter-name">{{ $item." ".$loop->iteration.": ".$val }}</span>
-                                            <i class="fa fa-times ml-1 remove-filter cursor-pointer float-right" wire:click="resetFilter('{{$item}}')"></i>
+                                            <i class="fa fa-times ml-1 remove-filter cursor-pointer float-right" wire:click="resetFilter('{{$item}}', '{{$index}}')"></i>
 
                                         </li>
                                     @endforeach
