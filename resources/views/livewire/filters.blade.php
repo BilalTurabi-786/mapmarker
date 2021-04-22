@@ -1,5 +1,5 @@
 <div class="" x-data="filters()">
-
+    {{-- {{ json_encode($persons) }} --}}
     <div class="row px-5 mb-2">
 
         <div class="col-md-4">
@@ -60,7 +60,7 @@
 
         </div>
 
-        <div class="col-md-4">
+        <div class="col-md-4" :class="{ 'd-none':persons.length<2 }">
 
             <div class="table_center">
 
@@ -77,38 +77,39 @@
                     <div class="drop-down__menu-box">
 
                         <ul class="drop-down__menu filter-wrapper">
+                            @isset($persons[1])
+                                @foreach ($persons[1] as $item => $value)
 
-                            @foreach ($persons[1] as $item => $value)
+                                    @if (is_array($value))
+                                        @if(in_array($item, ["storage", "rental"])) @continue @endif
 
-                                @if (is_array($value))
-                                    @if(in_array($item, ["storage", "rental"])) @continue @endif
+                                        @foreach ($value as $index => $val)
+                                            @if (empty($val)) @continue @endif
+                                            @if ($val == $sample[$item][0]) @continue @endif
 
-                                    @foreach ($value as $index => $val)
-                                        @if (empty($val)) @continue @endif
-                                        @if ($val == $sample[$item][0]) @continue @endif
+                                            <li class="filter-item drop-down__item">
 
-                                        <li class="filter-item drop-down__item">
+                                                <span class="filter-name">{{ $item." ".$loop->iteration.": ".$val }}</span>
+                                                <i class="fa fa-times ml-1 remove-filter cursor-pointer float-right" wire:click="resetFilter('{{$item}}', '{{$index}}')"></i>
 
-                                            <span class="filter-name">{{ $item." ".$loop->iteration.": ".$val }}</span>
-                                            <i class="fa fa-times ml-1 remove-filter cursor-pointer float-right" wire:click="resetFilter('{{$item}}', '{{$index}}')"></i>
+                                            </li>
+                                        @endforeach
 
-                                        </li>
-                                    @endforeach
+                                        @continue
+                                    @endif
 
-                                    @continue
-                                @endif
+                                    @if (empty($value)) @continue @endif
 
-                                @if (empty($value)) @continue @endif
+                                    @if ($value == $sample[$item]) @continue @endif
 
-                                @if ($value == $sample[$item]) @continue @endif
+                                    <li class="filter-item drop-down__item">
 
-                                <li class="filter-item drop-down__item">
+                                        <span class="filter-name">{{ $item.": ".$value }}</span><i class="fa fa-times ml-1 remove-filter cursor-pointer float-right" wire:click="resetFilter('{{$item}}')"></i>
 
-                                    <span class="filter-name">{{ $item.": ".$value }}</span><i class="fa fa-times ml-1 remove-filter cursor-pointer float-right" wire:click="resetFilter('{{$item}}')"></i>
+                                    </li>
 
-                                </li>
-
-                            @endforeach
+                                @endforeach
+                            @endisset
 
                         </ul>
 
@@ -120,7 +121,7 @@
 
         </div>
 
-        <div class="col-md-4">
+        <div class="col-md-4" :class="{ 'd-none':persons.length<3 }">
 
             <div class="table_center">
 
@@ -137,38 +138,39 @@
                     <div class="drop-down__menu-box third-person">
 
                         <ul class="drop-down__menu filter-wrapper">
+                            @isset($persons[2])
+                                @foreach ($persons[2] as $item => $value)
 
-                            @foreach ($persons[2] as $item => $value)
+                                    @if (is_array($value))
+                                        @if(in_array($item, ["storage", "rental"])) @continue @endif
 
-                                @if (is_array($value))
-                                    @if(in_array($item, ["storage", "rental"])) @continue @endif
+                                        @foreach ($value as $index => $val)
+                                            @if (empty($val)) @continue @endif
+                                            @if ($val == $sample[$item][0]) @continue @endif
 
-                                    @foreach ($value as $index => $val)
-                                        @if (empty($val)) @continue @endif
-                                        @if ($val == $sample[$item][0]) @continue @endif
+                                            <li class="filter-item drop-down__item">
 
-                                        <li class="filter-item drop-down__item">
+                                                <span class="filter-name">{{ $item." ".$loop->iteration.": ".$val }}</span>
+                                                <i class="fa fa-times ml-1 remove-filter cursor-pointer float-right" wire:click="resetFilter('{{$item}}', '{{$index}}')"></i>
 
-                                            <span class="filter-name">{{ $item." ".$loop->iteration.": ".$val }}</span>
-                                            <i class="fa fa-times ml-1 remove-filter cursor-pointer float-right" wire:click="resetFilter('{{$item}}', '{{$index}}')"></i>
+                                            </li>
+                                        @endforeach
 
-                                        </li>
-                                    @endforeach
+                                        @continue
+                                    @endif
 
-                                    @continue
-                                @endif
+                                    @if (empty($value)) @continue @endif
 
-                                @if (empty($value)) @continue @endif
+                                    @if ($value == $sample[$item]) @continue @endif
 
-                                @if ($value == $sample[$item]) @continue @endif
+                                    <li class="filter-item drop-down__item">
 
-                                <li class="filter-item drop-down__item">
+                                        <span class="filter-name">{{ $item.": ".$value }}</span><i class="fa fa-times ml-1 remove-filter cursor-pointer float-right" wire:click="resetFilter('{{$item}}')"></i>
 
-                                    <span class="filter-name">{{ $item.": ".$value }}</span><i class="fa fa-times ml-1 remove-filter cursor-pointer float-right" wire:click="resetFilter('{{$item}}')"></i>
+                                    </li>
 
-                                </li>
-
-                            @endforeach
+                                @endforeach
+                            @endisset
 
                         </ul>
 
@@ -180,6 +182,24 @@
 
         </div>
 
+
+        <div class="col-md-4" :class="{ 'd-none':persons.length===3 }">
+
+            <div class="table_center">
+
+                <div class="drop-down">
+
+                    <div id="dropDown" class="dropDown drop-down__button" wire:click="addNewPerson">
+
+                        <span class="drop-down__name">Add New Person</span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
     </div>
 
     <div class="row">
@@ -390,17 +410,19 @@
 
         <div class="col-md-12 text-center mb-4">
 
-            <a class="btn btn-primary w-30 lesson" href="javascript:void(0);" data-toggle="modal" data-target="#lessonandcamp">Lesson</a>
+            <a class="btn btn-primary w-30 mr-1" :class="{'active':showFilter('lessons') }" wire:click="toggleFilter('lessons')" href="javascript:void(0);">Lesson</a>
+            <input type="checkbox" class="d-none" x-model="persons[activePerson].lessons">
 
-            <a class="btn btn-primary w-30 camp" href="javascript:void(0);" data-toggle="modal" data-target="#lessonandcamp">Camp</a>
+            <a class="btn btn-primary w-30 mr-1" :class="{'active':showFilter('camp') }" wire:click="toggleFilter('camp')" href="javascript:void(0);">Camp</a>
+            <input type="checkbox" class="d-none" x-model="persons[activePerson].camp">
 
-            <a class="btn btn-primary w-30 rental" href="javascript:void(0);" data-toggle="modal" data-target="#rental">Rental</a>
+            <a class="btn btn-primary w-30 mr-1 rental" href="javascript:void(0);" data-toggle="modal" data-target="#rental">Rental</a>
 
-            <a class="btn btn-primary w-30 storage" href="javascript:void(0);" data-toggle="modal" data-target="#storage">Storage</a>
+            <a class="btn btn-primary w-30 mr-1 storage" href="javascript:void(0);" data-toggle="modal" data-target="#storage">Storage</a>
 
-            <a class="btn btn-primary w-30 courselevel mt-2" href="javascript:void(0);" data-toggle="modal" data-target="#courselevel">Course level</a>
+            <a class="btn btn-primary w-30 mr-1 courselevel mt-2" href="javascript:void(0);" data-toggle="modal" data-target="#courselevel">Course level</a>
 
-            <a class="btn btn-primary w-30 language mt-2" href="javascript:void(0);" data-toggle="modal" data-target="#language">Language</a>
+            <a class="btn btn-primary w-30 mr-1 language mt-2" href="javascript:void(0);" data-toggle="modal" data-target="#language">Language</a>
 
         </div>
 

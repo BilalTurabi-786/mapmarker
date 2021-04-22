@@ -7,7 +7,7 @@ namespace App\Http\Livewire;
 
 
 use Livewire\Component;
-
+use App\Models\Language;
 
 
 class Filters extends Component
@@ -113,24 +113,29 @@ class Filters extends Component
 
             ],
 
-            "lessons" => "",
+            "lessons" => false,
 
-            "camp" => ""
+            "camp" => false
 
         ];
 
         $this->persons = [
 
-            $this->sample,
-
-            [],
-
-            []
-
+            $this->sample
         ];
 
         $this->toggle = [false, false, false];
 
+    }
+
+    public function addNewPerson(){
+        $i = count($this->persons);
+        $this->persons[$i] = $this->sample;
+        $this->activePerson = $i;
+    }
+
+    public function toggleFilter($key){
+        $this->persons[$this->activePerson][$key] = !$this->persons[$this->activePerson][$key];
     }
 
     public function setChildren($children, $isChecked){
