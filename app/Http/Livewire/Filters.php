@@ -11,7 +11,6 @@ use App\Models\Language;
 
 
 class Filters extends Component
-
 {
 
     public $sample, $persons, $activePerson, $toggle;
@@ -45,7 +44,7 @@ class Filters extends Component
     public function resetFilter($type, $childType = null, $index = null){
 
         if($childType != null && $index != null){
-            if(count($this->persons[$this->activePerson][$type][$childType]) == 1){
+            if(!is_array($this->persons[$this->activePerson][$type][$childType]) || count($this->persons[$this->activePerson][$type][$childType]) == 1){
                 $this->persons[$this->activePerson][$type][$childType] = $this->sample[$type][$childType];
                 return;
             }
@@ -68,8 +67,6 @@ class Filters extends Component
         }
 
     }
-
-
 
     // mount
 
@@ -228,6 +225,68 @@ class Filters extends Component
 
         if($flag){
             $this->persons[$this->activePerson]["handicap"] = array_values($this->persons[$this->activePerson]["handicap"]);
+        }
+
+    }
+
+    public function setStorageDuration($duration, $isChecked){
+        $flag = 0;
+        $pos = array_search("All", $this->persons[$this->activePerson]["storage"]["duration"]);
+        if($duration != "All" && $pos !== false){
+            unset($this->persons[$this->activePerson]["storage"]["duration"][$pos]);
+            $flag = 1;
+        }
+        else if($duration == "All" && $isChecked && $pos === false){
+            $this->persons[$this->activePerson]["storage"]["duration"] = ["All"];
+            return;
+        }
+        if($isChecked){
+            $this->persons[$this->activePerson]["storage"]["duration"][] = $duration;
+        }
+        else{
+            $pos = array_search($duration, $this->persons[$this->activePerson]["storage"]["duration"]);
+            if(isset($this->persons[$this->activePerson]["storage"]["duration"][$pos])){
+                unset($this->persons[$this->activePerson]["storage"]["duration"][$pos]);
+                $flag = 1;
+            }
+            if(count($this->persons[$this->activePerson]["storage"]["duration"]) == 0){
+                $this->persons[$this->activePerson]["storage"]["duration"] = $this->sample["storage"]["duration"];
+            }
+        }
+
+        if($flag){
+            $this->persons[$this->activePerson]["storage"]["duration"] = array_values($this->persons[$this->activePerson]["storage"]["duration"]);
+        }
+
+    }
+
+    public function setRentalDuration($duration, $isChecked){
+        $flag = 0;
+        $pos = array_search("All", $this->persons[$this->activePerson]["rental"]["duration"]);
+        if($duration != "All" && $pos !== false){
+            unset($this->persons[$this->activePerson]["rental"]["duration"][$pos]);
+            $flag = 1;
+        }
+        else if($duration == "All" && $isChecked && $pos === false){
+            $this->persons[$this->activePerson]["rental"]["duration"] = ["All"];
+            return;
+        }
+        if($isChecked){
+            $this->persons[$this->activePerson]["rental"]["duration"][] = $duration;
+        }
+        else{
+            $pos = array_search($duration, $this->persons[$this->activePerson]["rental"]["duration"]);
+            if(isset($this->persons[$this->activePerson]["rental"]["duration"][$pos])){
+                unset($this->persons[$this->activePerson]["rental"]["duration"][$pos]);
+                $flag = 1;
+            }
+            if(count($this->persons[$this->activePerson]["rental"]["duration"]) == 0){
+                $this->persons[$this->activePerson]["rental"]["duration"] = $this->sample["rental"]["duration"];
+            }
+        }
+
+        if($flag){
+            $this->persons[$this->activePerson]["rental"]["duration"] = array_values($this->persons[$this->activePerson]["rental"]["duration"]);
         }
 
     }

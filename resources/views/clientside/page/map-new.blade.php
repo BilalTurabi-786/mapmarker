@@ -2306,25 +2306,27 @@
 
 				<div class="modal-body">
 
+					<!-- Rental -->
+
 					<div class="accordion" id="accordionExample">
 
 					<div class="accordion-item">
 
 						<h2 class="accordion-header" id="headingOne">
 
-						<button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOnee" aria-expanded="true" aria-controls="collapseOnee">
+						<button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#storageCollapseOne" aria-expanded="true" aria-controls="storageCollapseOne">
 
-						Duration
+							Rentals per person
 
 						</button>
 
 						</h2>
 
-						<div id="collapseOnee" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+						<div id="storageCollapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
 
 						<div class="accordion-body">
 
-							<div class="card">
+								<div class="card">
 
 								<div class="card-body">
 
@@ -2332,141 +2334,31 @@
 
 										<li>
 
-											<input class="explore__input-checkbox" type="checkbox" name="open-check" id="open-check"/>
+											<input class="explore__input-checkbox" type="radio" name="storage_set" value="1 Set"/>
 
 											<span class="explore__checkbox-style"></span>
 
-											<span class="explore__checkbox-text">All (Default)</span>
+											<span class="explore__checkbox-text">1 Set</span>
 
 										</li>
 
 										<li>
 
-											<input class="explore__input-checkbox" type="checkbox" name="open-check" id="open-check"/>
+											<input class="explore__input-checkbox" type="radio" name="storage_set" value="2 Sets"/>
 
 											<span class="explore__checkbox-style"></span>
 
-											<span class="explore__checkbox-text">1 hour</span>
+											<span class="explore__checkbox-text">2 Sets</span>
 
 										</li>
 
 										<li>
 
-											<input class="explore__input-checkbox" type="checkbox" name="open-check" id="open-check"/>
+											<input class="explore__input-checkbox" type="radio" name="storage_set" value="3 Sets"/>
 
 											<span class="explore__checkbox-style"></span>
 
-											<span class="explore__checkbox-text">2 hours</span>
-
-										</li>
-
-										<li>
-
-											<input class="explore__input-checkbox" type="checkbox" name="open-check" id="open-check"/>
-
-											<span class="explore__checkbox-style"></span>
-
-											<span class="explore__checkbox-text">3 hours</span>
-
-										</li>
-
-										<li>
-
-											<input class="explore__input-checkbox" type="checkbox" name="open-check" id="open-check"/>
-
-											<span class="explore__checkbox-style"></span>
-
-											<span class="explore__checkbox-text">Half day</span>
-
-										</li>
-
-										<li>
-
-											<input class="explore__input-checkbox" type="checkbox" name="open-check" id="open-check"/>
-
-											<span class="explore__checkbox-style"></span>
-
-											<span class="explore__checkbox-text">Day</span>
-
-										</li>
-
-										<li>
-
-											<input class="explore__input-checkbox" type="checkbox" name="open-check" id="open-check"/>
-
-											<span class="explore__checkbox-style"></span>
-
-											<span class="explore__checkbox-text">2 days</span>
-
-										</li>
-
-										<li>
-
-											<input class="explore__input-checkbox" type="checkbox" name="open-check" id="open-check"/>
-
-											<span class="explore__checkbox-style"></span>
-
-											<span class="explore__checkbox-text">3 days</span>
-
-										</li>
-
-										<li>
-
-											<input class="explore__input-checkbox" type="checkbox" name="open-check" id="open-check"/>
-
-											<span class="explore__checkbox-style"></span>
-
-											<span class="explore__checkbox-text">4 days</span>
-
-										</li>
-
-										<li>
-
-											<input class="explore__input-checkbox" type="checkbox" name="open-check" id="open-check"/>
-
-											<span class="explore__checkbox-style"></span>
-
-											<span class="explore__checkbox-text">5 days</span>
-
-										</li>
-
-										<li>
-
-											<input class="explore__input-checkbox" type="checkbox" name="open-check" id="open-check"/>
-
-											<span class="explore__checkbox-style"></span>
-
-											<span class="explore__checkbox-text">Week</span>
-
-										</li>
-
-										<li>
-
-											<input class="explore__input-checkbox" type="checkbox" name="open-check" id="open-check"/>
-
-											<span class="explore__checkbox-style"></span>
-
-											<span class="explore__checkbox-text">10 days</span>
-
-										</li>
-
-										<li>
-
-											<input class="explore__input-checkbox" type="checkbox" name="open-check" id="open-check"/>
-
-											<span class="explore__checkbox-style"></span>
-
-											<span class="explore__checkbox-text">2 weeks</span>
-
-										</li>
-
-										<li>
-
-											<input class="explore__input-checkbox" type="checkbox" name="open-check" id="open-check"/>
-
-											<span class="explore__checkbox-style"></span>
-
-											<span class="explore__checkbox-text">3 weeks</span>
+											<span class="explore__checkbox-text">3 Sets</span>
 
 										</li>
 
@@ -2486,15 +2378,189 @@
 
 						<h2 class="accordion-header" id="headingTwo">
 
-						<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwoo" aria-expanded="false" aria-controls="collapseTwoo">
+						<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#storageCollapseTwo" aria-expanded="false" aria-controls="storageCollapseTwo">
 
-							Price per day
+							Duration
 
 						</button>
 
 						</h2>
 
-						<div id="collapseTwoo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+						<div id="storageCollapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+
+						<div class="accordion-body">
+
+							<div class="card">
+
+								<div class="card-body">
+
+									<ul class="explore__form-checkbox-list">
+
+										<li>
+
+											<input class="explore__input-checkbox" type="checkbox" name="storage_duration[]" value="All"/>
+
+											<span class="explore__checkbox-style"></span>
+
+											<span class="explore__checkbox-text">All (Default)</span>
+
+										</li>
+
+										<li>
+
+											<input class="explore__input-checkbox" type="checkbox" name="storage_duration[]" value="1 hour"/>
+
+											<span class="explore__checkbox-style"></span>
+
+											<span class="explore__checkbox-text">1 hour</span>
+
+										</li>
+
+										<li>
+
+											<input class="explore__input-checkbox" type="checkbox" name="storage_duration[]" value="2 hours"/>
+
+											<span class="explore__checkbox-style"></span>
+
+											<span class="explore__checkbox-text">2 hours</span>
+
+										</li>
+
+										<li>
+
+											<input class="explore__input-checkbox" type="checkbox" name="storage_duration[]" value="3 hours"/>
+
+											<span class="explore__checkbox-style"></span>
+
+											<span class="explore__checkbox-text">3 hours</span>
+
+										</li>
+
+										<li>
+
+											<input class="explore__input-checkbox" type="checkbox" name="storage_duration[]" value="Half day"/>
+
+											<span class="explore__checkbox-style"></span>
+
+											<span class="explore__checkbox-text">Half day</span>
+
+										</li>
+
+										<li>
+
+											<input class="explore__input-checkbox" type="checkbox" name="storage_duration[]" value="Day"/>
+
+											<span class="explore__checkbox-style"></span>
+
+											<span class="explore__checkbox-text">Day</span>
+
+										</li>
+
+										<li>
+
+											<input class="explore__input-checkbox" type="checkbox" name="storage_duration[]" value="2 days"/>
+
+											<span class="explore__checkbox-style"></span>
+
+											<span class="explore__checkbox-text">2 days</span>
+
+										</li>
+
+										<li>
+
+											<input class="explore__input-checkbox" type="checkbox" name="storage_duration[]" value="3 days"/>
+
+											<span class="explore__checkbox-style"></span>
+
+											<span class="explore__checkbox-text">3 days</span>
+
+										</li>
+
+										<li>
+
+											<input class="explore__input-checkbox" type="checkbox" name="storage_duration[]" value="4 days"/>
+
+											<span class="explore__checkbox-style"></span>
+
+											<span class="explore__checkbox-text">4 days</span>
+
+										</li>
+
+										<li>
+
+											<input class="explore__input-checkbox" type="checkbox" name="storage_duration[]" value="5 days"/>
+
+											<span class="explore__checkbox-style"></span>
+
+											<span class="explore__checkbox-text">5 days</span>
+
+										</li>
+
+										<li>
+
+											<input class="explore__input-checkbox" type="checkbox" name="storage_duration[]" value="Week"/>
+
+											<span class="explore__checkbox-style"></span>
+
+											<span class="explore__checkbox-text">Week</span>
+
+										</li>
+
+										<li>
+
+											<input class="explore__input-checkbox" type="checkbox" name="storage_duration[]" value="10 days"/>
+
+											<span class="explore__checkbox-style"></span>
+
+											<span class="explore__checkbox-text">10 days</span>
+
+										</li>
+
+										<li>
+
+											<input class="explore__input-checkbox" type="checkbox" name="storage_duration[]" value="2 weeks"/>
+
+											<span class="explore__checkbox-style"></span>
+
+											<span class="explore__checkbox-text">2 weeks</span>
+
+										</li>
+
+										<li>
+
+											<input class="explore__input-checkbox" type="checkbox" name="storage_duration[]" value="3 weeks"/>
+
+											<span class="explore__checkbox-style"></span>
+
+											<span class="explore__checkbox-text">3 weeks</span>
+
+										</li>
+
+									</ul>
+
+								</div>
+
+							</div>
+
+						</div>
+
+						</div>
+
+					</div>
+
+					{{-- <div class="accordion-item">
+
+						<h2 class="accordion-header" id="headingThree">
+
+						<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+
+							Price per Hour
+
+						</button>
+
+						</h2>
+
+						<div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
 
 						<div class="accordion-body">
 
@@ -2508,11 +2574,11 @@
 
 											<b>Duration :</b>
 
-											<input type="text" id="amount9" readonly style="border: none;">
+											<input type="text" id="amount8" readonly style="border: none;">
 
 										</p>
 
-										<div id="slider-range9" class="range-bar"></div>
+										<div id="slider-range8" class="range-bar"></div>
 
 									</div>
 
@@ -2524,9 +2590,11 @@
 
 						</div>
 
-					</div>
+					</div> --}}
 
 					</div>
+
+					<!-- Rental -->
 
 				</div>
 
@@ -2596,17 +2664,17 @@
 
 										<li>
 
-											<input class="explore__input-checkbox" type="checkbox" name="open-check" id="open-check"/>
+											<input class="explore__input-checkbox" type="radio" name="rental_set" value="1 Set"/>
 
 											<span class="explore__checkbox-style"></span>
 
-											<span class="explore__checkbox-text">1 Sets</span>
+											<span class="explore__checkbox-text">1 Set</span>
 
 										</li>
 
 										<li>
 
-											<input class="explore__input-checkbox" type="checkbox" name="open-check" id="open-check"/>
+											<input class="explore__input-checkbox" type="radio" name="rental_set" value="2 Sets"/>
 
 											<span class="explore__checkbox-style"></span>
 
@@ -2616,7 +2684,7 @@
 
 										<li>
 
-											<input class="explore__input-checkbox" type="checkbox" name="open-check" id="open-check"/>
+											<input class="explore__input-checkbox" type="radio" name="rental_set" value="3 Sets"/>
 
 											<span class="explore__checkbox-style"></span>
 
@@ -2660,7 +2728,7 @@
 
 										<li>
 
-											<input class="explore__input-checkbox" type="checkbox" name="open-check" id="open-check"/>
+											<input class="explore__input-checkbox" type="checkbox" name="rental_duration[]" value="All"/>
 
 											<span class="explore__checkbox-style"></span>
 
@@ -2670,7 +2738,7 @@
 
 										<li>
 
-											<input class="explore__input-checkbox" type="checkbox" name="open-check" id="open-check"/>
+											<input class="explore__input-checkbox" type="checkbox" name="rental_duration[]" value="1 hour"/>
 
 											<span class="explore__checkbox-style"></span>
 
@@ -2680,7 +2748,7 @@
 
 										<li>
 
-											<input class="explore__input-checkbox" type="checkbox" name="open-check" id="open-check"/>
+											<input class="explore__input-checkbox" type="checkbox" name="rental_duration[]" value="2 hours"/>
 
 											<span class="explore__checkbox-style"></span>
 
@@ -2690,7 +2758,7 @@
 
 										<li>
 
-											<input class="explore__input-checkbox" type="checkbox" name="open-check" id="open-check"/>
+											<input class="explore__input-checkbox" type="checkbox" name="rental_duration[]" value="3 hours"/>
 
 											<span class="explore__checkbox-style"></span>
 
@@ -2700,7 +2768,7 @@
 
 										<li>
 
-											<input class="explore__input-checkbox" type="checkbox" name="open-check" id="open-check"/>
+											<input class="explore__input-checkbox" type="checkbox" name="rental_duration[]" value="Half day"/>
 
 											<span class="explore__checkbox-style"></span>
 
@@ -2710,7 +2778,7 @@
 
 										<li>
 
-											<input class="explore__input-checkbox" type="checkbox" name="open-check" id="open-check"/>
+											<input class="explore__input-checkbox" type="checkbox" name="rental_duration[]" value="Day"/>
 
 											<span class="explore__checkbox-style"></span>
 
@@ -2720,7 +2788,7 @@
 
 										<li>
 
-											<input class="explore__input-checkbox" type="checkbox" name="open-check" id="open-check"/>
+											<input class="explore__input-checkbox" type="checkbox" name="rental_duration[]" value="2 days"/>
 
 											<span class="explore__checkbox-style"></span>
 
@@ -2730,7 +2798,7 @@
 
 										<li>
 
-											<input class="explore__input-checkbox" type="checkbox" name="open-check" id="open-check"/>
+											<input class="explore__input-checkbox" type="checkbox" name="rental_duration[]" value="3 days"/>
 
 											<span class="explore__checkbox-style"></span>
 
@@ -2740,7 +2808,7 @@
 
 										<li>
 
-											<input class="explore__input-checkbox" type="checkbox" name="open-check" id="open-check"/>
+											<input class="explore__input-checkbox" type="checkbox" name="rental_duration[]" value="4 days"/>
 
 											<span class="explore__checkbox-style"></span>
 
@@ -2750,7 +2818,7 @@
 
 										<li>
 
-											<input class="explore__input-checkbox" type="checkbox" name="open-check" id="open-check"/>
+											<input class="explore__input-checkbox" type="checkbox" name="rental_duration[]" value="5 days"/>
 
 											<span class="explore__checkbox-style"></span>
 
@@ -2760,7 +2828,7 @@
 
 										<li>
 
-											<input class="explore__input-checkbox" type="checkbox" name="open-check" id="open-check"/>
+											<input class="explore__input-checkbox" type="checkbox" name="rental_duration[]" value="Week"/>
 
 											<span class="explore__checkbox-style"></span>
 
@@ -2770,7 +2838,7 @@
 
 										<li>
 
-											<input class="explore__input-checkbox" type="checkbox" name="open-check" id="open-check"/>
+											<input class="explore__input-checkbox" type="checkbox" name="rental_duration[]" value="10 days"/>
 
 											<span class="explore__checkbox-style"></span>
 
@@ -2780,7 +2848,7 @@
 
 										<li>
 
-											<input class="explore__input-checkbox" type="checkbox" name="open-check" id="open-check"/>
+											<input class="explore__input-checkbox" type="checkbox" name="rental_duration[]" value="2 weeks"/>
 
 											<span class="explore__checkbox-style"></span>
 
@@ -2790,7 +2858,7 @@
 
 										<li>
 
-											<input class="explore__input-checkbox" type="checkbox" name="open-check" id="open-check"/>
+											<input class="explore__input-checkbox" type="checkbox" name="rental_duration[]" value="3 weeks"/>
 
 											<span class="explore__checkbox-style"></span>
 
@@ -2810,7 +2878,7 @@
 
 					</div>
 
-					<div class="accordion-item">
+					{{-- <div class="accordion-item">
 
 						<h2 class="accordion-header" id="headingThree">
 
@@ -2852,7 +2920,7 @@
 
 						</div>
 
-					</div>
+					</div> --}}
 
 					</div>
 

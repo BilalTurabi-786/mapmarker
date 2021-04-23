@@ -1,4 +1,4 @@
-<div class="" x-data="filters()">
+<div class="" x-data="filters()" x-init="watchActivePerson()">
     {{-- {{ json_encode($persons) }} --}}
     <div class="row px-5 mb-2">
 
@@ -21,7 +21,29 @@
                             @foreach ($persons[0] as $item => $value)
 
                                 @if (is_array($value))
-                                    @if(in_array($item, ["storage", "rental"])) @continue @endif
+                                    @if(in_array($item, ["storage", "rental"]))
+                                        @if($value['rentalPerPerson'] != $sample[$item]["rentalPerPerson"])
+                                            <li class="filter-item drop-down__item">
+
+                                                <span class="filter-name">{{ $item." Set: ".$value['rentalPerPerson'] }}</span>
+                                                <i class="fa fa-times ml-1 remove-filter cursor-pointer float-right" wire:click="resetFilter('{{$item}}', 'rentalPerPerson', -1)"></i>
+
+                                            </li>
+                                        @endif
+
+                                        @foreach ($value['duration'] as $index => $val)
+                                            @if (empty($val)) @continue @endif
+                                            @if ($val == $sample[$item]['duration'][0]) @continue @endif
+
+                                            <li class="filter-item drop-down__item">
+
+                                                <span class="filter-name">{{ $item." Duration ".$loop->iteration.": ".$val }}</span>
+                                                <i class="fa fa-times ml-1 remove-filter cursor-pointer float-right" wire:click="resetFilter('{{$item}}', 'duration', '{{$index}}')"></i>
+
+                                            </li>
+                                        @endforeach
+                                        @continue
+                                    @endif
 
                                     @foreach ($value as $index => $val)
                                         @if (empty($val)) @continue @endif
@@ -468,6 +490,22 @@
 
                 showToggle(key){
 
+                    return this.ddToggle[key]
+
+                },
+
+                watchActivePerson(){
+                    this.$watch('activePerson', value => {
+                        this.refreshPerson();
+                    });
+
+                    this.$watch('persons', value => {
+                        this.refreshPerson();
+                    })
+                    this.refreshPerson();
+                },
+
+                refreshPerson(){
                     this.setPrice();
                     this.setDuration();
                     this.setStudentTeacherRatio();
@@ -476,9 +514,10 @@
                     this.setChildren();
                     this.setHandicap();
                     this.setAssociation();
-
-                    return this.ddToggle[key]
-
+                    this.setRentalDuration();
+                    this.setRentalSet();
+                    this.setStorageDuration();
+                    this.setStorageSet();
                 },
 
                 setPrice(){
@@ -567,6 +606,34 @@
                     });
                 },
 
+                setRentalSet(){
+                    let set = this.persons[this.activePerson]["rental"]["rentalPerPerson"];
+                    $("[name=rental_set]").prop("checked", false);
+                    $("[name=rental_set][value='"+set+"']").prop("checked", true);
+                },
+
+                setRentalDuration(){
+                    let durations = this.persons[this.activePerson]["rental"]["duration"];
+                    $("[name^=rental_duration]").prop("checked", false);
+                    durations.forEach(duration => {
+                        $("[name^=rental_duration][value='"+duration+"']").prop("checked", true);
+                    });
+                },
+
+                setStorageSet(){
+                    let set = this.persons[this.activePerson]["storage"]["rentalPerPerson"];
+                    $("[name=storage_set]").prop("checked", false);
+                    $("[name=storage_set][value='"+set+"']").prop("checked", true);
+                },
+
+                setStorageDuration(){
+                    let durations = this.persons[this.activePerson]["storage"]["duration"];
+                    $("[name^=storage_duration]").prop("checked", false);
+                    durations.forEach(duration => {
+                        $("[name^=storage_duration][value='"+duration+"']").prop("checked", true);
+                    });
+                },
+
                 showPersons() {
                     console.log(this.persons);
                 }
@@ -632,6 +699,30 @@
         $("[name^=handicap]").change((e) => {
             let ele = $(e.target);
             @this.setHandicap(ele.val(), ele.is(":checked"));
+        });
+
+        $("[name^=rental_duration]").change((e) => {
+            let ele = $(e.target);
+            @this.setRentalDuration(ele.val(), ele.is(":checked"));
+        });
+
+        $("[name=rental_set]").change((e) => {
+            let ele = $(e.target);
+            if(ele.is(":checked")){
+                @this.set("persons."+@this.activePerson+".rental.rentalPerPerson", ele.val());
+            }
+        });
+
+        $("[name^=storage_duration]").change((e) => {
+            let ele = $(e.target);
+            @this.setStorageDuration(ele.val(), ele.is(":checked"));
+        });
+
+        $("[name=storage_set]").change((e) => {
+            let ele = $(e.target);
+            if(ele.is(":checked")){
+                @this.set("persons."+@this.activePerson+".storage.rentalPerPerson", ele.val());
+            }
         });
 
     </script>
