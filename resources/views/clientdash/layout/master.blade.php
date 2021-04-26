@@ -332,6 +332,8 @@
 <script src="{{ asset('app-assets/js/jszip.js')}}"></script>
 <script src="{{ asset('app-assets/js/xlsx.js')}}"></script>
 <!-- END: Page Vendor JS-->
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
  <!-- BEGIN: Dashboard JS-->
     <script src="{{asset('app-assets/js/scripts/pages/dashboard-ecommerce.js')}}"></script>
     @yield('scripts')
