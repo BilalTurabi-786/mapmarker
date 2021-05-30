@@ -2,6 +2,11 @@
 @section('title', 'Map Client')
 @section('headname','Dashboard')
 @section('content')
+<style>
+span.select2.select2-container.select2-container--default {
+    width: 100% !important;
+}
+</style>
 
 <section id="basic-datatable">
     <div class="row">
@@ -49,7 +54,86 @@
       <form action="{{route('add-filter')}}" method='post'>
         @csrf
         <div class="modal-body">
-          <input type="text" class='form-control' name='filter'>
+          <div class="row">
+            <div class="col-md-12  mt-1">
+                <label>School Name</label>
+                <select class="form-control">
+                  <option>Select your school</option>
+                </select>
+            </div>
+            <div class="col-md-12 mt-1">
+              <label>Select Filter</label>
+              <select class="js-example-basic-multiple form-control" multiple="multiple">
+              <option value="AL">Alabama</option>
+              <option value="WY">asd</option>
+              <option value="WY">dasd</option>
+              <option value="WY">Wyomasd</option>
+              </select>
+            </div>
+            <div class="col-md-12 mt-1">
+              <label>Select Duration</label>
+              <select class="js-example-basic-multiple form-control" multiple="multiple">
+              <option value="AL">Alabama</option>
+              <option value="WY">asd</option>
+              <option value="WY">dasd</option>
+              <option value="WY">Wyomasd</option>
+              </select>
+            </div>
+            <div class="col-md-12 mt-1">
+              <label>Select Price</label>
+              <select class="js-example-basic-multiple form-control" multiple="multiple">
+              <option value="AL">Alabama</option>
+              <option value="WY">asd</option>
+              <option value="WY">dasd</option>
+              <option value="WY">Wyomasd</option>
+              </select>
+            </div>
+            <div class="col-md-12 mt-1">
+              <label>Select Ratio</label>
+              <select class="js-example-basic-multiple form-control" multiple="multiple">
+              <option value="AL">Alabama</option>
+              <option value="WY">asd</option>
+              <option value="WY">dasd</option>
+              <option value="WY">Wyomasd</option>
+              </select>
+            </div>
+            <div class="col-md-12 mt-1">
+              <label>Select Price Per Hour</label>
+              <select class="js-example-basic-multiple form-control" multiple="multiple">
+              <option value="AL">Alabama</option>
+              <option value="WY">asd</option>
+              <option value="WY">dasd</option>
+              <option value="WY">Wyomasd</option>
+              </select>
+            </div>
+            <div class="col-md-12 mt-1">
+              <label>Association</label>
+              <select class="js-example-basic-multiple form-control" multiple="multiple">
+              <option value="AL">Alabama</option>
+              <option value="WY">asd</option>
+              <option value="WY">dasd</option>
+              <option value="WY">Wyomasd</option>
+              </select>
+            </div>
+            <div class="col-md-12 mt-1">
+              <label>Handicamp</label>
+              <select class="js-example-basic-multiple form-control" multiple="multiple">
+              <option value="AL">Alabama</option>
+              <option value="WY">asd</option>
+              <option value="WY">dasd</option>
+              <option value="WY">Wyomasd</option>
+              </select>
+            </div>
+            <div class="col-md-12 mt-1">
+              <label>Childern</label>
+              <select class="js-example-basic-multiple form-control" multiple="multiple">
+              <option value="AL">Alabama</option>
+              <option value="WY">asd</option>
+              <option value="WY">dasd</option>
+              <option value="WY">Wyomasd</option>
+              </select>
+            </div>
+          </div>  
         </div>
         <div class="modal-footer">
           <button type="submit" class="btn btn-primary">Save changes</button>
@@ -63,6 +147,8 @@
 @endsection
 @section('scripts')
 <script>
-
+$(document).ready(function() {
+    $('.js-example-basic-multiple').select2();
+});
 </script>
 @endsection

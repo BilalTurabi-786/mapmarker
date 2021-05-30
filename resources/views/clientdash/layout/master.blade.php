@@ -331,8 +331,9 @@
     <script src="{{ asset('app-assets/vendors/js/tables/datatable/datatables.bootstrap4.min.js')}}"></script>
     <script src="{{ asset('app-assets/js/jszip.js')}}"></script>
     <script src="{{ asset('app-assets/js/xlsx.js')}}"></script>
-    <!-- END: Page Vendor JS-->
-    <!-- BEGIN: Dashboard JS-->
+    <!-- END: Page Vendor JS--><!-- END: Page Vendor JS-->
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     <script src="{{asset('app-assets/js/scripts/pages/dashboard-ecommerce.js')}}"></script>
     <script src="{{ asset('app-assets/js/alpine.js') }}"></script>
     @yield('scripts')
