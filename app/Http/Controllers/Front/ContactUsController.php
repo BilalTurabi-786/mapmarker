@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Front;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Front\ContactUs;
+use App\Models\SchoolRequest;
 use App\Models\Admin\Admin;
 use Mail;
 
@@ -23,7 +24,7 @@ class ContactUsController extends Controller
 
         $admin->save();
 
-    return view('clientside.page.contact');
+        return view('clientside.page.contact');
 
     }
     public function store(Request $request){
@@ -40,7 +41,7 @@ class ContactUsController extends Controller
         if ($validator->fails()) {
             // dd($validator);s
             return redirect()->back()->withErrors($validator)->withInput($controlls);
-        
+
         }
         else{
             $contact=new ContactUs;
@@ -55,6 +56,9 @@ class ContactUsController extends Controller
             $contact->ava_time_two=$request->ava_time_two;
             $contact->token=$request->_token;
             $contact->save();
+            $schoolReq = new SchoolRequest;
+            $schoolReq->contact_us_id = $contact->id;
+            $schoolReq->save();
             return redirect()->back()->withSuccess("We Will Contact You Soon");
 
         }
@@ -69,11 +73,13 @@ class ContactUsController extends Controller
             $message->from('harisahmedshaikh12@gmail.com');
             $message->to($request->email);
             $message->subject('Add Your Scholl Info');
-         });
-         return ['message'=>"Message Has Been Sendt...!"];
+        });
+        return ['message'=>"Message Has Been Sendt...!"];
     }
 
-    
+    public function schoolRequest(){
+        return view('clientdash.pages.school-request');
+    }
 
     public function list_process(){
 

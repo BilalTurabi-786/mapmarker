@@ -74,7 +74,7 @@
           </div>
         </div>
       </div>
-    </nav> 
+    </nav>
     <!-- END: Header-->
 
 
@@ -85,7 +85,7 @@
           <li class="nav-item mr-auto"><a class="navbar-brand" href="index-2.html">
               <div class="brand-logo">
                 {{-- <img src="{{asset('app-assets/images/logo.png')}}" style="height: 29px;width: 42px;margin-top:-25px;"> --}}
-               
+
               </div>
               <h2 class="brand-text mb-0">Logo Here</h2></a></li>
           <li class="nav-item nav-toggle"><a class="nav-link modern-nav-toggle pr-0" data-toggle="collapse"><i class="fa fa-bars" data-ticon="icon-disc"></i></a></li>
@@ -94,8 +94,8 @@
       <div class="shadow-bottom"></div>
       <div class="main-menu-content">
         <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
-          
-          
+
+
          <li class="nav-item">
            <a href="{{url('/admin/google-map')}}">
               <!-- <i class="fa fa-map-marker"></i> -->
@@ -118,6 +118,12 @@
            <a href="{{route('admin.get-contacts')}}">
               <!-- <i class="fa file-import"></i> -->
               <span class="menu-title" data-i18n="Order">Contacts</span>
+            </a>
+          </li>
+          <li class="nav-item">
+           <a href="{{route('schoolRequest')}}">
+              <!-- <i class="fa file-import"></i> -->
+              <span class="menu-title" data-i18n="Request">School Request</span>
             </a>
           </li>
            <li class="nav-item">

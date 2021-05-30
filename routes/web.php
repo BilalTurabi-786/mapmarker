@@ -22,6 +22,10 @@ Route::prefix('admin')->namespace('Admin')->group(function(){
 	Route::post('/auth/resetpassword-process',['as'=>'admin.auth.resetpassword-process','uses'=>'\App\Http\Controllers\Admin\LoginController@resetpassword_process']);
     });
     Route::group(['middleware'=>"AdminAuth"], function(){
+
+        // Raheel
+        Route::get('school-request', '\App\Http\Controllers\Admin\MapController@schoolRequest')->name('schoolRequest');
+
         Route::get('google-map',['as'=>'admin.google-map','uses'=>"\App\Http\Controllers\Admin\MapController@google_map"]);
         Route::post('google-map-process',['as'=>'admin.google-map-process','uses'=>"\App\Http\Controllers\Admin\MapController@google_map_process"]);
         Route::get('get-markers',['as'=>'get-markers','uses'=>"\App\Http\Controllers\Admin\MapController@get_marker"]);
@@ -38,8 +42,9 @@ Route::get('get-markers',['as'=>'get-markers','uses'=>"\App\Http\Controllers\Adm
 
 Route::group(['middleware'=>'UserAuth'],function (){
     Route::get('profile',['as'=>'profile','uses'=>"\App\Http\Controllers\Front\LoginController@profile"]);
-     Route::get('logout',['as'=>'logout','uses'=>"\App\Http\Controllers\Front\LoginController@logout"]);
+    Route::get('logout',['as'=>'logout','uses'=>"\App\Http\Controllers\Front\LoginController@logout"]);
 
+    Route::get('school-request', '\App\Http\Controllers\Front\ContactUsController@schoolRequest')->name('client.schoolRequest');
 
 });
 Route::get('contact',['as'=>'contact','uses'=>"\App\Http\Controllers\Front\ContactUsController@index"]);
@@ -54,6 +59,7 @@ Route::get('/',['as'=>'/','uses'=>"\App\Http\Controllers\Front\HomeController@in
 
 Route::get('addlisting',['as'=>'addlisting','uses'=>"\App\Http\Controllers\Front\ListingController@addlisting"]);
 Route::get('list-process',function(){
+    return redirect()->to('/addlisting');
     return view('clientside.page.addlisting');
 });
 Route::post('list-process',['as'=>'list-process','uses'=>"\App\Http\Controllers\Front\ContactUsController@list_process"]);

@@ -14,6 +14,11 @@ class MapController extends Controller
     public function google_map(){
         return view('admin.pages.vendor.list');
     }
+
+    public function schoolRequest(){
+        return view('admin.pages.school-request');
+    }
+
     public function google_map_process(Request $request){
         $controlls=$request->all();
         $rules=array(
@@ -24,7 +29,7 @@ class MapController extends Controller
             "links"=>"nullable");
             $validator=Validator::make($controlls,$rules);
             if($validator->fails()){
-                return response()->json(['error'=>$validator->errors()], 401);  
+                return response()->json(['error'=>$validator->errors()], 401);
             }
             else{
                 $map=new GoogleMap;
@@ -44,7 +49,7 @@ class MapController extends Controller
     }
     public function import_excel(){
         return view('admin.pages.import');
-    
+
     }
     public function import_excel_process(Request $request){
         $rows=$request->rows;
@@ -58,21 +63,21 @@ class MapController extends Controller
             $map->langitude=$value['lng'];
             $map->save();
             $links=explode(",",$value['links']);
-            
+
             foreach($links as $link){
                 $social=new SocialLink;
                 $social->link=$link;
                 $social->google_map_id=$map->id;
                 $social->save();
             }
-           
-            
+
+
         }
         return "ssss";
         return view('admin.pages.import');
-    
+
     }
-    
+
     public function get_marker(){
         $markers=GoogleMap::with('links')->get();
         return response()->json(['markers'=>$markers]);
