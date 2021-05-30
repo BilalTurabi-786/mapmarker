@@ -13,9 +13,9 @@
             <div class="card">
                 <div class="card-header">
                     <h4 class="card-title">School Requests</h4>
-                    {{-- <div class="float-right">
-                        <button type="button" class="btn btn-outline-primary">Create</button>
-                    </div> --}}
+                    <div class="float-right">
+                        <button type="button" onclick="Livewire.emit('addSchoolRequest')" class="btn btn-outline-primary">Create</button>
+                    </div>
                 </div>
                 <div class="card-content">
                     <div class="card-body card-dashboard">

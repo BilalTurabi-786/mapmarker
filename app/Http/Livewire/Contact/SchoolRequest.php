@@ -9,6 +9,8 @@ class SchoolRequest extends Component
 {
     public $search;
 
+    protected $listeners = ['addSchoolRequest'];
+
     public function mount(){
         $this->search = "";
     }
@@ -27,6 +29,12 @@ class SchoolRequest extends Component
     public function reject($id){
         $requestModel = RequestModel::find($id);
         $requestModel->is_rejected = true;
+        $requestModel->save();
+    }
+
+    public function addSchoolRequest(){
+        $requestModel = new RequestModel;
+        $requestModel->contact_us_id = auth('contact')->id();
         $requestModel->save();
     }
 
