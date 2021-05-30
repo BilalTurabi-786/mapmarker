@@ -28,17 +28,18 @@
                         <td>
                             @if ($request->is_approved)
                                 <span class="badge badge-success badge-pill">Approved</span>
+                            @elseif ($request->is_rejected)
+                                <span class="badge badge-danger badge-pill">Rejected</span>
+                            @elseif ($request->is_expired)
+                                <span class="badge badge-primary badge-pill">School Created</span>
                             @else
                                 <span class="badge badge-warning badge-pill">Pending</span>
                             @endif
                         </td>
                         <td>
-                            <span class="btn p-1 btn-success" wire:click="approve({{ $request->id }})" data-toggle="tooltip" data-placement="top" title="Approve">
-                                <i class="fa fa-check" aria-hidden="true"></i>
-                            </span>
-                            <span class="btn p-1 btn-danger" wire:click="reject({{ $request->id }})" data-toggle="tooltip" data-placement="top" title="Reject">
-                                <i class="fa fa-times" aria-hidden="true"></i>
-                            </span>
+                            @if ($request->is_approved && !$request->is_expired)
+                                <a class="btn btn-success" href="#addSchool" role="button">Add School</a>
+                            @endif
                         </td>
                     </tr>
                 @endforeach

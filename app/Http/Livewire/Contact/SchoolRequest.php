@@ -36,7 +36,8 @@ class SchoolRequest extends Component
             $query->when(!empty($search), function($query) use ($search){
                 $query->search($search);
             });
-        })->where('is_expired', false)->where('is_rejected', false);
+        });
+        // ->where('is_expired', false)->where('is_rejected', false);
         return $schoolReq->latest()->paginate(10);
     }
 }
