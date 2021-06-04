@@ -45,6 +45,8 @@ Route::group(['middleware'=>'UserAuth'],function (){
     Route::get('logout',['as'=>'logout','uses'=>"\App\Http\Controllers\Front\LoginController@logout"]);
 
     Route::get('school-request', '\App\Http\Controllers\Front\ContactUsController@schoolRequest')->name('client.schoolRequest');
+    Route::post('addlisting',['as'=>'addlisting','uses'=>"\App\Http\Controllers\Front\ListingController@addlisting"]);
+
 
 });
 Route::get('contact',['as'=>'contact','uses'=>"\App\Http\Controllers\Front\ContactUsController@index"]);
@@ -57,7 +59,6 @@ Route::post('login-process',['as'=>'login-process','uses'=>"\App\Http\Controller
 
 Route::get('/',['as'=>'/','uses'=>"\App\Http\Controllers\Front\HomeController@index"]) ;
 
-Route::get('addlisting',['as'=>'addlisting','uses'=>"\App\Http\Controllers\Front\ListingController@addlisting"]);
 Route::get('list-process',function(){
     return redirect()->to('/addlisting');
     return view('clientside.page.addlisting');

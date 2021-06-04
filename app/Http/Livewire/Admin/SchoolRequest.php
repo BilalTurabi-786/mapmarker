@@ -20,6 +20,7 @@ class SchoolRequest extends Component
 
     public function approve($id){
         $requestModel = RequestModel::find($id);
+        $requestModel->code = (string) \Str::uuid();
         $requestModel->is_approved = true;
         $requestModel->save();
     }

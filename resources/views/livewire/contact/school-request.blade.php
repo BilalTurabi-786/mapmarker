@@ -38,7 +38,12 @@
                         </td>
                         <td>
                             @if ($request->is_approved && !$request->is_expired)
-                                <a class="btn btn-success" href="#addSchool" role="button">Add School</a>
+                                <form action="{{ route('addlisting') }}" method="post">
+                                    @csrf
+                                    <input type="hidden" name="code">
+                                    <button type="submit" class="btn btn-success">Add School</button>
+                                </form>
+                                {{-- <a class="btn btn-success" href="#addSchool" role="button">Add School</a> --}}
                             @endif
                         </td>
                     </tr>
