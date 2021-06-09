@@ -81,6 +81,10 @@ class ContactUsController extends Controller
         return view('clientdash.pages.school-request');
     }
 
+    public function schools(){
+        return view('clientdash.pages.school');
+    }
+
     public function list_process(){
 
     }

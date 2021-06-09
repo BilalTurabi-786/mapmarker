@@ -45,7 +45,9 @@ Route::group(['middleware'=>'UserAuth'],function (){
     Route::get('logout',['as'=>'logout','uses'=>"\App\Http\Controllers\Front\LoginController@logout"]);
 
     Route::get('school-request', '\App\Http\Controllers\Front\ContactUsController@schoolRequest')->name('client.schoolRequest');
+    Route::get('schools', '\App\Http\Controllers\Front\ContactUsController@schools')->name('client.school');
     Route::post('addlisting',['as'=>'addlisting','uses'=>"\App\Http\Controllers\Front\ListingController@addlisting"]);
+    Route::post('addFilter',['as'=>'addFilter','uses'=>"\App\Http\Controllers\Front\ListingController@addFilter"]);
 
 
 });

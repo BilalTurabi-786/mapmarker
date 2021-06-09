@@ -46,7 +46,7 @@ class Add extends Component
 
     public function saveChanges(){
         $this->validate();
-        $imgName = "IMG-".time()."-".rand().".".$file->getClientOriginalExtension();
+        $imgName = "IMG-".time()."-".rand().".".$this->file->getClientOriginalExtension();
         $this->file->storeAs('photos', $imgName);
         $school = new School;
         $school->contact_us_id = auth('contact')->id();
@@ -71,7 +71,7 @@ class Add extends Component
         $this->schoolRequest->code = "";
         $this->schoolRequest->is_approved = false;
         $this->schoolRequest->is_rejected = false;
-        $this->schoolRequest->expired = true;
+        $this->schoolRequest->is_expired = true;
         $this->schoolRequest->save();
         return redirect()->route('/client/dashboard');
         // dd($this);

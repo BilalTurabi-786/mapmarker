@@ -118,6 +118,12 @@
                     </a>
                 </li>
                 <li class="nav-item">
+                    <a href="{{ route('client.school') }}">
+                        <!-- <i class="fa fa-map-marker"></i> -->
+                        <span class="menu-title" data-i18n="School">Schools</span>
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a href="{{route('admin.logout')}}">
                         <i class="fa fa-sign-out"></i>
                         <span class="menu-title" data-i18n="Order">Log out</span>

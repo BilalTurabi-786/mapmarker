@@ -40,7 +40,7 @@ class SchoolRequest extends Component
 
     public function getData(){
         $search = $this->search;
-        $schoolReq = RequestModel::with('contactUs')->whereHas('contactUs', function($query) use ($search){
+        $schoolReq = RequestModel::where('contact_us_id', auth('contact')->id())->with('contactUs')->whereHas('contactUs', function($query) use ($search){
             $query->when(!empty($search), function($query) use ($search){
                 $query->search($search);
             });
