@@ -21,6 +21,7 @@
             padding-bottom: 20px;
         }
     </style>
+    <link rel="stylesheet" href="{{ asset('app-assets/vendors/css/forms/select/select2.min.css') }}">
     <!-- add-listing
         ================================================== -->
         @livewire('contact.school.filter', compact('school'))
@@ -36,8 +37,13 @@
     <!-- End add-listing -->
 @endsection
 @section('scripts')
+    <script src="{{ asset('app-assets/vendors/js/forms/select/select2.full.min.js') }}"></script>
     <script>
         $(document).ready(function(){
+            $(".select2").select2();
+            window.addEventListener('livewire-reload', () => {
+                $(".select2").select2();
+            });
             let searchParams = new URLSearchParams(window.location.search)
             let token = searchParams.get("token");
 

@@ -4,65 +4,179 @@
         <div class="tab-content" id="nav-tabContent">
             <div class="tab-pane fade show active" id="nav-register" role="tabpanel" aria-labelledby="nav-register-tab">
                 <form class="add-listing__form" action="{{route('list-process')}}" wire:submit.prevent="saveChanges" method="post">
-                    <div class="container">
-                        <!-- form box -->
+                    <!-- form box -->
+                    @foreach ($filters as $key => $course)
                         <div class="add-listing__form-box" id="general-info">
-
-                            <h2 class="add-listing__form-title">
-                                General Information:
-                            </h2>
-
-                            <div class="add-listing__form-content">
-                                {{-- <div class="row">
-                                    <div class="col-md-6">
-                                        <label class="add-listing__label" for="list-title">
-                                            Company Name:
-                                        </label>
-                                        <input class="add-listing__input" type="text" wire:model.lazy="title" id="list-title" placeholder="Company Name" />
-                                    </div>
-                                    <div class="col-md-6">
-                                        <label class="add-listing__label" for="list-title">
-                                            Owner Name:
-                                        </label>
-                                        <input class="add-listing__input" type="text" wire:model.lazy="title" id="list-title" placeholder="Owner Name" />
-                                    </div>
-                                </div> --}}
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <label class="add-listing__label" for="list-title">
-                                            School Name:
-                                        </label>
-                                        <input class="add-listing__input" type="text" wire:model.lazy="name" id="list-title" placeholder="School Name" />
-                                        @error('name') <span class="text-danger">{{ $message }}</span> @enderror
+                            <div class="add-listing__form-content" x-data="filterForm()" x-init="init()">
+                                <div class="row m-0 p-0">
+                                    <div class="col-2 offset-11">
+                                        <span class="btn btn-success" wire:click="addFilter">
+                                            <i class="fa fa-plus" aria-hidden="true"></i>
+                                        </span>
+                                        <span class="btn btn-danger" wire:click="removeFilter({{ $key }})">
+                                            <i class="fa fa-trash" aria-hidden="true"></i>
+                                        </span>
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-md-4">
-                                        <label class="add-listing__label" for="website">
-                                            Website:
+                                    @php
+                                        $filter = new \App\Models\School\Filter();
+                                    @endphp
+                                    <div class="col-md-4 col-sm-6 col-lg-3 mt-3">
+                                        <label class="add-listing__label" for="list-title">
+                                            Sports:
                                         </label>
-                                        <input class="add-listing__input" type="text" wire:model.lazy="website" id="website" placeholder="Enter website address" />
-                                        @error('website') <span class="text-danger">{{ $message }}</span> @enderror
+                                        <select wire:model="filters.*.sports" class="form-control">
+                                            <option value="">Select an option</option>
+                                            @foreach ($filter->sports() as $sport)
+                                                <option>{{ $sport }}</option>
+                                            @endforeach
+                                        </select>
                                     </div>
-                                    <div class="col-md-4">
-                                        <label class="add-listing__label" for="phone">
-                                            Phone:
+                                    <div class="col-md-4 col-sm-6 col-lg-3 mt-3">
+                                        <label class="add-listing__label" for="list-title">
+                                            Start Date:
                                         </label>
-                                        <input class="add-listing__input" type="text" wire:model.lazy="phone" id="phone" placeholder="Enter phone number" />
-                                        @error('phone') <span class="text-danger">{{ $message }}</span> @enderror
+                                        <input type="date" class="form-control" wire:model.lazy="filters.*.start_date">
                                     </div>
-                                    <div class="col-md-4">
-                                        <label class="add-listing__label" for="email">
-                                            Email:
+                                    <div class="col-md-4 col-sm-6 col-lg-3 mt-3">
+                                        <label class="add-listing__label" for="list-title">
+                                            End Date:
                                         </label>
-                                        <input class="add-listing__input" type="text" wire:model.lazy="email" id="email" placeholder="Enter email address" />
-                                        @error('email') <span class="text-danger">{{ $message }}</span> @enderror
+                                        <input type="date" class="form-control" wire:model.lazy="filters.*.end_date">
+                                    </div>
+                                    <div class="col-md-4 col-sm-6 col-lg-3 mt-3">
+                                        <label class="add-listing__label" for="list-title">
+                                            Price:
+                                        </label>
+                                        <input type="number" class="form-control" wire:model.lazy="filters.*.price">
+                                    </div>
+                                    <div class="col-md-4 col-sm-6 col-lg-3 mt-3">
+                                        <label class="add-listing__label" for="list-title">
+                                            Student Teacher Ratio (Students per Teacher):
+                                        </label>
+                                        <input type="number" class="form-control" wire:model.lazy="filters.*.student_teacher_ratio">
+                                    </div>
+                                    <div class="col-md-4 col-sm-6 col-lg-3 mt-3" wire:ignore>
+                                        <label class="add-listing__label" for="list-title">
+                                            Association:
+                                        </label>
+                                        <select class="form-control select2" x-model="association" multiple>
+                                            @foreach ($filter->association() as $association)
+                                                <option>{{ $association }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    <div class="col-md-4 col-sm-6 col-lg-3 mt-3" wire:ignore>
+                                        <label class="add-listing__label" for="list-title">
+                                            Handicap:
+                                        </label>
+                                        <select class="form-control select2" x-model="handicap" multiple>
+                                            <option>No</option>
+                                            @foreach ($filter->handicap() as $handicap)
+                                                <option>{{ $handicap }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    <div class="col-md-4 col-sm-6 col-lg-3 mt-3" wire:ignore>
+                                        <label class="add-listing__label" for="list-title">
+                                            Rental Per Person ( Rental ):
+                                        </label>
+                                        <select class="form-control select2" x-model="rentalPerPersonRental" multiple>
+                                            @foreach ($filter->rentalPerPerson() as $rentalPerPerson)
+                                            <option>{{ $rentalPerPerson }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    <div class="col-md-4 col-sm-6 col-lg-3 mt-3" wire:ignore>
+                                        <label class="add-listing__label" for="list-title">
+                                            Duration ( Rental ):
+                                        </label>
+                                        <select class="form-control select2" x-model="durationRental" multiple>
+                                            @foreach ($filter->duration() as $duration)
+                                            <option>{{ $duration }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    <div class="col-md-4 col-sm-6 col-lg-3 mt-3" wire:ignore>
+                                        <label class="add-listing__label" for="list-title">
+                                            Rental Per Person ( Storage ):
+                                        </label>
+                                        <select class="form-control select2" x-model="rentalPerPersonStorage" multiple>
+                                            @foreach ($filter->rentalPerPerson() as $rentalPerPerson)
+                                            <option>{{ $rentalPerPerson }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    <div class="col-md-4 col-sm-6 col-lg-3 mt-3" wire:ignore>
+                                        <label class="add-listing__label" for="list-title">
+                                            Duration ( Storage ):
+                                        </label>
+                                        <select class="form-control select2" x-model="durationStorage" multiple>
+                                            @foreach ($filter->duration() as $duration)
+                                            <option>{{ $duration }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    <div class="col-md-4 col-sm-6 col-lg-3 mt-3" wire:ignore>
+                                        <label class="add-listing__label" for="list-title">
+                                            Children:
+                                        </label>
+                                        <select class="form-control select2" x-model="children" multiple>
+                                            <option>No</option>
+                                            @for ($i = 5; $i <= 17; $i++)
+                                                <option>Age {{ $i }}</option>
+                                            @endfor
+                                        </select>
+                                    </div>
+                                    <div class="col-md-4 col-sm-6 col-lg-3 mt-3" wire:ignore>
+                                        <label class="add-listing__label" for="list-title">
+                                            Language:
+                                        </label>
+                                        <select class="form-control select2" x-model="language" multiple>
+                                            <option>English</option>
+                                            <option>French</option>
+                                            <option>Urdu</option>
+                                            <option>Spanish</option>
+                                            <option>Hindi</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-4 col-sm-6 col-lg-3 mt-3">
+                                        <label class="add-listing__label" for="list-title">
+                                            Course Level:
+                                        </label>
+                                        <select wire:model="filters.*.course_level" class="form-control">
+                                            <option value="">Select an option</option>
+                                            <option>Beginner</option>
+                                            <option>Intermediate</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-4 col-sm-6 col-lg-3 mt-3">
+                                        <label class="add-listing__label" for="list-title">
+                                            &nbsp;
+                                        </label>
+                                        <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input type="checkbox" class="form-check-input" name="filters.*.lesson" id="lesson">
+                                            Lesson
+                                        </label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 col-sm-6 col-lg-3 mt-3">
+                                        <label class="add-listing__label" for="list-title">
+                                            &nbsp;
+                                        </label>
+                                        <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input type="checkbox" class="form-check-input" name="filters.*.camp" id="camp">
+                                            Camp
+                                        </label>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-
                         </div>
-                    </div>
+                    @endforeach
                     <div class="center-button">
                         <button class="add-listing__submit" type="submit">
                             Submit
@@ -76,3 +190,14 @@
     </div>
     <div class="sign__background"></div>
 </section>
+@push('scripts')
+    <script>
+        function filterForm(){
+            return {
+                init(){
+                    console.log("");
+                }
+            }
+        }
+    </script>
+@endpush
