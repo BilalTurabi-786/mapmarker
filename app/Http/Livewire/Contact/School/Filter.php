@@ -19,8 +19,26 @@ class Filter extends Component
     }
 
     public function addFilter(){
+        $today = now()->format("Y-m-d");
+        $rental = [
+            "rentalPerPerson" => "",
+            "duration" => ""
+        ];
         $this->filters[] = [
-            ''
+            'sports' => '',
+            'start_date' => $today,
+            'end_date' => $today,
+            'price' => 1,
+            'student_teacher_ratio' => 1,
+            'association' => [],
+            'handicap' => [],
+            'rental' => $rental,
+            'storage' => $rental,
+            'children' => [],
+            'language' => [],
+            'courseLevel' => "",
+            'lesson' => false,
+            'course' => false
         ];
     }
 

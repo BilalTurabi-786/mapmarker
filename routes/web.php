@@ -50,6 +50,11 @@ Route::group(['middleware'=>'UserAuth'],function (){
     Route::post('addFilter',['as'=>'addFilter','uses'=>"\App\Http\Controllers\Front\ListingController@addFilter"]);
 
 
+    Route::get('/client/dashboard',function(){
+        return redirect()->route('client.school');
+        return view('clientdash.pages.dashboard');
+    })->name('/client/dashboard');
+
 });
 Route::get('contact',['as'=>'contact','uses'=>"\App\Http\Controllers\Front\ContactUsController@index"]);
 
@@ -73,8 +78,4 @@ Route::post('list-process',['as'=>'list-process','uses'=>"\App\Http\Controllers\
 Route::get('dashboard', function () {
     return view('admin.pages.dashboard');
 })->name('dashboard');
-
-Route::get('/client/dashboard',function(){
-    return view('clientdash.pages.dashboard');
-})->name('/client/dashboard');
 

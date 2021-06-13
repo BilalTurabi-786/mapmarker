@@ -105,22 +105,22 @@
         <div class="shadow-bottom"></div>
         <div class="main-menu-content">
             <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
-                <li class="nav-item">
+                {{-- <li class="nav-item">
                     <a href="{{ route('/client/dashboard') }}">
                         <!-- <i class="fa fa-map-marker"></i> -->
                         <span class="menu-title" data-i18n="Order">Add New Filter</span>
                     </a>
-                </li>
+                </li> --}}
                 <li class="nav-item">
                     <a href="{{ route('client.schoolRequest') }}">
                         <!-- <i class="fa fa-map-marker"></i> -->
-                        <span class="menu-title" data-i18n="Request">School Request</span>
+                        <span class="menu-title" data-i18n="school-request">School Request</span>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a href="{{ route('client.school') }}">
                         <!-- <i class="fa fa-map-marker"></i> -->
-                        <span class="menu-title" data-i18n="School">Schools</span>
+                        <span class="menu-title" data-i18n="schools">Schools</span>
                     </a>
                 </li>
                 <li class="nav-item">

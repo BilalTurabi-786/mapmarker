@@ -26,36 +26,41 @@
                                         <label class="add-listing__label" for="list-title">
                                             Sports:
                                         </label>
-                                        <select wire:model="filters.*.sports" class="form-control">
+                                        <select wire:model="filters.{{$key}}.sports" class="form-control">
                                             <option value="">Select an option</option>
                                             @foreach ($filter->sports() as $sport)
                                                 <option>{{ $sport }}</option>
                                             @endforeach
                                         </select>
+                                        @error("filters.$key.sports") <span class="text-danger">{{ $message }}</span> @enderror
                                     </div>
                                     <div class="col-md-4 col-sm-6 col-lg-3 mt-3">
                                         <label class="add-listing__label" for="list-title">
                                             Start Date:
                                         </label>
-                                        <input type="date" class="form-control" wire:model.lazy="filters.*.start_date">
+                                        <input type="date" class="form-control" wire:model.lazy="filters.{{$key}}.start_date">
+                                        @error("filters.$key.sports") <span class="text-danger">{{ $message }}</span> @enderror
                                     </div>
                                     <div class="col-md-4 col-sm-6 col-lg-3 mt-3">
                                         <label class="add-listing__label" for="list-title">
                                             End Date:
                                         </label>
-                                        <input type="date" class="form-control" wire:model.lazy="filters.*.end_date">
+                                        <input type="date" class="form-control" wire:model.lazy="filters.{{$key}}.end_date">
+                                        @error("filters.$key.sports") <span class="text-danger">{{ $message }}</span> @enderror
                                     </div>
                                     <div class="col-md-4 col-sm-6 col-lg-3 mt-3">
                                         <label class="add-listing__label" for="list-title">
                                             Price:
                                         </label>
-                                        <input type="number" class="form-control" wire:model.lazy="filters.*.price">
+                                        <input type="number" class="form-control" wire:model.lazy="filters.{{$key}}.price">
+                                        @error("filters.$key.sports") <span class="text-danger">{{ $message }}</span> @enderror
                                     </div>
                                     <div class="col-md-4 col-sm-6 col-lg-3 mt-3">
                                         <label class="add-listing__label" for="list-title">
                                             Student Teacher Ratio (Students per Teacher):
                                         </label>
-                                        <input type="number" class="form-control" wire:model.lazy="filters.*.student_teacher_ratio">
+                                        <input type="number" class="form-control" wire:model.lazy="filters.{{$key}}.student_teacher_ratio">
+                                        @error("filters.$key.sports") <span class="text-danger">{{ $message }}</span> @enderror
                                     </div>
                                     <div class="col-md-4 col-sm-6 col-lg-3 mt-3" wire:ignore>
                                         <label class="add-listing__label" for="list-title">
@@ -66,6 +71,7 @@
                                                 <option>{{ $association }}</option>
                                             @endforeach
                                         </select>
+                                        @error("filters.$key.sports") <span class="text-danger">{{ $message }}</span> @enderror
                                     </div>
                                     <div class="col-md-4 col-sm-6 col-lg-3 mt-3" wire:ignore>
                                         <label class="add-listing__label" for="list-title">
@@ -77,6 +83,7 @@
                                                 <option>{{ $handicap }}</option>
                                             @endforeach
                                         </select>
+                                        @error("filters.$key.sports") <span class="text-danger">{{ $message }}</span> @enderror
                                     </div>
                                     <div class="col-md-4 col-sm-6 col-lg-3 mt-3" wire:ignore>
                                         <label class="add-listing__label" for="list-title">
@@ -87,6 +94,7 @@
                                             <option>{{ $rentalPerPerson }}</option>
                                             @endforeach
                                         </select>
+                                        @error("filters.$key.sports") <span class="text-danger">{{ $message }}</span> @enderror
                                     </div>
                                     <div class="col-md-4 col-sm-6 col-lg-3 mt-3" wire:ignore>
                                         <label class="add-listing__label" for="list-title">
@@ -97,6 +105,7 @@
                                             <option>{{ $duration }}</option>
                                             @endforeach
                                         </select>
+                                        @error("filters.$key.sports") <span class="text-danger">{{ $message }}</span> @enderror
                                     </div>
                                     <div class="col-md-4 col-sm-6 col-lg-3 mt-3" wire:ignore>
                                         <label class="add-listing__label" for="list-title">
@@ -107,6 +116,7 @@
                                             <option>{{ $rentalPerPerson }}</option>
                                             @endforeach
                                         </select>
+                                        @error("filters.$key.sports") <span class="text-danger">{{ $message }}</span> @enderror
                                     </div>
                                     <div class="col-md-4 col-sm-6 col-lg-3 mt-3" wire:ignore>
                                         <label class="add-listing__label" for="list-title">
@@ -117,6 +127,7 @@
                                             <option>{{ $duration }}</option>
                                             @endforeach
                                         </select>
+                                        @error("filters.$key.sports") <span class="text-danger">{{ $message }}</span> @enderror
                                     </div>
                                     <div class="col-md-4 col-sm-6 col-lg-3 mt-3" wire:ignore>
                                         <label class="add-listing__label" for="list-title">
@@ -128,6 +139,7 @@
                                                 <option>Age {{ $i }}</option>
                                             @endfor
                                         </select>
+                                        @error("filters.$key.sports") <span class="text-danger">{{ $message }}</span> @enderror
                                     </div>
                                     <div class="col-md-4 col-sm-6 col-lg-3 mt-3" wire:ignore>
                                         <label class="add-listing__label" for="list-title">
@@ -145,33 +157,36 @@
                                         <label class="add-listing__label" for="list-title">
                                             Course Level:
                                         </label>
-                                        <select wire:model="filters.*.course_level" class="form-control">
+                                        <select wire:model="filters.{{$key}}.course_level" class="form-control">
                                             <option value="">Select an option</option>
                                             <option>Beginner</option>
                                             <option>Intermediate</option>
                                         </select>
+                                        @error("filters.$key.sports") <span class="text-danger">{{ $message }}</span> @enderror
                                     </div>
                                     <div class="col-md-4 col-sm-6 col-lg-3 mt-3">
                                         <label class="add-listing__label" for="list-title">
                                             &nbsp;
                                         </label>
                                         <div class="form-check">
-                                        <label class="form-check-label">
-                                            <input type="checkbox" class="form-check-input" name="filters.*.lesson" id="lesson">
-                                            Lesson
-                                        </label>
+                                            <label class="form-check-label">
+                                                <input type="checkbox" class="form-check-input" name="filters.{{$key}}.lesson" id="lesson">
+                                                Lesson
+                                            </label>
                                         </div>
+                                        @error("filters.$key.sports") <span class="text-danger">{{ $message }}</span> @enderror
                                     </div>
                                     <div class="col-md-4 col-sm-6 col-lg-3 mt-3">
                                         <label class="add-listing__label" for="list-title">
                                             &nbsp;
                                         </label>
                                         <div class="form-check">
-                                        <label class="form-check-label">
-                                            <input type="checkbox" class="form-check-input" name="filters.*.camp" id="camp">
-                                            Camp
-                                        </label>
+                                            <label class="form-check-label">
+                                                <input type="checkbox" class="form-check-input" name="filters.{{$key}}.camp" id="camp">
+                                                Camp
+                                            </label>
                                         </div>
+                                        @error("filters.$key.sports") <span class="text-danger">{{ $message }}</span> @enderror
                                     </div>
                                 </div>
                             </div>
@@ -194,7 +209,11 @@
     <script>
         function filterForm(){
             return {
+                filters: @entangle('filters'),
                 init(){
+                    this.$watch('filters', () => {
+                        console.log(this.filters);
+                    });
                     console.log("");
                 }
             }
