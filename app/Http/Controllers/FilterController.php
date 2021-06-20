@@ -13,6 +13,7 @@ class FilterController extends Controller
         $filters=Filter::all();
         return view('admin.pages.filter.filters',['filters'=>$filters]);
     }
+
     public function add_filter(Request $request){
         $controlls=$request->all();
         if ($request->id!='') {
@@ -25,7 +26,7 @@ class FilterController extends Controller
                 "filter"=>'required|string|unique:filters,name'
             );
         }
-        
+
         $validator=Validator::make($controlls,$rules);
         if ($validator->fails()) {
             dd($validator);

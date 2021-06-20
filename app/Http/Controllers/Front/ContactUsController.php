@@ -15,14 +15,14 @@ class ContactUsController extends Controller
 {
     //
     public function index(){
-        $admin=new Admin;
-        $admin->name="khalid";
-        $admin->email="meerkhalid482@gmail.com";
-        $admin->password=bcrypt(12345678);
-        $admin->role_id=1;
-        $admin->phone=1;
+        // $admin=new Admin;
+        // $admin->name="khalid";
+        // $admin->email="meerkhalid482@gmail.com";
+        // $admin->password=bcrypt(12345678);
+        // $admin->role_id=1;
+        // $admin->phone=1;
 
-        $admin->save();
+        // $admin->save();
 
         return view('clientside.page.contact');
 

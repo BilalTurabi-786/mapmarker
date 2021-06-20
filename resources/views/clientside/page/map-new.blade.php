@@ -816,7 +816,7 @@
 
                             </h2>
 
-                            @livewire('filters')
+                            @livewire('filters', compact('filters', 'data'))
 
                         </div>
 
@@ -1586,11 +1586,11 @@
 
 				range: true,
 
-				min: 130,
+				min: '{{ $data["price"][0] }}',
 
-				max: 500,
+				max: '{{ $data["price"][1] }}',
 
-				values: [ 130, 250 ],
+				values: [ '{{ $data["price"][0] }}', '{{ $data["price"][1] }}' ],
 
 				slide: function( event, ui ) {
 

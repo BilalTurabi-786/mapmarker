@@ -8,7 +8,7 @@ namespace App\Http\Livewire;
 
 use Livewire\Component;
 use App\Models\Language;
-
+use Carbon\Carbon;
 
 class Filters extends Component
 {
@@ -70,15 +70,16 @@ class Filters extends Component
 
     // mount
 
-    public function mount(){
+    public function mount($filters, $data){
 
         $this->activePerson = 0;
-
+        $duration = Carbon::parse($data["duration"][0])->format("M Y");
+        $duration = "-".Carbon::parse($data["duration"][1])->format("M Y");
         $this->sample = [
 
             "lesson_type" => "",
 
-            "duration" => "March 2010-January 2021",
+            "duration" => $duration,
 
             "price" => "$130 - $250",
 

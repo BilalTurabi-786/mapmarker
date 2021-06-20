@@ -483,15 +483,11 @@
                 ddToggle: @entangle('toggle'),
 
                 showFilter(key) {
-
                     return this.persons[this.activePerson][key];
-
                 },
 
                 showToggle(key){
-
                     return this.ddToggle[key]
-
                 },
 
                 watchActivePerson(){
