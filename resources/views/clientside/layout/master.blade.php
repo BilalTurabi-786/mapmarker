@@ -14,9 +14,9 @@
 	<link rel="stylesheet" href="css/triptip-assets.min.css">
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 	<link rel="stylesheet" type="text/css" href="css/chosen.min.css">
-    
     @livewireStyles
     @livewireScripts
+    <script src="{{ asset('app-assets/js/alpine.js') }}"></script>
 </head>
 <body class="element" id="element">
 

@@ -16,7 +16,7 @@ use App\Models\School\{
 };
 class Filter extends Component
 {
-    public $filters, $school;
+    public $filters, $school, $deleted_ids;
 
     protected $rules = [
         'filters.*.sports' => 'required',
@@ -32,7 +32,7 @@ class Filter extends Component
         'filters.*.storage.duration' => 'required|array',
         'filters.*.children' => 'required|array',
         'filters.*.language' => 'required|array',
-        'filters.*.courseLevel' => 'required'
+        'filters.*.course_level' => 'required'
     ];
 
     protected $messages = [
@@ -53,13 +53,49 @@ class Filter extends Component
         'filters.*.storage.duration.required' => 'Duration is required',
         'filters.*.children.required' => 'Children is required',
         'filters.*.language.required' => 'Language is required',
-        'filters.*.courseLevel.required' => 'Course Level is required'
+        'filters.*.course_level.required' => 'Course Level is required'
     ];
 
     public function mount($school){
         $school = $this->school;
         $this->filters = [];
-        $this->addFilter();
+        $filters = SchoolFilter::query()
+        ->where('school_id', $school->id)
+        ->with([
+            'associations:id,school_filter_id,name', 'children:id,school_filter_id,name', 'handicaps:id,school_filter_id,name', 'languages:id,school_filter_id,name', 'rentalDuration:id,school_filter_id,name',
+            'rentalPerPersons:id,school_filter_id,name', 'storageDuration:id,school_filter_id,name', 'storagePerPerson:id,school_filter_id,name'
+        ])->get();
+        $this->deleted_ids = [];
+        if($filters->count() > 0){
+            foreach ($filters as $filter) {
+                $this->filters[] = [
+                    'filter_id' => $filter->id,
+                    'sports' => $filter->sports,
+                    'start_date' => $filter->start_date,
+                    'end_date' => $filter->end_date,
+                    'price' => $filter->price,
+                    'student_teacher_ratio' => $filter->student_teacher_ratio,
+                    'association' => $filter->associations->pluck('name')->toArray(),
+                    'handicap' => $filter->handicaps->pluck('name')->toArray(),
+                    'rental' => [
+                        "rentalPerPerson" => $filter->rentalPerPersons->pluck('name')->toArray(),
+                        "duration" => $filter->rentalDuration->pluck('name')->toArray()
+                    ],
+                    'storage' => [
+                        "rentalPerPerson" => $filter->storagePerPerson->pluck('name')->toArray(),
+                        "duration" => $filter->storageDuration->pluck('name')->toArray()
+                    ],
+                    'children' => $filter->children->pluck('name')->toArray(),
+                    'language' => $filter->languages->pluck('name')->toArray(),
+                    'course_level' => $filter->course_level,
+                    'lesson' => $filter->is_lesson,
+                    'camp' => $filter->is_camp
+                ];
+            }
+        }
+        else{
+            $this->addFilter();
+        }
     }
 
     public function render(){
@@ -75,7 +111,13 @@ class Filter extends Component
         $this->validate();
         foreach($this->filters as $filter){
             // add Filter
-            $schoolFilter = new SchoolFilter;
+            $schoolFilter = null;
+            if(isset($filter['filter_id'])){
+                $schoolFilter = SchoolFilter::find($filter['filter_id']);
+            }
+            if(!is_object($schoolFilter)){
+                $schoolFilter = new SchoolFilter;
+            }
             $schoolFilter->school_id = $this->school->id;
             $schoolFilter->sports = $filter['sports'];
             $schoolFilter->start_date = $filter['start_date'];
@@ -89,7 +131,11 @@ class Filter extends Component
 
             // association
             foreach($filter['association'] as $value){
-                $association = new Association;
+                $association = Association::where('id', $schoolFilter->id)->first();
+                if(!is_object($association)){
+                    $association = new Association;
+                }
+                // $association = new Association;
                 $association->school_filter_id = $schoolFilter->id;
                 $association->name = $value;
                 $association->save();
@@ -97,7 +143,11 @@ class Filter extends Component
 
             // children
             foreach($filter['children'] as $value){
-                $children = new Children;
+                $children = Children::where('id', $schoolFilter->id)->first();
+                if(!is_object($children)){
+                    $children = new Children;
+                }
+                // $children = new Children;
                 $children->school_filter_id = $schoolFilter->id;
                 $children->name = $value;
                 $children->save();
@@ -105,7 +155,11 @@ class Filter extends Component
 
             // handicap
             foreach($filter['handicap'] as $value){
-                $handicap = new Handicap;
+                $handicap = Handicap::where('id', $schoolFilter->id)->first();
+                if(!is_object($handicap)){
+                    $handicap = new Handicap;
+                }
+                // $handicap = new Handicap;
                 $handicap->school_filter_id = $schoolFilter->id;
                 $handicap->name = $value;
                 $handicap->save();
@@ -113,7 +167,11 @@ class Filter extends Component
 
             // language
             foreach($filter['language'] as $value){
-                $language = new Language;
+                $language = Language::where('id', $schoolFilter->id)->first();
+                if(!is_object($language)){
+                    $language = new Language;
+                }
+                // $language = new Language;
                 $language->school_filter_id = $schoolFilter->id;
                 $language->name = $value;
                 $language->save();
@@ -121,7 +179,11 @@ class Filter extends Component
 
             // rentalPerPerson
             foreach($filter['rental']['rentalPerPerson'] as $value){
-                $rentalPerPerson = new rentalPerPerson;
+                $rentalPerPerson = rentalPerPerson::where('id', $schoolFilter->id)->first();
+                if(!is_object($rentalPerPerson)){
+                    $rentalPerPerson = new rentalPerPerson;
+                }
+                // $rentalPerPerson = new rentalPerPerson;
                 $rentalPerPerson->school_filter_id = $schoolFilter->id;
                 $rentalPerPerson->name = $value;
                 $rentalPerPerson->save();
@@ -129,7 +191,11 @@ class Filter extends Component
 
             // storagePerPerson
             foreach($filter['storage']['rentalPerPerson'] as $value){
-                $storagePerPerson = new StoragePerPerson;
+                $storagePerPerson = StoragePerPerson::where('id', $schoolFilter->id)->first();
+                if(!is_object($storagePerPerson)){
+                    $storagePerPerson = new StoragePerPerson;
+                }
+                // $storagePerPerson = new StoragePerPerson;
                 $storagePerPerson->school_filter_id = $schoolFilter->id;
                 $storagePerPerson->name = $value;
                 $storagePerPerson->save();
@@ -137,7 +203,11 @@ class Filter extends Component
 
             // rentalDuration
             foreach($filter['rental']['duration'] as $value){
-                $rentalDuration = new RentalDuration;
+                $rentalDuration = RentalDuration::where('id', $schoolFilter->id)->first();
+                if(!is_object($rentalDuration)){
+                    $rentalDuration = new RentalDuration;
+                }
+                // $rentalDuration = new RentalDuration;
                 $rentalDuration->school_filter_id = $schoolFilter->id;
                 $rentalDuration->name = $value;
                 $rentalDuration->save();
@@ -145,13 +215,18 @@ class Filter extends Component
 
             // storageDuration
             foreach($filter['storage']['duration'] as $value){
-                $storageDuration = new StorageDuration;
+                $storageDuration = StorageDuration::where('id', $schoolFilter->id)->first();
+                if(!is_object($storageDuration)){
+                    $storageDuration = new StorageDuration;
+                }
+                //$storageDuration = new StorageDuration;
                 $storageDuration->school_filter_id = $schoolFilter->id;
                 $storageDuration->name = $value;
                 $storageDuration->save();
             }
-
         }
+        SchoolFilter::destroy($this->deleted_ids);
+        return redirect()->route('client.school');
     }
 
     public function addFilter(){
@@ -174,12 +249,13 @@ class Filter extends Component
             'language' => [],
             'course_level' => "",
             'lesson' => false,
-            'course' => false
+            'camp' => false
         ];
     }
 
     public function removeFilter($i){
         // if(isset($this->filters[$i]))
+        if(isset($this->filters[$i]['filter_id'])) $this->deleted_ids[] = $this->filters[$i]['filter_id'];
         unset($this->filters[$i]);
         $this->filters = array_values($this->filters);
     }

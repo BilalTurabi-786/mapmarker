@@ -1,4 +1,4 @@
-<section class="sign">
+<section class="sign" x-data="filterForm()" x-init="init()">
     {{-- A good traveler has no fixed plans and is not intent upon arriving. --}}
     <div class="sign__area">
         <div class="tab-content" id="nav-tabContent">
@@ -6,8 +6,8 @@
                 <form class="add-listing__form" action="{{route('list-process')}}" wire:submit.prevent="saveChanges" method="post">
                     <!-- form box -->
                     @foreach ($filters as $key => $course)
-                        <div class="add-listing__form-box" id="general-info">
-                            <div class="add-listing__form-content" x-data="filterForm()" x-init="init()">
+                        <div class="add-listing__form-box" id="general-info-{{$key}}">
+                            <div class="add-listing__form-content">
                                 <div class="row m-0 p-0">
                                     <div class="col-1">{{ $loop->iteration }}.</div>
                                     <div class="col-2 offset-10">
@@ -175,12 +175,12 @@
                                         <label class="add-listing__label" for="list-title">
                                             Course Level:
                                         </label>
-                                        <select wire:model="filters.{{$key}}.courseLevel" class="form-control">
+                                        <select wire:model="filters.{{$key}}.course_level" class="form-control">
                                             <option value="">Select an option</option>
                                             <option>Beginner</option>
                                             <option>Intermediate</option>
                                         </select>
-                                        @error("filters.$key.courseLevel") <span class="text-danger">{{ $message }}</span> @enderror
+                                        @error("filters.$key.course_level") <span class="text-danger">{{ $message }}</span> @enderror
                                     </div>
                                     <div class="col-md-4 col-sm-6 col-lg-3 mt-3">
                                         <label class="add-listing__label" for="list-title">
@@ -253,8 +253,18 @@
                     console.log(key);
                 },
                 init(){
+                    this.filters.forEach((filter, i) => {
+                        $("[data-name=association]").eq(i).val(filter.association);
+                        $("[data-name=children]").eq(i).val(filter.children);
+                        $("[data-name=handicap]").eq(i).val(filter.handicap);
+                        $("[data-name=language]").eq(i).val(filter.language);
+                        $("[data-name='rental.rentalPerPerson']").eq(i).val(filter.rental.rentalPerPerson);
+                        $("[data-name='rental.duration']").eq(i).val(filter.rental.duration);
+                        $("[data-name='storage.rentalPerPerson']").eq(i).val(filter.storage.rentalPerPerson);
+                        $("[data-name='storage.duration']").eq(i).val(filter.storage.duration);
+                    });
                     this.$watch('filters', () => {
-                        console.log(this.filters);
+                        // console.log(this.filters);
                     });
                     this.$watch('association', value => {
                         console.log(value);
@@ -271,6 +281,9 @@
             let path = "filters."+i+"."+name;
             @this.set(path, values);
             console.log(@this.filters);
+        })
+        window.Livewire.on('removeFilter', event => {
+            console.log(event);
         })
     </script>
 @endpush
