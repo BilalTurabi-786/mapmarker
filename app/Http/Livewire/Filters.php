@@ -74,7 +74,10 @@ class Filters extends Component
 
         $this->activePerson = 0;
         $duration = Carbon::parse($data["duration"][0])->format("M Y");
-        $duration = "-".Carbon::parse($data["duration"][1])->format("M Y");
+        $duration .= "-".Carbon::parse($data["duration"][1])->format("M Y");
+        $price = "$".$data['price'][0]." - $".$data['price'][1];
+        $pricePerHour = "$".$data['price'][0]." - $".$data['price'][1];
+        $studentTeacherRatio = $data['student_teacher_ratio'][0]." - ".$data['student_teacher_ratio'][1];
         $this->sample = [
 
             "lesson_type" => "",

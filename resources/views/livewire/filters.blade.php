@@ -491,6 +491,40 @@
                 },
 
                 watchActivePerson(){
+                    let filters = this.persons[this.activePerson];
+                    console.log(filters);
+
+                    //price
+                    // let price = filters.price;
+                    // price = price.replace("$", "");
+                    // price = price.split(" - ");
+                    // console.log(price);
+                    // $("#slider-range").slider({
+                    //     min: parseInt(price[0]),
+                    //     max: parseInt(price[1])
+                    // });
+                    // $("#slider-range2").slider({
+                    //     min: price[0].replace('$', ''),
+                    //     max: price[1].replace('$', '')
+                    // });
+                    // console.log(price);
+
+                    // studentTeacherRatio
+                    // let studentTeacherRatio = filters.studentTeacherRatio;
+                    // studentTeacherRatio = studentTeacherRatio.split(" - ");
+                    // $("#slider-range12").slider({
+                    //     min: studentTeacherRatio[0],
+                    //     max: studentTeacherRatio[1]
+                    // });
+
+                    // duration
+                    // let duration = filters.duration;
+                    // duration = duration.split("-");
+                    // $("#slider-range10").slider({
+                    //     min: new Date("01 "+duration[0]).getTime(),
+                    //     max: new Date("01 "+duration[1]).getTime()
+                    // });
+
                     this.$watch('activePerson', value => {
                         this.refreshPerson();
                     });
@@ -633,7 +667,6 @@
                 showPersons() {
                     console.log(this.persons);
                 }
-
             }
 
         }
@@ -641,7 +674,6 @@
     </script>
 
     <script>
-
         $("#slider-range").on("slidestop", (e, ui) => {
 
             let ele = $(e.target).siblings('.range-value').find('input');

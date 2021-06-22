@@ -867,6 +867,7 @@
 	</div>
 
 	<!-- Banner -->
+    {{-- {{ dd($data['duration'][0]) }} --}}
 
 @endsection
 
@@ -1581,16 +1582,15 @@
 		/** Sliders */
 
 			//price
-
 			$( "#slider-range" ).slider({
 
 				range: true,
 
-				min: '{{ $data["price"][0] }}',
+				min: parseInt("{{$data['price'][0]}}"),
 
-				max: '{{ $data["price"][1] }}',
+				max: parseInt("{{$data['price'][1]}}"),
 
-				values: [ '{{ $data["price"][0] }}', '{{ $data["price"][1] }}' ],
+				values: [ parseInt("{{$data['price'][0]}}"), parseInt("{{$data['price'][1]}}") ],
 
 				slide: function( event, ui ) {
 
@@ -1612,11 +1612,11 @@
 
 				range: true,
 
-				min: 130,
+				min: parseInt("{{$data['price'][0]}}"),
 
-				max: 500,
+				max: parseInt("{{$data['price'][1]}}"),
 
-				values: [ 130, 250 ],
+				values: [ parseInt("{{$data['price'][0]}}"), parseInt("{{$data['price'][1]}}") ],
 
 				slide: function( event, ui ) {
 
@@ -1660,17 +1660,23 @@
 
 			}
 
+            let duration = [
+                "{{ Carbon\Carbon::createFromFormat('Y-m-d', $data['duration'][0])->toW3cString() }}",
+                "{{ Carbon\Carbon::createFromFormat('Y-m-d', $data['duration'][1])->toW3cString() }}"
+            ]
+            console.log(duration);
+
 			$( "#slider-range3" ).slider({
 
 				range: true,
 
-				min: new Date('2010-01-01T00:00:00').getTime(),
+				min: new Date(duration[0]).getTime(),
 
-				max: new Date('2021-01-01T00:00:00').getTime(),
+				max: new Date(duration[1]).getTime(),
 
 				step: 86400000,
 
-				values: [ new Date('2010-03-01T00:00:00').getTime(), new Date('2021-01-01T00:00:00').getTime() ],
+				values: [ new Date(duration[0]).getTime(), new Date(duration[1]).getTime() ],
 
 				slide: function( event, ui ) {
 
@@ -1928,13 +1934,13 @@
 
 				range: true,
 
-				min: new Date('2010-01-01T00:00:00').getTime(),
+				min: new Date(duration[0]).getTime(),
 
-				max: new Date('2021-01-01T00:00:00').getTime(),
+				max: new Date(duration[1]).getTime(),
 
 				step: 86400000,
 
-				values: [ new Date('2010-03-01T00:00:00').getTime(), new Date('2021-01-01T00:00:00').getTime() ],
+				values: [ new Date(duration[0]).getTime(), new Date(duration[1]).getTime() ],
 
 				slide: function( event, ui ) {
 
@@ -1974,17 +1980,20 @@
 
 				" - $" + $( "#slider-range11" ).slider( "values", 1 ) );
 
-
-
+            let range = [
+                parseInt("{{$data['student_teacher_ratio'][0]}}"),
+                parseInt("{{$data['student_teacher_ratio'][1]}}")
+            ];
+            console.log(range);
 			$( "#slider-range12" ).slider({
 
 				range: true,
 
-				min: 130,
+				min: range[0],
 
-				max: 500,
+				max: range[1],
 
-				values: [ 130, 250 ],
+				values: [ range[0], range[1]+120 ],
 
 				slide: function( event, ui ) {
 
