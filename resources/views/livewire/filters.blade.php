@@ -524,7 +524,6 @@
                     //     min: new Date("01 "+duration[0]).getTime(),
                     //     max: new Date("01 "+duration[1]).getTime()
                     // });
-
                     this.$watch('activePerson', value => {
                         this.refreshPerson();
                     });

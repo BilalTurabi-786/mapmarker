@@ -949,7 +949,7 @@
 
 						}
 
-						);
+                    );
 
 				} else {
 
@@ -1039,51 +1039,36 @@
 
 					data=res.markers;
 
-					$(data).each(function (i,val){
+					data.forEach(function (val, i){
+                        console.log(i,val);
+                        // continue;
+                        // if(0){
+                            links = "";
+                            if(val.facebook != null) links += val.facebook+"<br/>";
+                            if(val.twitter != null) links += val.twitter+"<br/>";
+                            if(val.youtube != null) links += val.youtube+"<br/>";
+                            if(val.pinterest != null) links += val.pinterest+"<br/>";
+                            if(val.whatsapp != null) links += val.whatsapp+"<br/>";
+                            if(val.skype != null) links += val.skype+"<br/>";
+                            // console.log(val.latitude.substring(0,8));
+                            // $(val.links).each(function(j,val1){
+                            // 	links=links+val1.link+"<br>";
+                            // })
+                            console.log(links);
+                            var marker = new google.maps.Marker({
+                                position: {lat: parseFloat(val.latitude.substring(0,8)), lng: parseFloat(val.longitude.substring(0,8))},
+                                map: map,
+                                icon:"{{asset('app-assets/mark1.png')}}"
+                            });
 
-						links="";
+                            var infoWindow = new google.maps.InfoWindow({
+                                content:"<h6>Name:"+val.name+"</h6> <br><h6>Links: "+links+"</h6><br> <h6>Description: "+val.description+" </h6>"
+                            });
 
-
-
-						$(val.links).each(function(j,val1){
-
-							links=links+val1.link+"<br>";
-
-
-
-						})
-
-						console.log(links);
-
-						var marker = new google.maps.Marker({
-
-							position: {lat: parseFloat(val.latitude.substring(0,8)), lng: parseFloat(val.langitude.substring(0,8))},
-
-							map: map,
-
-							icon:"{{asset('app-assets/mark1.png')}}"
-
-						});
-
-
-
-						var infoWindow = new google.maps.InfoWindow({
-
-
-
-							content:"<h6>Name:"+val.mark_name+"</h6> <br><h6>Links: "+links+"</h6><br> <h6>Description: "+val.mark_description+" </h6>"
-
-						});
-
-
-
-
-
-						marker.addListener("click", function(){
-
-							infoWindow.open(map, marker);
-
-						});
+                            marker.addListener("click", function(){
+                                infoWindow.open(map, marker);
+                            });
+                        // }
 
 					})
 

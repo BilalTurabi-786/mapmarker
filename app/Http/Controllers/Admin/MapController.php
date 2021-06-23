@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Admin\GoogleMap;
+use App\Models\School;
 use App\Models\Admin\SocialLink;
 
 use Validator;
@@ -26,31 +27,33 @@ class MapController extends Controller
             "description"=>"required",
             "latitude"=>"required",
             "langitude"=>"required",
-            "links"=>"nullable");
-            $validator=Validator::make($controlls,$rules);
-            if($validator->fails()){
-                return response()->json(['error'=>$validator->errors()], 401);
+            "links"=>"nullable"
+        );
+        $validator=Validator::make($controlls,$rules);
+        if($validator->fails()){
+            return response()->json(['error'=>$validator->errors()], 401);
+        }
+        else{
+            $map=new GoogleMap;
+            $map->mark_name=$request->name;
+            $map->mark_description=$request->description;
+            $map->latitude=$request->latitude;
+            $map->langitude=$request->langitude;
+            $map->save();
+            foreach ($request->links as $link) {
+                $social=new SocialLink;
+                $social->link=$link;
+                $social->google_map_id=$map->id;
+                $social->save();
             }
-            else{
-                $map=new GoogleMap;
-                $map->mark_name=$request->name;
-                $map->mark_description=$request->description;
-                $map->latitude=$request->latitude;
-                $map->langitude=$request->langitude;
-                $map->save();
-                foreach ($request->links as $link) {
-                    $social=new SocialLink;
-                    $social->link=$link;
-                    $social->google_map_id=$map->id;
-                    $social->save();
-                }
-                return response()->json(['success'=>"Mark Added...!"]);
-            }
+            return response()->json(['success'=>"Mark Added...!"]);
+        }
     }
+
     public function import_excel(){
         return view('admin.pages.import');
-
     }
+
     public function import_excel_process(Request $request){
         $rows=$request->rows;
 
@@ -73,13 +76,13 @@ class MapController extends Controller
 
 
         }
-        return "ssss";
+        // return "ssss";
         return view('admin.pages.import');
 
     }
 
     public function get_marker(){
-        $markers=GoogleMap::with('links')->get();
+        $markers = School::get();
         return response()->json(['markers'=>$markers]);
     }
 
