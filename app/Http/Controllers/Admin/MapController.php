@@ -7,7 +7,6 @@ use Illuminate\Http\Request;
 use App\Models\Admin\GoogleMap;
 use App\Models\School;
 use App\Models\Admin\SocialLink;
-
 use Validator;
 class MapController extends Controller
 {
@@ -87,22 +86,60 @@ class MapController extends Controller
     }
 
     public function filter_marker(Request $request){
-        $filters = isset($request->filters)?"'".implode("','", $request->filters)."'":"";
-        $filters = strtolower($filters);
-        $markers = GoogleMap::with(['links', 'user.filters' => function($q) use($filters) {
-            $q->whereRaw("LOWER(name) IN ({$filters})");
-        }])->when(!empty($filters), function($q) use($filters) {
-            $q->whereHas('user.filters', function($q) use($filters) {
-                $q->whereRaw("LOWER(name) IN ({$filters})");
-            })->get();
-        })->get();
-        $filters = $request->filters;
-        return $markers->filter(function($marker) use($filters){
-            $markers = $marker->user->filters->filter(function($filter) use($filters){
-                return in_array(strtolower($filter->name), $filters);
-            });
-            return count($markers) == count($filters);
+        $filters = [];
+        $persons = collect($request->persons)->map(function($person){
+
+            // duration
+            $person['duration'] = explode("-", $person['duration']);
+            foreach($person['duration'] as $key => $value){
+                $person['duration'][$key] = \Carbon\Carbon::createFromFormat('d M Y', "01 ".$value)->format('Y-m-d');
+            }
+
+            // price
+            $person['price'] = str_replace("$", "", $person['price']);
+            $person['price'] = explode(" - ", $person['price']);
+
+            // pricePerHour
+            $person['pricePerHour'] = str_replace("$", "", $person['pricePerHour']);
+            $person['pricePerHour'] = explode(" - ", $person['pricePerHour']);
+
+            // studentTeacherRatio
+            $person['studentTeacherRatio'] = explode(" - ", $person['studentTeacherRatio']);
+
+            return $person;
         });
-        return response()->json(['markers'=>$markers]);
+
+        $schools = School::query()
+        ->with('filters')->whereHas(function($q) use($persons){
+            // $q->whereBetween('start_date', $persons->max($));
+        })->get();
+
+        return $schools->filter(function($school) use($persons){
+            $lessons = $school->filters->pluck('sports');
+            foreach($persons->pluck('lesson_type') as $lesson){
+                if(!empty($lesson) && !in_array($lesson, $lessons)){
+                    return false;
+                }
+            }
+            return true;
+        });
+
+        // $filters = isset($request->filters)?"'".implode("','", $request->filters)."'":"";
+        // $filters = strtolower($filters);
+        // $markers = GoogleMap::with(['links', 'user.filters' => function($q) use($filters) {
+        //     $q->whereRaw("LOWER(name) IN ({$filters})");
+        // }])->when(!empty($filters), function($q) use($filters) {
+        //     $q->whereHas('user.filters', function($q) use($filters) {
+        //         $q->whereRaw("LOWER(name) IN ({$filters})");
+        //     })->get();
+        // })->get();
+        // $filters = $request->filters;
+        // return $markers->filter(function($marker) use($filters){
+        //     $markers = $marker->user->filters->filter(function($filter) use($filters){
+        //         return in_array(strtolower($filter->name), $filters);
+        //     });
+        //     return count($markers) == count($filters);
+        // });
+        // return response()->json(['markers'=>$markers]);
     }
 }

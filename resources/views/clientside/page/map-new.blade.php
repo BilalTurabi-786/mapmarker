@@ -1080,6 +1080,24 @@
 
 
 
+        function callMapData(persons){
+            // console.clear()
+            $.ajax({
+                url:"{{route('filter-markers')}}",
+                type:"post",
+                data: {
+                    persons: persons
+                },
+                success: function(result){
+                    console.log(result);
+                },
+                error: function(err){
+                    console.log(err);
+                }
+            });
+            // console.log("Map data");
+        }
+
 		/**  Filter Working  */
 
 		function filterMarker(){
@@ -1978,7 +1996,7 @@
 
 				max: range[1],
 
-				values: [ range[0], range[1]+120 ],
+				values: [ range[0], range[1] ],
 
 				slide: function( event, ui ) {
 

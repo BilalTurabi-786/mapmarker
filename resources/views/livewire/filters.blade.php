@@ -547,6 +547,7 @@
                     this.setRentalSet();
                     this.setStorageDuration();
                     this.setStorageSet();
+                    callMapData(this.persons);
                 },
 
                 setPrice(){
@@ -598,7 +599,7 @@
                     $("#amount12").val(studentTeacherRatio);
 
                     studentTeacherRatio = studentTeacherRatio.split(" - ");
-
+                    console.log(studentTeacherRatio);
                     $("#slider-range12").slider("values", 0, studentTeacherRatio[0]);
 
                     $("#slider-range12").slider("values", 1, studentTeacherRatio[1]);
@@ -751,7 +752,6 @@
                 @this.set("persons."+@this.activePerson+".storage.rentalPerPerson", ele.val());
             }
         });
-
     </script>
 
 @endpush

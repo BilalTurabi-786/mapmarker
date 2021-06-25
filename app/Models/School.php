@@ -12,4 +12,9 @@ class School extends Model
     public function contactUs(){
         return $this->belongsTo(Front\ContactUs::class);
     }
+
+    public function filters(){
+        return $this->hasMany(School\Filter::class);
+    }
+
 }

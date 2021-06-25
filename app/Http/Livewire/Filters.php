@@ -84,11 +84,11 @@ class Filters extends Component
 
             "duration" => $duration,
 
-            "price" => "$130 - $250",
+            "price" => $price,
 
-            "pricePerHour" => "$130 - $250",
+            "pricePerHour" => $pricePerHour,
 
-            "studentTeacherRatio" => "130 - 250",
+            "studentTeacherRatio" => $studentTeacherRatio,
 
             "courseLevel" => "All",
 
