@@ -11,7 +11,7 @@ class Filter extends Model
     protected $table = "school_filters";
 
     // sports
-    public function sports(){
+    public function sports($withKeys = false){
         return [
             "Wingsup", "Wingfoildiving", "Wingsurfing",
             "Kitesurfing", "Kitefoildiving", "Snowkiting",

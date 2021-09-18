@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('livewire-import', 'App\Http\Livewire\ExcelImport');
 Route::prefix('admin')->namespace('Admin')->group(function(){
 	Route::group(['middleware'=>'AdminGuest'],function (){
     Route::get('/auth/login',['as'=>'admin.auth.login','uses'=>'\App\Http\Controllers\Admin\LoginController@Login']);
